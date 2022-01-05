@@ -1,0 +1,2372 @@
+// GLOBAL SETTINGS
+var globalSettings = require("./CCGNodeConfig");
+
+// Terminal Colors
+var term = require('terminal-kit').terminal ;
+
+// CasparCG Connection
+const { CasparCG, AMCP } = require('casparcg-connection');
+var cgsrv;
+var cgamcp;
+var cgosc;
+var cgscan;
+var vtr1;
+var vtr2;
+var dve1;
+var dve2;
+var dve3;
+var dve4;
+var bug1;
+var bug2;
+var lvtr1;
+var lvtr2;
+var ldve1;
+var ldve2;
+var ldve3;
+var ldve4;
+var lbug1;
+var lbug2;
+var aux1;
+const OBSWebSocket = require('obs-websocket-js');
+const obs = new OBSWebSocket();
+const obsAux = new OBSWebSocket();
+var obsSceneL;
+var obsAddr;
+var obssrv;
+var obsport;
+var auxsrv;
+var auxport;
+var oscSocket;
+var ccgChannel;
+var videoFile;
+var options;
+var templateName;
+var tempData;
+var tmp1;
+var tmp2;
+var tmp3;
+var tmp4;
+var json1;
+var json2;
+var json3;
+var json4;
+var action1;
+var class1;
+var display1;
+var file1;
+var thumb1;
+var loop1;
+var action2;
+var class2;
+var display2;
+var file2;
+var thumb2;
+var loop2;
+var action3;
+var class3;
+var display3;
+var file3;
+var thumb3;
+var action4;
+var class4;
+var display4;
+var file4;
+var thumb4;
+var action5;
+var class5;
+var display5;
+var file5;
+var thumb5;
+var action6;
+var class6;
+var display6;
+var file6;
+var thumb6;
+var action7;
+var class7;
+var display7;
+var file7;
+var thumb7;
+var action8;
+var class8;
+var display8;
+var file8;
+var thumb8;
+var aux1_active;
+var aux2_active;
+var pgm_active;
+var pvw_active;
+var program;
+var preview;
+var titleList;
+var Xkeys80_1;
+var xKeys;
+var xkey01;
+var xkey02;
+var xkey03;
+var xkey04;
+var xkey05;
+var xkey06;
+var xkey07;
+var xkey08;
+var xkey09;
+var xkey10;
+var xkey11;
+var xkey12;
+var xkey13;
+var xkey14;
+var xkey15;
+var xkey16;
+var xkey17;
+var xkey18;
+var xkey19;
+var xkey20;
+var xkey21;
+var xkey22;
+var xkey23;
+var xkey24;
+var xkey25;
+var xkey26;
+var xkey27;
+var xkey28;
+var xkey29;
+var xkey30;
+var xkey31;
+var xkey32;
+var xkey33;
+var xkey34;
+var xkey35;
+var xkey36;
+var xkey37;
+var xkey38;
+var xkey39;
+var xkey40;
+var xkey41;
+var xkey42;
+var xkey43;
+var xkey44;
+var xkey45;
+var xkey46;
+var xkey47;
+var xkey48;
+var xkey49;
+var xkey50;
+var xkey51;
+var xkey52;
+var xkey53;
+var xkey54;
+var xkey55;
+var xkey56;
+var xkey57;
+var xkey58;
+var xkey59;
+var xkey60;
+var xkey61;
+var xkey62;
+var xkey63;
+var xkey64;
+var xkey65;
+var xkey66;
+var xkey67;
+var xkey68;
+var xkey69;
+var xkey70;
+var xkey71;
+var xkey72;
+var xkey73;
+var xkey74;
+var xkey75;
+var xkey76;
+var xkey77;
+var xkey78;
+var xkey79;
+var xkey80;
+var obsaux_1;
+var auxTouch_1;
+var obsaux_2;
+var auxTouch_2;
+var dve_1 = 'false';
+var dve_2 = 'false';
+var dve_3 = 'false';
+var dve_4 = 'false';
+var streamS = false;
+var dbo;
+let connectedXKeys;
+// TimerThingy
+var timexe = require('timexe');
+'use strict';
+require('dotenv').config();
+
+// SOCKET.IO
+const socket_app = require('express');
+const socket_server = require('http').createServer(socket_app);
+const socket_io = require('socket.io')(socket_server, {
+  cors: {
+    origin: '*',
+  }
+});
+
+//web server
+var express = require('express');
+var createError = require('http-errors');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var app = express();
+var cors = require('cors');
+var corsOptions = {
+  origin: '*',
+};
+app.use(cors());
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../Videos/')));
+// GET home page
+app.get('/', cors(corsOptions), function(req, res, next) {
+  res.render('index', { title: 'CasparCG' });
+});
+// GET Keyboard page
+app.get('/keyboard', cors(corsOptions), function(req, res, next) {
+  res.render('keyboard', { title: 'CasparCG' });
+});
+// GET Clock page
+app.get('/clock', cors(corsOptions), function(req, res, next) {
+  res.render('clock', { title: 'CasparCG' });
+});
+// GET Tally page
+app.get('/tally', cors(corsOptions), function(req, res, next) {
+  res.render('tally', { title: 'CasparCG' });
+});
+
+module.exports = app;
+
+app.listen(80, function() {
+	console.log("\n"+dateTimeNow()+"\tWEBSERVER  \tListening on port 80")
+});
+
+//Database
+const MongoClient = require("mongodb").MongoClient;
+const  url = 'mongodb://localhost:27017';
+const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlParser: true }, { writeConcern: true });
+client.connect();    
+const database = client.db("liveprodb");
+
+// Get from DB tables
+var DBserverGet = () => {
+	const tserver = database.collection("server");
+	return new Promise((resolve, reject) => {
+		tserver.find({}, { projection: { _id: 0, constant: 1, var: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+};
+
+async function DBserverPrint() {
+let truc = await DBserverGet();
+dbccg = JSON.stringify(truc);
+	cgsrv = truc[0].var;
+	cgamcp = truc[1].var;
+	cgosc = truc[2].var;
+	cgscan = truc[3].var;
+	vtr1 = truc[4].var;
+	vtr2 = truc[5].var;
+	dve1 = truc[6].var;
+	dve2 = truc[7].var;
+	dve3 = truc[8].var;
+	dve4 = truc[9].var;
+	aux1 = truc[10].var;
+	obssrv = truc[11].var;
+	obsport = truc[12].var;
+	auxsrv = truc[13].var;
+	auxport = truc[14].var;
+	lvtr1 = truc[15].var;
+	lvtr2 = truc[16].var;
+	ldve1 = truc[17].var;
+	ldve2 = truc[18].var;
+	ldve3 = truc[19].var;
+	ldve4 = truc[20].var;
+	bug1 = truc[21].var;
+	bug2 = truc[22].var;
+	lbug1 = truc[23].var;
+	lbug2 = truc[24].var;
+	obsAddr = obssrv+':'+obsport;
+	auxAddr =  auxsrv+':'+auxport;
+
+	//SEND DATA TO WEBAPP
+	ccg_retrieve(dbccg, function(err, response){
+            if(!err){
+                term();
+            }
+        });
+		
+	// Start CCG Connector
+	ccgConnector(cgsrv, cgamcp, function(err, response){
+		if(!err){
+			ccgConnectOSC(cgosc, function(err, response){
+				if(!err){ term(response); }
+				else { 
+					if(err == 'disconnected'){term("\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tCasparCG Server OSC issue");}}
+				});
+			term(response);		}
+		else{
+			if(err == 'disconnected'){term("\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tDisconnected from CasparCG Server");}}
+		});
+		
+	// GET CCG MEDIAS LIST	
+	ccg_cls(cgsrv, cgscan, function(err, response){
+            if(!err){term(response);}
+        });
+
+	// GET CCG TEMPLATES LIST	
+	ccg_tls(cgsrv, cgscan, function(err, response){
+            if(!err){term(response);}
+        });
+		
+	// Start OBS Connector
+	obsMain_detect(obsAddr,function(err, response){
+        if(!err){ term(response); }
+			else{
+				if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W OBS CORE ^ \tDisconnected from OBS main instance"); }}
+		});	
+		
+	// Start OBS AUX Connector
+	obsAux_detect(auxAddr,function(err, response){
+        if(!err){ term(response); }
+			else{
+				if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W OBS CORE ^ \tDisconnected from OBS aux instance"); }}
+		});		
+}
+
+var DBstateGet = () => {
+	const tserver = database.collection("state");
+	return new Promise((resolve, reject) => {
+		tserver.find({}, { projection: { _id: 0, device: 1, action: 1, hclass: 1, display: 1, file: 1, thumb: 1, loop: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+};
+
+async function DBstatePrint() {
+let Truc = await DBstateGet();
+statement = JSON.stringify(Truc);
+
+state_retrieve(statement, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+action1 = Truc[0].action;
+action2 = Truc[1].action;
+action3 = Truc[2].action;
+action4 = Truc[3].action;
+action5 = Truc[4].action;
+action6 = Truc[5].action;
+action7 = Truc[12].action;
+action8 = Truc[13].action;
+class1 = Truc[0].hclass;
+class2 = Truc[1].hclass;
+class3 = Truc[2].hclass;
+class4 = Truc[3].hclass;
+class5 = Truc[4].hclass;
+class6 = Truc[5].hclass;
+class7 = Truc[12].hclass;
+class8 = Truc[13].hclass;
+display1 = Truc[0].display;
+display2 = Truc[1].display;
+display3 = Truc[2].display;
+display4 = Truc[3].display;
+display5 = Truc[4].display;
+display6 = Truc[5].display;
+display7 = Truc[12].display;
+display8 = Truc[13].display;
+file1 = Truc[0].file;
+file2 = Truc[1].file;
+file3 = Truc[2].file;
+file4 = Truc[3].file;
+file5 = Truc[4].file;
+file6 = Truc[5].file;
+file7 = Truc[12].file;
+file8 = Truc[13].file;
+thumb1 = Truc[0].thumb;
+thumb2 = Truc[1].thumb;
+thumb3 = Truc[2].thumb;
+thumb4 = Truc[3].thumb;
+thumb5 = Truc[4].thumb;
+thumb6 = Truc[5].thumb;
+loop1 = Truc[0].loop;
+loop2 = Truc[1].loop;
+aux1_active = Truc[6].action;
+aux2_active = Truc[7].action;
+pgm_active = Truc[8].action;
+pvw_active = Truc[9].action;
+obsaux_1 = Truc[6].hclass;
+obsaux_2 = Truc[7].hclass;
+program = Truc[8].hclass;
+preview = Truc[9].hclass;	
+Hplist1 = Truc[10].action;	
+Hplist2 = Truc[11].action;		
+Iplist1 = Truc[10].file;	
+Iplist2 = Truc[11].file;
+
+	xkey_detect(function(err, response){
+        if(!err){ term(response); }
+			else{
+				if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS ^ \tDisconnected from any Xkeys panel"); }}
+		});		
+if (connectedXKeys.length) {
+		Xkeys80_1.setBacklight(aux1_active, true, true); //red light on AUX1, AUX2, PGM, PVW first buttons 
+		Xkeys80_1.setBacklight(aux1_active, false);//blue light off AUX1, AUX2, PGM, PVW first buttons
+		Xkeys80_1.setBacklight(aux2_active, true, true); //red light on AUX1, AUX2, PGM, PVW first buttons 
+		Xkeys80_1.setBacklight(aux2_active, false);//blue light off AUX1, AUX2, PGM, PVW first buttons
+		Xkeys80_1.setBacklight(pgm_active, true, true); //red light on AUX1, AUX2, PGM, PVW first buttons 
+		Xkeys80_1.setBacklight(pgm_active, false);//blue light off AUX1, AUX2, PGM, PVW first buttons
+		Xkeys80_1.setBacklight(pvw_active, true, true); //red light on AUX1, AUX2, PGM, PVW first buttons 
+		Xkeys80_1.setBacklight(pvw_active, false);//blue light off AUX1, AUX2, PGM, PVW first buttons
+}}
+
+var DBtemplateGet = () => {
+	const tserver = database.collection("template");
+	return new Promise((resolve, reject) => {
+		tserver.find({}, { projection: { _id: 0, channel: 1, tempname: 1, json: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+};
+
+async function DBtemplatePrint() {
+	let Truc = await DBtemplateGet();
+	tempconf = JSON.stringify(Truc);
+	temp_retrieve(tempconf, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+	tmp1 = Truc[0].tempname;
+	tmp2 = Truc[1].tempname;
+	tmp3 = Truc[2].tempname;
+	tmp4 = Truc[3].tempname;
+	json1 = Truc[0].json;
+	json2 = Truc[1].json;
+	json3 = Truc[2].json;
+	json4 = Truc[3].json;
+}
+	
+var DBtitrageGet = () => {
+	const titleTab = database.collection("titrage");
+	return new Promise((resolve, reject) => {
+		titleTab.find({}, { projection: { _id: 0, name: 1, title: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+}
+
+async function DBtitragePrint() {
+let truc = await DBtitrageGet();
+titleList = JSON.stringify(truc);
+title_retrieve(titleList, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+}
+
+var PlaylistGet = (plist) => {
+	const PlistTab = database.collection(plist);
+    return new Promise((resolve, reject) => {
+		PlistTab.find({}, { projection: { _id: 0, name: 1, duration: 1, timecode: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+}
+
+async function DPlaylistPrint(plist) {
+let truc = await PlaylistGet(plist);
+PLAYList = JSON.stringify(truc);
+plist_retrieve(plist, PLAYList, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+}
+
+var DBXkeysGet = () => {
+	const txkeys = database.collection("xkeys");
+    return new Promise((resolve, reject) => {
+		txkeys.find({}, { projection: { _id: 0, xkid: 1, scenename: 1} }).sort({xkid: 1}).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+}
+
+async function DBXkeysPrint() {
+let truc = await DBXkeysGet();
+xKeys = JSON.stringify(truc);
+var xkeysL = JSON.parse(xKeys);
+xkey01 = xkeysL[0]['scenename']
+xkey02 = xkeysL[1]['scenename']
+xkey03 = xkeysL[2]['scenename']
+xkey04 = xkeysL[3]['scenename']
+xkey05 = xkeysL[4]['scenename']
+xkey06 = xkeysL[5]['scenename']
+xkey07 = xkeysL[6]['scenename']
+xkey08 = xkeysL[7]['scenename']
+xkey09 = xkeysL[8]['scenename']
+xkey10 = xkeysL[9]['scenename']
+xkey11 = xkeysL[10]['scenename']
+xkey12 = xkeysL[11]['scenename']
+xkey13 = xkeysL[12]['scenename']
+xkey14 = xkeysL[13]['scenename']
+xkey15 = xkeysL[14]['scenename']
+xkey16 = xkeysL[15]['scenename']
+xkey17 = xkeysL[16]['scenename']
+xkey18 = xkeysL[17]['scenename']
+xkey19 = xkeysL[18]['scenename']
+xkey20 = xkeysL[19]['scenename']
+xkey21 = xkeysL[20]['scenename']
+xkey22 = xkeysL[21]['scenename']
+xkey23 = xkeysL[22]['scenename']
+xkey24 = xkeysL[23]['scenename']
+xkey25 = xkeysL[24]['scenename']
+xkey26 = xkeysL[25]['scenename']
+xkey27 = xkeysL[26]['scenename']
+xkey28 = xkeysL[27]['scenename']
+xkey29 = xkeysL[28]['scenename']
+xkey30 = xkeysL[29]['scenename']
+xkey31 = xkeysL[30]['scenename']
+xkey32 = xkeysL[31]['scenename']
+xkey33 = xkeysL[32]['scenename']
+xkey34 = xkeysL[33]['scenename']
+xkey35 = xkeysL[34]['scenename']
+xkey36 = xkeysL[35]['scenename']
+xkey37 = xkeysL[36]['scenename']
+xkey38 = xkeysL[37]['scenename']
+xkey39 = xkeysL[38]['scenename']
+xkey40 = xkeysL[39]['scenename']
+xkey41 = xkeysL[40]['scenename']
+xkey42 = xkeysL[41]['scenename']
+xkey43 = xkeysL[42]['scenename']
+xkey44 = xkeysL[43]['scenename']
+xkey45 = xkeysL[44]['scenename']
+xkey46 = xkeysL[45]['scenename']
+xkey47 = xkeysL[46]['scenename']
+xkey48 = xkeysL[47]['scenename']
+xkey49 = xkeysL[48]['scenename']
+xkey50 = xkeysL[49]['scenename']
+xkey51 = xkeysL[50]['scenename']
+xkey52 = xkeysL[51]['scenename']
+xkey53 = xkeysL[52]['scenename']
+xkey54 = xkeysL[53]['scenename']
+xkey55 = xkeysL[54]['scenename']
+xkey56 = xkeysL[55]['scenename']
+xkey57 = xkeysL[56]['scenename']
+xkey58 = xkeysL[57]['scenename']
+xkey59 = xkeysL[58]['scenename']
+xkey60 = xkeysL[59]['scenename']
+xkey61 = xkeysL[60]['scenename']
+xkey62 = xkeysL[61]['scenename']
+xkey63 = xkeysL[62]['scenename']
+xkey64 = xkeysL[63]['scenename']
+xkey65 = xkeysL[64]['scenename']
+xkey66 = xkeysL[65]['scenename']
+xkey67 = xkeysL[66]['scenename']
+xkey68 = xkeysL[67]['scenename']
+xkey69 = xkeysL[68]['scenename']
+xkey70 = xkeysL[69]['scenename']
+xkey71 = xkeysL[70]['scenename']
+xkey72 = xkeysL[71]['scenename']
+xkey73 = xkeysL[72]['scenename']
+xkey74 = xkeysL[73]['scenename']
+xkey75 = xkeysL[74]['scenename']
+xkey76 = xkeysL[75]['scenename']
+xkey77 = xkeysL[76]['scenename']
+xkey78 = xkeysL[77]['scenename']
+xkey79 = xkeysL[78]['scenename']
+xkey80 = xkeysL[79]['scenename']
+}
+
+DBserverPrint();
+DBstatePrint();
+DBtemplateGet();
+DBXkeysPrint();
+
+// Set to DB Server table
+async function DBupdateSrv(a,b) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("server");
+    const filter = { constant: a };
+    const options = { upsert: true };
+    const updField = {
+      $set: {
+        var: b,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+}
+
+// Set to DB xkeys table
+async function DBupdateXkey(a,b) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("xkeys");
+    const filter = { xkid: a };
+    const options = { upsert: true };
+    const updField = {
+      $set: {
+        scenename: b,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+}
+
+// Set to DB state table
+async function DBupdateState(a,b,c,d,e,f,g) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("state");
+    const filter = { device: a };
+    const options = { upsert: true };
+    const updField = {
+      $set: {
+        action: b, hclass: c, display: d, file: e, thumb: f, loop: g,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+	DBstatePrint();
+}
+
+// Set to DB TITRAGE table
+async function DBdropTitrage() {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("titrage");
+    const result = await tcollec.remove();
+}
+async function DBupdateTitrage(a,b) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("titrage");
+    const result = await tcollec.insert( { name: a, title: b });
+}
+async function DBupdateName(a,b) {
+    const database = client.db("liveprodb");
+					const tcollec = database.collection("titrage");
+					const filter = { name: a };
+					const options = { upsert: true };
+					const updField = {
+					$set: {
+						title: b,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+}
+async function DBupdateTitle(a,b) {
+    const database = client.db("liveprodb");
+					const tcollec = database.collection("titrage");
+					const filter = { title: a };
+					const options = { upsert: true };
+					const updField = {
+					$set: {
+						name: b,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+}
+
+// Set to DB TEMPLATES table
+async function DBupdateTemplate(a,b,c) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection("template");
+    const filter = { channel: a };
+    const options = { upsert: true };
+    const updField = {
+      $set: {
+        tempname: b, json: c,
+      },
+    };
+    const result = await tcollec.updateOne(filter, updField, options);
+}
+// Set to DB PLIST table
+async function DBupdatePlist(a,b,c,d) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection(a);
+    const result = await tcollec.insert( { name: b, duration: c, timecode: d });
+}
+
+// REMOVE DB PLIST table
+async function DBdropPlist(a) {
+    const database = client.db("liveprodb");
+	const tcollec = database.collection(a);
+    const result = await tcollec.remove();
+}
+
+const HID = require('node-hid')
+const { XKeys } = require('xkeys');
+const devices = HID.devices();
+
+//CONNECT TO A XKEYS PANEL
+function xkey_detect(callback){
+
+connectedXKeys = devices.filter(device => {
+	return (device.vendorId === XKeys.vendorId && device.interface === 0) // Make sure that the interface-property is set to 0
+})
+
+if (connectedXKeys.length) {
+	Xkeys80_1 = new XKeys(connectedXKeys[0].path)
+
+Xkeys80_1.on('disconnected', () => {
+			console.log(term("\n"+dateTimeNow()+"\t^#^r^W XKEYS ^ \tDisconnected from any Xkeys panel"))
+			// Clean up stuff
+			Xkeys80_1.removeAllListeners()
+		})
+Xkeys80_1.on('error', err => {
+    term("\n"+dateTimeNow()+"\t^#^M^W XKEYS ^ \t\tDisconnected from any Xkeys panel");
+	Xkeys80_1.removeAllListeners();
+	connectedXKeys = '';
+});
+// INITIALIZING THE XKEY PANEL
+for (i = 4; i < 61; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all AUX1 line buttons  
+				Xkeys80_1.setBacklight(i, false, true); //red light off all AUX1 line buttons
+				}
+for (i = 5; i < 62; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all AUX2 buttons  
+				Xkeys80_1.setBacklight(i, false, true); //red light off all AUX2 buttons		
+				}				
+for (i = 6; i < 63; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all PGM line buttons  
+				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
+				}
+for (i = 7; i < 64; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all PVW line buttons  
+				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
+				}
+for (i = 70; i < 79; i=i+8){
+				Xkeys80_1.setBacklight(i, true, true); //red light on AUTO buttons
+				Xkeys80_1.setBacklight(i, false);//blue light off AUTO buttons				
+				}
+for (i = 71; i < 80; i=i+8){
+				Xkeys80_1.setBacklight(i, true, true); //red light on CUT buttons
+				Xkeys80_1.setBacklight(i, false);//blue light off CUT buttons				
+				}
+Xkeys80_1.setBacklight(72, false, true); //flash red light on REC button
+Xkeys80_1.setBacklight(73, false, true); //flash red light on REC button				
+Xkeys80_1.on('down', a => {
+	
+	//START STREAMING
+	if (a == '72') {
+		console.log(streamS);
+		if (streamS != false){	obs.send('StopStreaming').catch(console.error);
+								Xkeys80_1.setBacklight(72, false, true); //flash red light off REC button
+								Xkeys80_1.setBacklight(73, false, true); //flash red light on REC button
+								streamS = false;
+		}			else	{	obs.send('StartStreaming').catch(console.error);
+								Xkeys80_1.setBacklight(72, true, true, true); //flash red light on REC button
+								Xkeys80_1.setBacklight(73, true, true, true); //flash red light on REC button
+								streamS = true;
+		}
+	
+	}
+			
+	if (a == '0'){obs_filter(function(err, response){
+            if(!err){
+                term(response);
+            }
+			})}	
+			
+	if (a == '8'){ obs.send('SetSourceFilterVisibility', { 'source-name': 'CAM DELL'  }).catch(console.error);}				
+			
+	//TRANSITIONS 
+		if (a == '71' || a == '70') {transButton(a);	}
+		
+		var cnumber = parseInt(a) + 1;
+		var cname = 'xkey'+pad2(cnumber);
+
+	//AUX1 XKEYS ACTIONS
+		if (a == '4' || a == '12' || a == '20' || a == '28' || a == '36' || a == '44' || a == '52' || a == '60') {
+			KeyChange(a, 'aux1', eval(cname), function(err, response){
+				if(!err){ term(response); }
+			});
+		}
+
+	//AUX2 XKEYS ACTIONS
+		if (a == '5' || a == '13' || a == '21' || a == '29' || a == '37' || a == '45' || a == '53' || a == '61') {
+			KeyChange(a, 'aux2', eval(cname), function(err, response){
+				if(!err){ term(response); }
+			});
+		}
+
+	//PROGRAM XKEYS ACTIONS
+		if (a == '6' || a == '14' || a == '22' || a == '30' || a == '38' || a == '46' || a == '54' || a == '62') {
+			KeyChange(a, 'pgm', eval(cname), function(err, response){
+				if(!err){ term(response); }
+			});
+		}
+
+	//PREVIEW XKEYS ACTIONS
+		if (a == '7' || a == '15' || a == '23' || a == '31' || a == '39' || a == '47' || a == '55' || a == '63') {
+			KeyChange(a, 'pvw', eval(cname), function(err, response){
+ 				if(!err){ term(response); }
+			});
+		}
+
+	//SHOW DVE
+		if (a == '68' ) {
+			IOSendData(['web'], 'sClick', 'dve1_box');
+			if (dve_1 == 'false') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				dve_1 = 'true';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				dve_1 = 'false';}
+		}
+		if (a == '76' ) {
+			IOSendData(['web'], 'sClick', 'dve2_box');
+			if (dve_2 == 'false') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				dve_2 = 'true';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				dve_2 = 'false';}
+			}
+		if (a == '69' ) {
+			IOSendData(['web'], 'sClick', 'dve3_box');
+			if (dve_3 == 'false') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				dve_3 = 'true';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				dve_3 = 'false';}
+			}
+		if (a == '77' ) {
+			IOSendData(['web'], 'sClick', 'dve4_box');
+			if (dve_4 == 'false') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				dve_4 = 'true';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				dve_4 = 'false';}
+			}
+	});
+	} else {
+	console.log("Could not find any connected X-keys panels.")
+}};
+
+function pad2(number) {
+   return (number < 10 ? '0' : '') + number
+}
+
+function transButton(a,callback)	{
+			for (i = 6; i < 63; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all PGM line buttons  
+				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
+				}
+			for (i = 7; i < 64; i=i+8){
+				Xkeys80_1.setBacklight(i, true); //blue light on all PVW line buttons  
+				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
+				}
+				pgm_active = parseInt(pgm_active) + 1;
+				pvw_active = parseInt(pvw_active) - 1;
+			    Xkeys80_1.setBacklight(pvw_active, true, true); //red light on button that goes from PVW to PGM
+				Xkeys80_1.setBacklight(pvw_active, false);//blue light off button that goes from PVW to PGM
+				Xkeys80_1.setBacklight(pgm_active, true, true); //red light on button that goes from PGM to PVW
+				Xkeys80_1.setBacklight(pgm_active, false);//blue light off button that goes from PGM to PVW
+				
+				//CUT
+					if (a == '71' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));	
+										obs.send('TransitionToProgram', { 'with-transition.name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+										term("\n"+dateTimeNow()+"\t^#^M^W CUT SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW : '+pvw_active+' - '+preview);}
+				//AUTO MIX 
+					if (a == '70' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Fondu'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")); 
+										obs.send('SetTransitionDuration', { 'duration': 1000  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+										obs.send('TransitionToProgram', { 'with-transition.name': 'Fondu' }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+										var b = 78;
+										Xkeys80_1.setBacklight(a, true, true, true); //red flashing on button AUTO										
+										Xkeys80_1.setBacklight(b, true, true, true); //red flashing on button AUTO										
+										term("\n"+dateTimeNow()+"\t^#^M^W MIX SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW :'+pvw_active+' - '+preview);
+										setTimeout(function(){
+											Xkeys80_1.setBacklight(a, true, true); // Stop red flashing on button AUTO										
+										 	Xkeys80_1.setBacklight(b, true, true); //Stop red flashing on button AUTO			
+											}, 1000);}
+						var tempo = preview;
+						preview = program;
+						program = tempo;
+						tempo = pgm_active;
+						pgm_active = pad2(pvw_active);
+						pvw_active = pad2(tempo);
+					if (pgm_active == '54'){ IOSendData(['web'], 'sClick', 'vtr1_box'); }
+					if (pgm_active == '62'){ IOSendData(['web'], 'sClick', 'vtr2_box'); }
+					DBupdateState('pgm_active',pgm_active,program,'','','','');
+					DBupdateState('pvw_active',pvw_active,preview,'','','','');
+					
+}				
+ 
+// OSC
+var oscClient = require('osc-min');
+var udpConnection = require("dgram");
+
+// SAVED CONNECTIONS
+var CasparCG_Connection = null;
+var socketIO_Connection = socket_io;
+
+// VARIABLES
+var timecodeVars = {
+    videoPresent: null,
+    currentTime: 0,
+    currentTimeConverted: '00:00:00:00',
+    currentDuration: 0,
+    currentDurationConverted: '00:00:00:00',
+    currentCountDown: 0,
+    currentCountDownConverted: 0,
+    currentProgressPercent: 0
+}
+
+var timecode2Vars = {
+    video2Present: null,
+    current2Time: 0,
+    current2TimeConverted: '00:00:00:00',
+    current2Duration: 0,
+    current2DurationConverted: '00:00:00:00',
+    current2CountDown: 0,
+    current2CountDownConverted: 0,
+    current2ProgressPercent: 0
+}
+
+var msPerFrame = 40; // PAL 25 FPS
+
+// Start SocketIO Connector
+socketIOConnector(function(err, response){
+    if(!err){
+        term(response);
+    }
+    else{
+        if(err == 'disconnect'){
+            term(response);
+        }
+    }
+});
+
+// SOCKETIO CONNECTOR
+function socketIOConnector(callback){
+    // SOCKET IO LISTEN
+    socket_server.listen(globalSettings.socketIO.port);
+  
+    // SOCKET IO OPEN
+    socketIO_Connection.on('connection', function(socket){
+
+        // ADD CLIENT TO ROOM  (OPTIONAL)
+        var roomName = socket.handshake.query.room;
+        socket.join(roomName);
+        if(roomName == 'web'){
+            callback(undefined, "\n"+dateTimeNow()+"\t^#^g^W SOCKETIO ^ \tClient Connected:\t\t[Web]\t\tID: "+socket.id)
+        }
+        
+        // SOCKET.IO CLIENT DISCONNECT
+        socket.on('disconnect', function(){               
+            if(roomName == 'web'){
+                callback('disconnect', "\n"+dateTimeNow()+"\t^#^r^W SOCKETIO ^ \tClient Disconnected:\t[Web]\t\tID: "+socket.id)
+            }
+        });
+
+        // GET ACTION FROM UI
+        socket.on('UI|action', function(uiActionReceived){
+			uiActions(uiActionReceived);
+			callback(undefined, "\n"+dateTimeNow()+"\t^#^g^W SOCKETIO ^ \tCommande reçue:\t[Web]\tACTION: "+uiActionReceived.action)
+        }); 
+    });
+}
+
+
+// UI Actions
+function uiActions(uiActionReceived){
+	
+	//PUSH CASPAR CONFIG STORED IN DB TO WEBAPP
+	if(uiActionReceived.action == 'CCGget'){
+        DBserverPrint();
+    }
+	
+	//UPDATE CASPAR CONFIG FROM WEBAPP (to variables & DB)
+	 if(uiActionReceived.action == 'CCGsave'){
+		cgsrv = uiActionReceived.srv;
+		DBupdateSrv('cgsrv',cgsrv); 
+		cgamcp = uiActionReceived.port1;
+		DBupdateSrv('amcport',cgamcp); 
+		cgosc = uiActionReceived.port2;
+		DBupdateSrv('oscport',cgosc); 
+		cgscan = uiActionReceived.port3;
+		DBupdateSrv('scanport',cgscan); 
+		// Start CCG Connector
+		ccgConnector(cgsrv, cgamcp, function(err, response){
+		if(!err){
+			ccgConnectOSC(cgosc, function(err, response){
+		if(!err){ term(response);	}
+		else{
+			if(err == 'disconnected'){
+				term("\n"+dateTimeNow()+"\t^#^r^W CASPARCG ^ \tCasparCG Server OSC issue");
+			}
+		}
+});
+			term(response);
+
+		}
+		else{
+			if(err == 'disconnected'){
+				term("\n"+dateTimeNow()+"\t^#^r^W CASPARCG ^ \tDisconnected from CasparCG Server");
+			}
+		}
+});
+    }
+	
+	//CALL CASPARCG CONNECTION
+	if(uiActionReceived.action == 'CCGconnect'){
+		term("\n"+dateTimeNow()+"\t^#^B^W CASPARCG ^ \tCasparCG Server control on "+cgsrv+":"+cgamcp+" - osc :"+cgosc)
+
+}
+	
+	//UPDATE OBS CONFIG FROM WEBAPP (to variables & DB)
+	if(uiActionReceived.action == 'OBSsave'){
+		obssrv = uiActionReceived.obssrv;
+		DBupdateSrv('obssrv',obssrv); 
+		obsport = uiActionReceived.obsport;
+		DBupdateSrv('obsport',obsport); 
+		obsAddr = obssrv+':'+obsport;
+		
+		// Start OBS Connector
+		obsMain_detect(obsAddr,function(err, response){
+            if(!err){
+                term(response);
+            }
+			else{
+				if(err == 'disconnected'){
+				term("\n"+dateTimeNow()+"\t^#^r^W OBS CORE ^ \tDisconnected from OBS main instance");
+        }
+    }
+			});	
+    }
+	
+	if(uiActionReceived.action == 'AUXsave'){
+		auxsrv = uiActionReceived.auxsrv;
+		DBupdateSrv('auxsrv',auxsrv); 
+		auxport = uiActionReceived.auxport;
+		DBupdateSrv('auxport',auxport); 
+		auxAddr =  auxsrv+':'+auxport;
+		
+		// Start OBS Connector
+		obsAux_detect(auxAddr,function(err, response){
+            if(!err){
+                term(response);
+            }
+			else{
+				if(err == 'disconnected'){
+				term("\n"+dateTimeNow()+"\t^#^r^W OBS CORE ^ \tDisconnected from OBS aux instance");
+        }
+    }
+			});		
+    }		
+		
+	//UPDATE 1 CONFIG ELEMENT (CasparCG channels & Xkeys affections) FROM WEBAPP (to variables & DB) 
+	if(uiActionReceived.action == 'configUP'){
+		var arg1 = uiActionReceived.arg1;
+		var arg2 = uiActionReceived.arg2;
+		if (arg1 == 'vtr1'){ vtr1 = arg2; DBupdateSrv('vtr1',vtr1);}
+		if (arg1 == 'vtr2'){ vtr2 = arg2; DBupdateSrv('vtr2',vtr2);}
+		if (arg1 == 'bug1'){ bug1 = arg2; DBupdateSrv('bug1',bug1);}
+		if (arg1 == 'bug2'){ bug2 = arg2; DBupdateSrv('bug2',bug2);}
+		if (arg1 == 'dve1'){ dve1 = arg2; DBupdateSrv('dve1',dve1);}
+		if (arg1 == 'dve2'){ dve2 = arg2; DBupdateSrv('dve2',dve2);}
+		if (arg1 == 'dve3'){ dve3 = arg2; DBupdateSrv('dve3',dve3);}
+		if (arg1 == 'dve4'){ dve4 = arg2; DBupdateSrv('dve4',dve4);}
+		if (arg1 == 'aux1'){ aux1 = arg2; DBupdateSrv('aux1',aux1);}
+		if (arg1 == 'lvtr1'){ lvtr1 = arg2; DBupdateSrv('lvtr1',lvtr1);}
+		if (arg1 == 'lvtr2'){ lvtr2 = arg2; DBupdateSrv('lvtr2',lvtr2);}
+		if (arg1 == 'lbug1'){ lbug1 = arg2; DBupdateSrv('lbug1',lbug1);}
+		if (arg1 == 'lbug2'){ lbug2 = arg2; DBupdateSrv('lbug2',lbug2);}
+		if (arg1 == 'ldve1'){ ldve1 = arg2; DBupdateSrv('ldve1',ldve1);}
+		if (arg1 == 'ldve2'){ ldve2 = arg2; DBupdateSrv('ldve2',ldve2);}
+		if (arg1 == 'ldve3'){ ldve3 = arg2; DBupdateSrv('ldve3',ldve3);}
+		if (arg1 == 'ldve4'){ ldve4 = arg2; DBupdateSrv('ldve4',ldve4);}
+		if (arg1 == '04'){ xkey05 = arg2; DBupdateXkey('04',xkey05); }
+		if (arg1 == '05'){ xkey06 = arg2; DBupdateXkey('05',xkey06); }
+		if (arg1 == '06'){ xkey07 = arg2; DBupdateXkey('06',xkey07); }
+		if (arg1 == '07'){ xkey08 = arg2; DBupdateXkey('07',xkey08); }
+		if (arg1 == '12'){ xkey13 = arg2; DBupdateXkey('12',xkey13); }
+		if (arg1 == '13'){ xkey14 = arg2; DBupdateXkey('13',xkey14); }
+		if (arg1 == '14'){ xkey15 = arg2; DBupdateXkey('14',xkey15); }
+		if (arg1 == '15'){ xkey16 = arg2; DBupdateXkey('15',xkey16); }
+		if (arg1 == '20'){ xkey21 = arg2; DBupdateXkey('20',xkey21); } 
+		if (arg1 == '21'){ xkey22 = arg2; DBupdateXkey('21',xkey22); }
+		if (arg1 == '22'){ xkey23 = arg2; DBupdateXkey('22',xkey23); }
+		if (arg1 == '23'){ xkey24 = arg2; DBupdateXkey('23',xkey24); }
+		if (arg1 == '28'){ xkey29 = arg2; DBupdateXkey('28',xkey29); }
+		if (arg1 == '29'){ xkey30 = arg2; DBupdateXkey('29',xkey30); }
+		if (arg1 == '30'){ xkey31 = arg2; DBupdateXkey('30',xkey31); }
+		if (arg1 == '31'){ xkey32 = arg2; DBupdateXkey('31',xkey32); }
+		if (arg1 == '36'){ xkey37 = arg2; DBupdateXkey('36',xkey37); }
+		if (arg1 == '37'){ xkey38 = arg2; DBupdateXkey('37',xkey38); }
+		if (arg1 == '38'){ xkey39 = arg2; DBupdateXkey('38',xkey39); }
+		if (arg1 == '39'){ xkey40 = arg2; DBupdateXkey('39',xkey40); }
+		if (arg1 == '44'){ xkey45 = arg2; DBupdateXkey('44',xkey45); }
+		if (arg1 == '45'){ xkey46 = arg2; DBupdateXkey('45',xkey46); }
+		if (arg1 == '46'){ xkey47 = arg2; DBupdateXkey('46',xkey47); }
+		if (arg1 == '47'){ xkey48 = arg2; DBupdateXkey('47',xkey48); }
+		if (arg1 == '52'){ xkey53 = arg2; DBupdateXkey('52',xkey53); }
+		if (arg1 == '53'){ xkey54 = arg2; DBupdateXkey('53',xkey54); }
+		if (arg1 == '54'){ xkey55 = arg2; DBupdateXkey('54',xkey55); }
+		if (arg1 == '55'){ xkey56 = arg2; DBupdateXkey('55',xkey56); }
+		if (arg1 == '60'){ xkey61 = arg2; DBupdateXkey('60',xkey31); }
+		if (arg1 == '61'){ xkey62 = arg2; DBupdateXkey('61',xkey62); }
+		if (arg1 == '62'){ xkey63 = arg2; DBupdateXkey('62',xkey63); }
+		if (arg1 == '63'){ xkey64 = arg2; DBupdateXkey('63',xkey64); }
+		term("\n"+dateTimeNow()+"\t^#^g^W CASPARCG ^ \tDevice:   "+arg1+" now on channel: "+arg2);
+    }
+	
+	//UPDATES XKEYS AFFECTATIONS
+	if(uiActionReceived.action == 'xkeys'){
+		xkey06 = uiActionReceived.xkey06;
+		program = xkey06;
+		xkey14 = uiActionReceived.xkey14;
+		xkey22 = uiActionReceived.xkey22;
+		xkey30 = uiActionReceived.xkey30;
+		xkey38 = uiActionReceived.xkey38;
+		xkey46 = uiActionReceived.xkey46;
+		xkey54 = uiActionReceived.xkey54;
+		xkey62 = uiActionReceived.xkey62;
+		xkey07 = uiActionReceived.xkey07;
+		preview = xkey07;
+		xkey15 = uiActionReceived.xkey15;
+		xkey23 = uiActionReceived.xkey23;
+		xkey31 = uiActionReceived.xkey31;
+		xkey39 = uiActionReceived.xkey39;
+		xkey47 = uiActionReceived.xkey47;
+		xkey55 = uiActionReceived.xkey55;
+		xkey63 = uiActionReceived.xkey63;
+		xkey05 = uiActionReceived.xkey05;
+		xkey13 = uiActionReceived.xkey13;
+		xkey21 = uiActionReceived.xkey21;
+		xkey29 = uiActionReceived.xkey29;
+		xkey37 = uiActionReceived.xkey37;
+		xkey45 = uiActionReceived.xkey45;
+		xkey53 = uiActionReceived.xkey53;
+		xkey61 = uiActionReceived.xkey61;
+		xkey04 = uiActionReceived.xkey04;
+		xkey12 = uiActionReceived.xkey12;
+		xkey20 = uiActionReceived.xkey20;
+		xkey28 = uiActionReceived.xkey28;
+		xkey36 = uiActionReceived.xkey36;
+		xkey44 = uiActionReceived.xkey44;
+		xkey52 = uiActionReceived.xkey52;
+		xkey60 = uiActionReceived.xkey60;
+    }
+	
+	//RECEIVES CHANGES ON THE WEBAPP SATES VCR & DVE
+	if(uiActionReceived.action == 'saveState') {
+		var device = uiActionReceived.device;
+		var state = uiActionReceived.state;
+		var divclass = uiActionReceived.divclass;
+		var display = uiActionReceived.display;
+		var file = uiActionReceived.file;
+		var thumb = uiActionReceived.thumb;
+		var loop = uiActionReceived.loop;
+		if (device == 'vtr1_box'){ action1 = state; class1 = divclass; display1 = display; file1 = file; thumb1 = thumb; loop1 = loop;}
+		if (device == 'vtr2_box'){ action2 = state; class2 = divclass; display2 = display; file2 = file; thumb2 = thumb; loop2 = loop;}
+		if (device == 'dve1_box'){ action3 = state; class3 = divclass; display3 = display; file3 = file; thumb3 = thumb;}
+		if (device == 'dve2_box'){ action4 = state; class4 = divclass; display4 = display; file4 = file; thumb4 = thumb;}
+		if (device == 'dve3_box'){ action5 = state; class5 = divclass; display5 = display; file5 = file; thumb5 = thumb;}
+		if (device == 'dve4_box'){ action6 = state; class6 = divclass; display6 = display; file6 = file; thumb6 = thumb;}
+		DBupdateState(device, state, divclass, display, file, thumb, loop).catch(err => {  console.log(err);});
+    }
+	
+	//RECEIVES CHANGES FROM THE WEBAPP TEMPLATES CONF
+	if(uiActionReceived.action == 'saveTemplate') {
+		var channel = uiActionReceived.channel;
+		var tempname = uiActionReceived.tempname;
+		var json = uiActionReceived.json;
+		DBupdateTemplate(channel, tempname, json, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+		DBtemplateGet();
+    }	
+	
+	//RECEIVES CHANGES FROM THE WEBAPP TITLES LIST
+	if(uiActionReceived.action == 'saveTitrage') {
+		var type = uiActionReceived.type;
+		var name = uiActionReceived.name;
+		var title = uiActionReceived.title;
+		if (type == 'add'){
+		DBupdateTitrage(name, title, function(err, response){
+            if(!err){
+                term(response);
+            }});} 
+			else if (type == 'suppr'){DBdropTitrage()}
+			else if (type == 'name'){DBupdateName(name,title)}
+			else if (type == 'title'){DBupdateTitle(title,name)}
+			DBtitragePrint();
+    }
+
+	
+	//RECEIVES CHANGES FROM THE WEBAPP PLAYLIST
+	if(uiActionReceived.action == 'savePlist') {
+		var type = uiActionReceived.type;
+		var plist = uiActionReceived.plist;
+		var name = uiActionReceived.name;
+		var duration = uiActionReceived.duration;
+		var timecode = uiActionReceived.timecode;
+		if (type == 'add'){
+		DBupdatePlist(plist, name, duration, timecode, function(err, response){
+            if(!err){
+                term(response);
+            }});} 
+			else if (type == 'suppr'){DBdropPlist(plist)}
+			DPlaylistPrint(plist);
+    }
+	
+	//RECEIVES CHANGES FROM THE WEBAPP VIRTUAL XKEYS CONSOLE
+	if(uiActionReceived.action == 'XKeySend') {
+		var tKey = uiActionReceived.arg1;
+		var tline = uiActionReceived.arg2;
+		var tName = uiActionReceived.arg3;
+		KeyChange(tKey, tline, tName, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	//RECEIVES TRANSITION FROM WEBAPP VIRTUAL XKEYS CONSOLE
+	if(uiActionReceived.action == 'transKey') {
+		var tKey = uiActionReceived.arg;
+		transButton(tKey, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	//RECEIVES ACTUAL STATUS OF ALL CASPAR CHANNELS
+	if(uiActionReceived.action == 'StateGet'){
+		DBstatePrint();
+    }
+
+	//PUSH XKEYS CONFIG STORED IN DB TO WEBAPP
+	if(uiActionReceived.action == 'xkeysget'){
+        xkeys_retrieve(xKeys, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+	//PUSH TITLES LIST STORED IN DB TO WEBAPP
+	if(uiActionReceived.action == 'titleGet'){
+        DBtitragePrint();
+    }
+
+	//PUSH PLAYLIST STORED IN DB TO WEBAPP
+	if(uiActionReceived.action == 'plistGet'){
+		var Plist = uiActionReceived.plist;
+		DPlaylistPrint(Plist);
+    }
+
+	//PUSH OBS CONFIG STORED IN DBS TO WEBAPP
+	if(uiActionReceived.action == 'OBSget'){
+        obs_retrieve(obssrv, obsport,function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+	if(uiActionReceived.action == 'AUXget'){
+        aux_retrieve(auxsrv, auxport,function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+	if(uiActionReceived.action == 'tempGet'){
+        DBtemplatePrint();
+    }
+	
+    if(uiActionReceived.action == 'tls'){
+        ccg_tls(cgsrv, cgscan, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	if(uiActionReceived.action == 'cls'){
+        ccg_cls(cgsrv, cgscan, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	if(uiActionReceived.action == 'load'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+		videoFile = uiActionReceived.file;
+        options = uiActionReceived.options;
+        ccg_LoadMedia(ccgChannel, ccgLayer, videoFile, options, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	if(uiActionReceived.action == 'loadbg'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+		videoFile = uiActionReceived.file;
+        ccg_LoadbgMedia(ccgChannel, ccgLayer, videoFile, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+    if(uiActionReceived.action == 'play'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+		videoFile = uiActionReceived.file;
+        options = uiActionReceived.options;
+		ccg_PlayMedia(ccgChannel, ccgLayer, videoFile, options, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	    if(uiActionReceived.action == 'call'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+        options = uiActionReceived.options;
+		ccg_CallMedia(ccgChannel, ccgLayer, options, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+    if(uiActionReceived.action == 'pause'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+		ccg_PauseMedia(ccgChannel, ccgLayer, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+    if(uiActionReceived.action == 'resume'){
+		ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+        ccg_ResumeMedia(ccgChannel, ccgLayer, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+    if(uiActionReceived.action == 'stop'){
+		ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+        ccg_StopMedia(ccgChannel, ccgLayer, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+    if(uiActionReceived.action == 'cg'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+        templateName = uiActionReceived.template;
+        tempData = uiActionReceived.data;
+		dvebox = uiActionReceived.device;
+		if (connectedXKeys.length) {
+			if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('68', true, true); }//red light on selected button 
+			if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('76', true, true); }//red light on selected button
+			if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve; Xkeys80_1.setBacklight('69', true, true); }//red light on selected button
+			if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve; Xkeys80_1.setBacklight('77', true, true); }//red light on selected button
+        }
+		ccg_cgMedia(ccgChannel, ccgLayer, templateName, tempData, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+	
+	if(uiActionReceived.action == 'nocg'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+		dvebox = uiActionReceived.device;
+		if (connectedXKeys.length) {
+			if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('68', false, true); }//red light on selected button
+			if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('76', false, true); }//red light on selected button
+			if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve; Xkeys80_1.setBacklight('69', false, true); }//red light on selected button}
+			if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve; Xkeys80_1.setBacklight('77', false, true); }//red light on selected button}
+        }
+		ccg_nocgMedia(ccgChannel, ccgLayer, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+	
+    if(uiActionReceived.action == 'up'){
+        ccgChannel = uiActionReceived.channel;
+        ccgLayer = uiActionReceived.layer;
+        tempData = uiActionReceived.data;
+		dvebox = uiActionReceived.device;
+		if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve}
+		if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve}
+		if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve}
+		if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve}
+        ccg_upMedia(ccgChannel, ccgLayer, tempData, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+
+	
+	    if(uiActionReceived.action == 'aux1'){
+        var device = uiActionReceived.file
+		ccg_Aux1(aux1, ccgLayer, device, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+    }
+}
+
+// SOCKETIO SEND DATA
+function IOSendData(targets, type, vars, others){
+    if (socketIO_Connection != null){
+
+		// SEND TIMING CH1
+        if(type == 'timing'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('timing', vars);
+            });
+        }
+		// SEND TIMING CH2
+        if(type == 'timing2'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('timing2', vars);
+            });
+        }
+		// SEND CLS
+        if(type == 'ccgcls'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('ccgcls', vars);
+            });
+        }
+		// SEND TLS
+        if(type == 'ccgtls'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('ccgtls', vars);
+            });
+        }
+		// SEND CCG CONFIG
+        if(type == 'ccgconf'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('ccgconf', vars);
+            });
+        }
+		// SEND TEMPLATES CONFIG
+        if(type == 'tempconf'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('tempconf', vars);
+            });
+        }
+		// SEND XKEYS CONFIG
+        if(type == 'xkeys'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('xkeys', vars);
+            });
+        }
+	
+		// SEND TITLES LIST
+        if(type == 'titles'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('titles', vars);
+            });
+        }
+		// SEND PLAYLIST LIST
+        if(type == 'playlist'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('playlist', vars, others);
+            });
+        }
+		// SEND STATUS
+        if(type == 'status'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('status', vars);
+            });
+        }
+		// SEND OBS CONFIG
+        if(type == 'obsconf'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('obsconf', vars);
+            });
+        }
+		// SEND AUX CONFIG
+        if(type == 'auxconf'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('auxconf', vars);
+            });
+        }
+		// SEND OBS SCENES
+        if(type == 'obslist'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('obslist', vars);
+            });
+        }
+		// SEND NDI==> abandonné!!!
+        if(type == 'ndilist'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('ndilist', vars);
+            });
+        }
+		// SEND CLICKS BOXES (VTR & DVE)
+        if(type == 'sClick'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('sClick', vars);
+            });
+        }
+		// SEND CLICKS ON AUX BUTTONS
+        if(type == 'tClick'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('tClick', vars);
+            });
+        }
+
+		// SEND CLASS BUTTONS
+        if(type == 'rClick'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('rClick', vars);
+            });
+        }
+	}
+}
+
+function KeyChange(a,b,c,callback){
+	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
+
+	if (b == 'aux1'){
+		obsAux.send('SetCurrentScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tNo OBS Aux instance actually connected!")});
+		aux1_active = a;
+		obsaux_1 = c;
+	}
+	if (b == 'aux2'){
+		obsAux.send('SetPreviewScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tNo OBS Aux instance actually connected!")});
+		aux2_active = a;
+		obsaux_2 = c;
+	}
+	if (b == 'pgm'){
+		obs.send('SetCurrentScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tNo OBS Main instance actually connected!")});
+		pgm_active = a;
+		program = c;
+	}
+	if (b == 'pvw'){
+		obs.send('SetPreviewScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tNo OBS Main instance actually connected!")});
+		pvw_active = a;
+		preview = c;
+	}
+}
+
+//CONNECT TO AN OBS MAIN DEVICE 
+function obsMain_detect(obsAddr,callback){
+		obs.connect({ address: obsAddr, password: '' }).then(() => {
+			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W OBS CORE ^ \tOBS MAIN INSTANCE Connected to: \t"+obsAddr)
+			obs_List(function(err, response){
+            if(!err){
+                term();
+            }
+        });
+  }).catch((error) => {
+    term("\n"+dateTimeNow()+"\t^#^r^W OBS MAIN ^ \tNo OBS Main instance actually connected!");
+});
+
+
+obs.on('error', err => {
+    term("\n"+dateTimeNow()+"\t^#^r^W OBS MAIN ^ \t^No OBS Main instance actually connected!");
+});
+
+		obs.on('SwitchScenes', data => {
+			program = (`${data.sceneName}`);
+			if (connectedXKeys.length){
+				for (i = 6; i < 63; i=i+8){
+					Xkeys80_1.setBacklight(i, true); //blue light on all line buttons  
+					Xkeys80_1.setBacklight(i, false, true)};//red light off all line buttons
+					
+				if (program == xkey07) {		
+					Xkeys80_1.setBacklight(6, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(6, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys06');
+					DBupdateState('pgm_active','06',program,'','','');
+					pgm_active = '06';}
+				if (program == xkey15) {		
+					Xkeys80_1.setBacklight(14, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(14, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys14');
+					DBupdateState('pgm_active','15',program,'','','','');
+					pgm_active = '15';}
+				if (program == xkey23) {		
+					Xkeys80_1.setBacklight(22, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(22, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys22');
+					DBupdateState('pgm_active','22',program,'','','','');
+					pgm_active = '22';}
+				if (program == xkey31) {		
+					Xkeys80_1.setBacklight(30, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(30, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys30');
+					DBupdateState('pgm_active','30',program,'','','','');
+					pgm_active = '30';} 
+				if (program == xkey39) {		
+					Xkeys80_1.setBacklight(38, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(38, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys38');
+					DBupdateState('pgm_active','38',program,'','','','');
+					pgm_active = '38';}
+				if (program == xkey47) {		
+					Xkeys80_1.setBacklight(46, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(46, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys46');
+					DBupdateState('pgm_active','46',program,'','','','');
+					pgm_active = '46';} 
+				if (program == xkey55) {		
+					Xkeys80_1.setBacklight(54, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(54, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys54');
+					DBupdateState('pgm_active','54',program,'','','','');
+					pgm_active = '54';}
+				if (program == xkey63) {		
+					Xkeys80_1.setBacklight(62, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(62, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys62');
+					DBupdateState('pgm_active','62',program,'','','','');
+					pgm_active = '62';}
+		} else {
+			if (program == xkey07) { IOSendData(['web'], 'rClick', 'xkeys06');
+					DBupdateState('pgm_active','06',program,'','','','');
+					pgm_active = '06';}
+			if (program == xkey15) { IOSendData(['web'], 'rClick', 'xkeys14');
+					DBupdateState('pgm_active','14',program,'','','','');
+					pgm_active = '14';}
+			if (program == xkey23) { IOSendData(['web'], 'rClick', 'xkeys22');
+					DBupdateState('pgm_active','22',program,'','','','');
+					pgm_active = '22';}
+			if (program == xkey31) { IOSendData(['web'], 'rClick', 'xkeys30');
+					DBupdateState('pgm_active','30',program,'','','','');
+					pgm_active = '30';} 
+			if (program == xkey39) { IOSendData(['web'], 'rClick', 'xkeys38');
+					DBupdateState('pgm_active','38',program,'','','','');
+					pgm_active = '38';}
+			if (program == xkey47) { IOSendData(['web'], 'rClick', 'xkeys46');
+					DBupdateState('pgm_active','46',program,'','','','');
+					pgm_active = '46';} 
+			if (program == xkey55) { IOSendData(['web'], 'rClick', 'xkeys54');
+					DBupdateState('pgm_active','54',program,'','','','');
+					pgm_active = '54';}
+			if (program == xkey63) { IOSendData(['web'], 'rClick', 'xkeys62');
+					DBupdateState('pgm_active','62',program,'','','','');
+					pgm_active = '62';}
+		}	
+	term("\n"+dateTimeNow()+"\t^#^M^W OBS PGM^ \tKey pressed: \t"+pgm_active+' - '+program);
+	});	
+				
+		obs.on('PreviewSceneChanged', dt => {
+			preview = (`${dt.sceneName}`);
+			if (connectedXKeys.length){
+			for (i = 7; i < 64; i=i+8){
+					Xkeys80_1.setBacklight(i, true); //blue light on all line buttons  
+					Xkeys80_1.setBacklight(i, false, true);}//blue light off selected button
+					
+				if (preview == xkey08) {		
+					Xkeys80_1.setBacklight(7, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(7, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys07');
+					DBupdateState('pvw_active','07',preview,'','','','');
+					pvw_active = '07';}
+				if (preview == xkey16) {		
+					Xkeys80_1.setBacklight(15, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(15, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys15');
+					DBupdateState('pvw_active','15',preview,'','','','');
+					pvw_active = '15';}
+				if (preview == xkey24) {		
+					Xkeys80_1.setBacklight(23, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(23, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys23');
+					DBupdateState('pvw_active','23',preview,'','','','');
+					pvw_active = '23';} 
+				if (preview == xkey32) {		
+					Xkeys80_1.setBacklight(31, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(31, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys31');
+					DBupdateState('pvw_active','31',preview,'','','','');
+					pvw_active = '31';} 
+				if (preview == xkey40) {		
+					Xkeys80_1.setBacklight(39, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(39, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys39');
+					DBupdateState('pvw_active','39',preview,'','','','');
+					pvw_active = '39';} 
+				if (preview == xkey48) {		
+					Xkeys80_1.setBacklight(47, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(47, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys47');
+					DBupdateState('pvw_active','47',preview,'','','','');
+					pvw_active = '47';}
+				if (preview == xkey56) {		
+					Xkeys80_1.setBacklight(55, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(55, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys55');
+					DBupdateState('pvw_active','55',preview,'','','','');
+					pvw_active = '55';}
+				if (preview == xkey64) {		
+					Xkeys80_1.setBacklight(63, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(63, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys63');
+					DBupdateState('pvw_active','63',preview,'','','','');
+					pvw_active = '63';}
+			} else {
+			if (preview == xkey08) { IOSendData(['web'], 'rClick', 'xkeys07');
+					DBupdateState('pvw_active','07',preview,'','','','');
+					pvw_active = '07';}
+			if (preview == xkey16) { IOSendData(['web'], 'rClick', 'xkeys15');
+					DBupdateState('pvw_active','15',preview,'','','','');
+					pvw_active = '15';}
+			if (preview == xkey24) { IOSendData(['web'], 'rClick', 'xkeys23');
+					DBupdateState('pvw_active','23',preview,'','','','');
+					pvw_active = '23';}
+			if (preview == xkey32) { IOSendData(['web'], 'rClick', 'xkeys31');
+					DBupdateState('pvw_active','31',preview,'','','','');
+					pvw_active = '31';} 
+			if (preview == xkey40) { IOSendData(['web'], 'rClick', 'xkeys39');
+					DBupdateState('pvw_active','39',preview,'','','','');
+					pvw_active = '39';}
+			if (preview == xkey48) { IOSendData(['web'], 'rClick', 'xkeys47');
+					DBupdateState('pvw_active','47',preview,'','','','');
+					pvw_active = '47';} 
+			if (preview == xkey56) { IOSendData(['web'], 'rClick', 'xkeys55');
+					DBupdateState('pvw_active','55',preview,'','','','');
+					pvw_active = '55';}
+			if (preview == xkey64) { IOSendData(['web'], 'rClick', 'xkeys63');
+					DBupdateState('pvw_active','63',preview,'','','','');
+					pvw_active = '63';}
+		}
+	term("\n"+dateTimeNow()+"\t^#^M^W OBS PVW ^ \tKey pressed: \t"+pvw_active+' - '+preview);
+});
+		obs.on('StreamStatus', dt => {
+			streamS = (`${dt.streaming}`);
+			console.log('STREAMING: '+streamS);
+		});		
+}
+
+//Connect to an OBS AUX Device 
+function obsAux_detect(auxAddr,callback){
+		obsAux.connect({ address: auxAddr, password: '' }).then(() => {
+			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W OBS CORE ^ \tOBS AUX INSTANCE Connected to: \t"+auxAddr)
+			
+  }).catch((error) => {
+    term("\n"+dateTimeNow()+"\t^#^r^W OBS AUX  ^ \tNo OBS Aux instance actually connected!");
+});
+
+obsAux.on('error', err => {
+    term("\n"+dateTimeNow()+"\t^#^r^W OBS AUX  ^ \t^No OBS Aux instance actually connected!");
+});
+
+		obsAux.on('SwitchScenes', data => {
+			obsaux_1 = (`${data.sceneName}`);
+			if (connectedXKeys.length){
+				for (i = 4; i < 61; i=i+8){
+					Xkeys80_1.setBacklight(i, true); //blue light on all line buttons  
+					Xkeys80_1.setBacklight(i, false, true)};//red light off all line buttons
+					
+				if (obsaux_1 == xkey05) {		
+					Xkeys80_1.setBacklight(4, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(4, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys04');
+					DBupdateState('aux1_active','04',obsaux_1,'','','','');
+					aux1_active = '04';}
+				if (obsaux_1 == xkey13) {		
+					Xkeys80_1.setBacklight(12, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(12, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys12');
+					DBupdateState('aux1_active','12',obsaux_1,'','','','');
+					aux1_active = '12';}
+				if (obsaux_1 == xkey21) {		
+					Xkeys80_1.setBacklight(20, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(20, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys20');
+					DBupdateState('aux1_active','20',obsaux_1,'','','','');
+					aux1_active = '20';}
+				if (obsaux_1 == xkey29) {		
+					Xkeys80_1.setBacklight(28, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(28, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys28');
+					DBupdateState('aux1_active','28',obsaux_1,'','','','');
+					aux1_active = '28';} 
+				if (obsaux_1 == xkey37) {		
+					Xkeys80_1.setBacklight(36, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(36, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys36');
+					DBupdateState('aux1_active','36',obsaux_1,'','','','');
+					aux1_active = '36';}
+				if (obsaux_1 == xkey45) {		
+					Xkeys80_1.setBacklight(44, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(44, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys44');
+					DBupdateState('aux1_active','44',obsaux_1,'','','','');
+					aux1_active = '44';} 
+				if (obsaux_1 == xkey53) {		
+					Xkeys80_1.setBacklight(52, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(52, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys52');
+					DBupdateState('aux1_active','52',obsaux_1,'','','','');
+					aux1_active = '52';}
+				if (obsaux_1 == xkey61) {		
+					Xkeys80_1.setBacklight(60, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(60, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys60');
+					DBupdateState('aux1_active','60',obsaux_1,'','','','');
+					aux1_active = '60';}
+		} else {
+			if (obsaux_1 == xkey05) { IOSendData(['web'], 'rClick', 'xkeys04');
+					DBupdateState('aux1_active','04',obsaux_1,'','','','');
+					aux1_active = '04';}
+			if (obsaux_1 == xkey13) { IOSendData(['web'], 'rClick', 'xkeys12');
+					DBupdateState('aux1_active','12',obsaux_1,'','','','');
+					aux1_active = '12';}
+			if (obsaux_1 == xkey21) { IOSendData(['web'], 'rClick', 'xkeys20');
+					DBupdateState('aux1_active','20',obsaux_1,'','','','');
+					aux1_active = '20';}
+			if (obsaux_1 == xkey29) { IOSendData(['web'], 'rClick', 'xkeys28');
+					DBupdateState('aux1_active','28',obsaux_1,'','','','');
+					aux1_active = '28';} 
+			if (obsaux_1 == xkey37) { IOSendData(['web'], 'rClick', 'xkeys36');
+					DBupdateState('aux1_active','36',obsaux_1,'','','','');
+					aux1_active = '36';}
+			if (obsaux_1 == xkey45) { IOSendData(['web'], 'rClick', 'xkeys44');
+					DBupdateState('aux1_active','44',obsaux_1,'','','','');
+					aux1_active = '44';} 
+			if (obsaux_1 == xkey53) { IOSendData(['web'], 'rClick', 'xkeys52');
+					DBupdateState('aux1_active','52',obsaux_1,'','','','');
+					aux1_active = '52';}
+			if (obsaux_1 == xkey61) { IOSendData(['web'], 'rClick', 'xkeys60');
+					DBupdateState('aux1_active','60',obsaux_1,'','','','');
+					aux1_active = '60';}
+		}
+	term("\n"+dateTimeNow()+"\t^#^M^W OBS AUX1^ \tKey pressed: \t"+aux1_active+' - '+obsaux_1+"");
+	});	
+	
+		obsAux.on('PreviewSceneChanged', dt => {
+			obsaux_2 = (`${dt.sceneName}`);
+			if (connectedXKeys.length){
+			for (i = 5; i < 62; i=i+8){
+					Xkeys80_1.setBacklight(i, true); //blue light on all line buttons  
+					Xkeys80_1.setBacklight(i, false, true);}//blue light off selected button
+					
+				if (obsaux_2 == xkey06) {		
+					Xkeys80_1.setBacklight(5, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(5, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys05');
+					DBupdateState('aux2_active','05',obsaux_2,'','','','');
+					aux2_active = '05';}
+				if (obsaux_2 == xkey14) {		
+					Xkeys80_1.setBacklight(13, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(13, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys13');
+					DBupdateState('aux2_active','13',obsaux_2,'','','','');
+					aux2_active = '13';}
+				if (obsaux_2 == xkey22) {		
+					Xkeys80_1.setBacklight(21, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(21, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys21');
+					DBupdateState('aux2_active','21',obsaux_2,'','','','');
+					aux2_active = '21';} 
+				if (obsaux_2 == xkey30) {		
+					Xkeys80_1.setBacklight(29, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(29, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys29');
+					DBupdateState('aux2_active','29',obsaux_2,'','','','');
+					aux2_active = '29';} 
+				if (obsaux_2 == xkey38) {		
+					Xkeys80_1.setBacklight(37, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(37, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys37');
+					DBupdateState('aux2_active','37',obsaux_2,'','','','');
+					aux2_active = '37';} 
+				if (obsaux_2 == xkey46) {		
+					Xkeys80_1.setBacklight(45, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(45, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys45');
+					DBupdateState('aux2_active','45',obsaux_2,'','','','');
+					aux2_active = '45';}
+				if (obsaux_2 == xkey54) {		
+					Xkeys80_1.setBacklight(53, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(53, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys53');
+					DBupdateState('aux2_active','53',obsaux_2,'','','','');
+					aux2_active = '53';}
+				if (obsaux_2 == xkey62) {		
+					Xkeys80_1.setBacklight(61, true, true); //red light on selected button
+					Xkeys80_1.setBacklight(61, false);//blue light off selected button
+					IOSendData(['web'], 'rClick', 'xkeys61');
+					DBupdateState('aux2_active','61',obsaux_2,'','','','');
+					aux2_active = '61';}
+			} else {
+			if (obsaux_2 == xkey06) { IOSendData(['web'], 'rClick', 'xkeys05');
+					DBupdateState('aux2_active','05',obsaux_2,'','','','');
+					aux2_active = '05';}
+			if (obsaux_2 == xkey14) { IOSendData(['web'], 'rClick', 'xkeys13');
+					DBupdateState('aux2_active','13',obsaux_2,'','','','');
+					aux2_active = '13';}
+			if (obsaux_2 == xkey22) { IOSendData(['web'], 'rClick', 'xkeys21');
+					DBupdateState('aux2_active','21',obsaux_2,'','','','');
+					aux2_active = '21';}
+			if (obsaux_2 == xkey30) { IOSendData(['web'], 'rClick', 'xkeys29');
+					DBupdateState('aux2_active','29',obsaux_2,'','','','');
+					aux2_active = '29';} 
+			if (obsaux_2 == xkey38) { IOSendData(['web'], 'rClick', 'xkeys37');
+					DBupdateState('aux2_active','37',obsaux_2,'','','','');
+					aux2_active = '37';}
+			if (obsaux_2 == xkey46) { IOSendData(['web'], 'rClick', 'xkeys45');
+					DBupdateState('aux2_active','45',obsaux_2,'','','','');
+					aux2_active = '45';} 
+			if (obsaux_2 == xkey54) { IOSendData(['web'], 'rClick', 'xkeys53');
+					DBupdateState('aux2_active','53',obsaux_2,'','','','');
+					aux2_active = '53';}
+			if (obsaux_2 == xkey62) { IOSendData(['web'], 'rClick', 'xkeys61');
+					DBupdateState('aux2_active','61',obsaux_2,'','','','');
+					aux2_active = '61';}
+		}
+	term("\n"+dateTimeNow()+"\t^#^M^W OBS AUX2^ \tKey pressed: \t"+aux2_active+' - '+obsaux_2);
+});	
+	
+	}
+	
+// OBS: Get Scenes & sources List
+async function obs_List(callback){
+		var nlist;
+		obsSceneL = '';
+		let obsList = await obs.send('GetSceneList').then(() => {
+			return obs.send('GetSceneList');
+		})
+		.then(data => {
+			nlist = (`${data.scenes.length}`);
+			data.scenes.forEach(scene => {    
+					obsSceneL +=(`${scene.name}`+';');
+			});
+		}).catch(console.error);
+		obsSceneL = obsSceneL.replace('undefined','');
+		IOSendData(['web'], 'obslist', obsSceneL);
+		callback(undefined, "\n"+dateTimeNow()+"\t^#^g^W OBS MAIN ^ \tOBS Scenes List Loaded: "+nlist+" Scenes! \t ^ \t"+obsSceneL)
+		}
+		
+// OBS: Get source Effect
+async function obs_filter(callback){
+		var flist;
+		var FX = '';
+		let obsFilt = await obs.send('GetSourceFilters', { 'sourceName': 'CAM DELL'  }).then(() => {
+			return obs.send('GetSourceFilters', { 'sourceName': 'CAM DELL'  });
+		}).then(data => {
+			flist = (`${data.filters.length}`);
+			data.filters.forEach(filters => {    
+					FX +=(`${filters.name}`+JSON.stringify(`${filters.settings}`)+';');
+			});
+		}).catch(console.error);
+		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W \t ^ \tOBS EFFECT: "+FX)
+		}
+
+//Sent to webapp ccg data retrieved from DB
+function ccg_retrieve(a, callback){
+	IOSendData(['web'], 'ccgconf', a);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W CASPARCG ^ \tConfig Server transmited to webapp: "+a)
+		}	
+	
+//Sent to webapp obs data retrieved from DB
+function obs_retrieve(obssrv, obsport, callback){
+	obsAddr = obssrv+","+obsport;
+	IOSendData(['web'], 'obsconf', obsAddr);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W OBS MAIN ^ \tConfig OBS transmited to webapp: "+obsAddr)
+					// Start OBS Connector
+		obsMain_detect(obsAddr,function(err, response){
+            if(!err){
+                term(response);
+            }
+			else{
+				if(err == 'disconnected'){
+				term("\n"+dateTimeNow()+"\t^#^r^W OBS CORE ^ \tDisconnected from OBS main instance");
+        }
+    }
+			});
+		}	
+	
+//Sent to webapp aux data retrieved from DB
+function aux_retrieve(auxsrv, auxport, callback){
+	var aux_conf = auxsrv+","+auxport;
+	IOSendData(['web'], 'auxconf', aux_conf);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W OBS AUX1 ^ \tConfig OBS AUX transmited to webapp: "+aux_conf)
+		}	
+	
+//Sent to webapp ccg data retrieved from DB
+function temp_retrieve(a, callback){
+	IOSendData(['web'], 'tempconf', a);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W CASPARCG ^ \tTemplates config transmited to webapp: "+a)
+		}	
+	
+//Sent to webapp xkeys data retrieved from DB
+function xkeys_retrieve(xKeys, callback){
+	IOSendData(['web'], 'xkeys', xKeys);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tXKEY CONFIG transmited to webapp: "+xKeys)
+		}	
+		
+//Sent to webapp saved titles data retrieved from DB
+function title_retrieve(titleList, callback){
+	IOSendData(['web'], 'titles', titleList);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tSaved Titles transmited to webapp: "+titleList)
+		}	
+		
+//Sent to webapp saved playlist data retrieved from DB
+function plist_retrieve(a,b, callback){
+	IOSendData(['web'], 'playlist', a, b);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tSaved Playlist "+a+" transmited to webapp: "+b)
+		}	
+
+//Sent to webapp status retrieved from DB
+function state_retrieve(a, callback){
+	IOSendData(['web'], 'status', a);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tStatus transmited to webapp: "+a)
+		}	
+
+// CCG Get Media List
+function ccg_cls(cgsrv, cgscan, callback){
+	const mediasList = require('request');
+	mediasList('http://'+cgsrv+':'+cgscan+'/cls', { json: true }, (err, res, body) => {
+	if (err) { return term("\n"+dateTimeNow()+"\t^#^r^B CASPARCG ^ \tNo CasparCG server connected : check your config"+cgsrv+":"+cgscan) }
+	body = body.replace('200 CLS OK','')
+	body = body.replace(/ /g,',')
+	body = body.replace(/,,/g,',')
+	body = body.replace(/",/g,',')
+	body = body.replace(/"/g,';')
+	IOSendData(['web'], 'ccgcls', body);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tMedia List Loaded from:\t\t "+cgsrv+':'+cgscan)
+
+});	
+}
+
+// CCG Get template List
+function ccg_tls(cgsrv, cgscan, callback){
+	const tempList = require('request');
+	tempList('http://'+cgsrv+':'+cgscan+'/tls', { json: true }, (err, res, body) => {
+	if (err) { return term("\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tNo CasparCG server connected : check your config") }
+	body = body.replace('200 TLS OK','')
+	IOSendData(['web'], 'ccgtls', body); 
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tTemplate List Loaded from:\t\t "+cgsrv+':'+cgscan)
+});	
+}
+
+// CCG CG ADD 
+function ccg_cgMedia(ccgChannel, ccgLayer, template, data, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.cgAdd(ccgChannel, ccgLayer, 1, template, 1, data).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^B CASPARCG ^ \tMedia Loaded:\t\t[Graphics]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+template+' '+data)
+    } 
+}
+
+// CCG CG UPDATE 
+function ccg_upMedia(ccgChannel, ccgLayer, data, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.cgUpdate(ccgChannel, ccgLayer, 1, data).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Updated:\t\t[Graphics]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+data)
+    }
+}
+
+// CCG CG STOP 
+function ccg_nocgMedia(ccgChannel, ccgLayer, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.cgStop(ccgChannel, ccgLayer, 1).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Stopped:\t\t[Graphics]\t\tFile: "+ccgChannel+'-'+ccgLayer)
+    }
+}
+
+// CCG Load Media 
+function ccg_LoadMedia(ccgChannel, ccgLayer, file, options, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.load(ccgChannel, ccgLayer, file, options).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Loaded:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+file+' '+options)
+    }
+}
+
+// CCG Load Media in background with auto option (playlist)
+function ccg_LoadbgMedia(ccgChannel, ccgLayer, file, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.loadbgAuto(ccgChannel, ccgLayer, file).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Loaded in Background:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+file+' AUTO')
+    }
+}
+
+// CCG Play Media
+function ccg_PlayMedia(ccgChannel, ccgLayer, file, options, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.play(ccgChannel, ccgLayer, file, options).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Played:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+file+' '+options)
+    }
+}
+
+// CCG Call Media
+function ccg_CallMedia(ccgChannel, ccgLayer, options, callback){
+    if(CasparCG_Connection != undefined){
+		var calling = 'CALL '+ccgChannel+'-'+ccgLayer+' SEEK '+options;
+		var command = new AMCP.CustomCommand(calling);
+		CasparCG_Connection.do(command).catch(console.error).catch(console.error);
+       // CasparCG_Connection.call(ccgChannel, ccgLayer, options);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia seeked:\t\t[Video]\t\ "+calling)
+    }
+}
+
+// CCG AUX
+function ccg_Aux1(ccgChannel, ccgLayer, ndiDevice, callback){
+    if(CasparCG_Connection != undefined){
+		var calling = 'PLAY '+ccgChannel+'-'+ccgLayer+' '+ndiDevice;
+		var command = new AMCP.CustomCommand(calling);
+		CasparCG_Connection.do(command).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tDevice NDI loaded:\t "+calling)
+    }
+}
+
+// CCG Pause Media
+function ccg_PauseMedia(ccgChannel, ccgLayer, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.pause(ccgChannel, ccgLayer).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Paused:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer)
+    }
+}
+
+// CCG Resume Media
+function ccg_ResumeMedia(ccgChannel, ccgLayer, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.resume(ccgChannel, ccgLayer).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Resumed:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer)
+    }
+}
+
+// CCG Stop Media
+function ccg_StopMedia(ccgChannel, ccgLayer, callback){
+    if(CasparCG_Connection != undefined){
+        CasparCG_Connection.stop(ccgChannel, ccgLayer).catch(console.error);
+        callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPARCG ^ \tMedia Stopped:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer)
+    }
+}
+
+// CCG CONNECTOR
+function ccgConnector(a, b, callback){
+    // CASPARCG SETUP NEW CONNECTION
+    if(CasparCG_Connection == null){
+        CasparCG_Connection = new CasparCG({
+            host: a,
+            port: b,
+            autoConnect: false,
+            onError: function(err){
+                console.log(err);         
+            },
+            onConnectionChanged: function(ccgConnectionChanged){                
+                if(ccgConnectionChanged === true){
+                  callback('connected');
+                }
+                if(ccgConnectionChanged === false){
+                  callback('disconnected');
+                  CasparCG_Connection = null;
+                }     
+            }
+        });
+    
+        // CASPARCG SETUP CONNECT
+        CasparCG_Connection.connect();
+		callback(undefined, "\n"+dateTimeNow()+"\t^#^y^B CASPARCG ^ \tCasparCG Server connected on:\t"+a+':'+b);
+
+    }    
+}
+
+// OSC Client
+function ccgConnectOSC(a,callback){
+    oscSocket = udpConnection.createSocket("udp4", function(msg, info) {
+      var error, error1;
+      try {
+
+        // CASPARCG - GET OSC
+        oscMessages = oscClient.fromBuffer(msg);
+        oscMessages.elements.forEach(function(oscMessage){
+			
+			// CHECK IF VIDEO PRODUCER IS PRESENT IN CH1
+            if(oscMessage.address == '/channel/' + vtr1 + '/stage/layer/' + lvtr1 + '/foreground/producer'){
+                var videoPresent = false;
+                if(oscMessage.args[0].value != 'empty'){
+                    videoPresent = true;
+                }
+                else{
+                    videoPresent = false;
+                }
+
+                // CHECK IF VIDEO STATUS HAS CHANGED IN CH1
+                if(videoPresent != timecodeVars.videoPresent){
+                    timecodeVars.videoPresent = videoPresent;    
+				// SEND TO WEB
+                    IOSendData(['web'], 'timing', timecodeVars);
+				}
+            }  
+            
+            // GET TIMING IN CH1
+            if(oscMessage.address == '/channel/' + vtr1 + '/stage/layer/' + lvtr1 + '/foreground/file/time'){
+                var currentTime = Number(oscMessage.args[0].value.toFixed(3));
+                var currentDuration = Number(oscMessage.args[1].value.toFixed(3));
+                
+                // CHECK IF TIME HAS CHANGED IN CH1
+                if(currentTime != timecodeVars.currentTime || currentDuration != timecodeVars.currentDuration){
+                    calculateTime(currentTime, currentDuration);                   
+                }
+            }  
+			
+			// CHECK IF VIDEO PRODUCER IS PRESENT IN CH2
+            if(oscMessage.address == '/channel/' + vtr2 + '/stage/layer/' + lvtr2 + '/foreground/producer'){
+                var video2Present = false;
+                if(oscMessage.args[0].value != 'empty'){
+                    video2Present = true;
+                }
+                else{
+                    video2Present = false;
+                }
+
+                // CHECK IF VIDEO STATUS HAS CHANGED IN CH2
+                if(video2Present != timecode2Vars.video2Present){
+                    timecode2Vars.video2Present = video2Present;                               
+                }
+            }  
+            
+            // GET TIMING IN CH2
+            if(oscMessage.address == '/channel/' + vtr2 + '/stage/layer/' + lvtr2 + '/foreground/file/time'){
+                var current2Time = Number(oscMessage.args[0].value.toFixed(3));
+                var current2Duration = Number(oscMessage.args[1].value.toFixed(3));
+                
+                // CHECK IF TIME HAS CHANGED IN CH2
+                if(current2Time != timecode2Vars.current2Time || current2Duration != timecode2Vars.current2Duration){
+                    calculate2Time(current2Time, current2Duration);                   
+                }
+            }  
+        });
+
+        // CASPARCG - CATCH ERROR
+      } catch (error1) {
+        error = error1;
+      }
+    });
+  
+    // SOCKET.IO - BIND CONNECTION
+    oscSocket.bind(a);
+}
+
+// Calculate Multiple Timings
+function calculateTime(currentTime, currentDuration, callback){
+    
+    // Raw Time
+    timecodeVars.currentTime = currentTime;
+    timecodeVars.currentDuration = currentDuration;
+
+    // Time To TC
+    timecodeVars.currentTimeConverted = msToTime(currentTime * 1000);
+    timecodeVars.currentDurationConverted = msToTime(currentDuration * 1000);
+
+    // Calculate Countdown
+    timecodeVars.currentCountDown = currentDuration - currentTime;
+    timecodeVars.currentCountDown = timecodeVars.currentCountDown.toFixed(3);
+    timecodeVars.currentCountDownConverted = msToTime(timecodeVars.currentCountDown * 1000);
+
+    // Calculate Progress
+    timecodeVars.currentProgressPercent = ((currentTime / currentDuration) * 100).toFixed(1);
+
+    // SEND TO WEB
+	IOSendData(['web'], 'timing', timecodeVars);
+}
+
+
+// Calculate Multiple Timings
+function calculate2Time(current2Time, current2Duration, callback){
+    
+    // Raw Time
+    timecode2Vars.current2Time = current2Time;
+    timecode2Vars.current2Duration = current2Duration;
+
+    // Time To TC
+    timecode2Vars.current2TimeConverted = msToTime(current2Time * 1000);
+    timecode2Vars.current2DurationConverted = msToTime(current2Duration * 1000);
+
+    // Calculate Countdown
+    timecode2Vars.current2CountDown = current2Duration - current2Time;
+    timecode2Vars.current2CountDown = timecode2Vars.current2CountDown.toFixed(3);
+    timecode2Vars.current2CountDownConverted = msToTime(timecode2Vars.current2CountDown * 1000);
+
+    // Calculate Progress
+    timecode2Vars.current2ProgressPercent = ((current2Time / current2Duration) * 100).toFixed(1);
+
+    // SEND TO WEB
+	IOSendData(['web'], 'timing2', timecode2Vars); 
+}
+
+// MS to TC converter
+function msToTime(duration) {
+    var frames = parseInt((duration%1000)/msPerFrame)
+        , seconds = parseInt((duration/1000)%60)
+        , minutes = parseInt((duration/(1000*60))%60)
+        , hours = parseInt((duration/(1000*60*60))%24);
+    frames = (frames < 10) ? "0" + frames : frames;
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+  
+    return hours + ":" + minutes + ":" + seconds + ":" + frames;
+}
+
+// DATE TIME NOW
+function dateTimeNow(){
+    var MyDate = new Date();
+    var MyDateString;
+    MyDate.setDate(MyDate.getDate());
+    MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + (' 0' + MyDate.getDate()).slice(-2) + ' ' + (' 0' + MyDate.getHours()).slice(-2) + ':' + (' 0' + MyDate.getMinutes()).slice(-2) + ':' + (' 0' + MyDate.getSeconds()).slice(-2);
+    return MyDateString;
+}
+  
+// DATE NOW
+function dateNow(){
+    var MyDate = new Date();
+    var MyDateString;
+    MyDate.setDate(MyDate.getDate());
+    MyDateString = MyDate.getFullYear() + '-' + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-' + (' 0' + MyDate.getDate()).slice(-2);
+    return MyDateString;
+}
+  
