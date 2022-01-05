@@ -30,3 +30,4 @@ Use the liveprodb archive file to Restore the database with a mongorestore comma
 Start OBS & Caspar CG
 go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
 Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js.
+![liveProd_01](https://user-images.githubusercontent.com/33838534/148247564-33cc4483-3994-413e-915b-ff1acc8317aa.PNG)
