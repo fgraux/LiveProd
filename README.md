@@ -26,7 +26,7 @@ web app Client node express html 5 folder
 
 INSTALL
 install Node.js, MongoDB, MongoDB Database Tools, OBS within plugins (NDI, websocket…) , CasparCG, NDI tools.
-
+Use the liveprodb archive file to Restore the database with a mongorestore command.
 Start OBS & Caspar CG
 go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
-Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js
+Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js.
