@@ -92,7 +92,6 @@ This example includes 8 Caspar CG channels/layers that can easily be set up :
 
 1. Integrated interface:
 
-
 	• Fully open sourced
 
 	• Modular & scalable plugin
