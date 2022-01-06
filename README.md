@@ -57,6 +57,8 @@ INSTALL
 	
 	• Then you can click on the button SetUP and configure your different hosts (OBS and CasparCG instance)... If on the same server, put localhost on every IP address field...
 
+	• To integrate the webapp into OBS Studio, click on View, then Docks, then Custom Browser Docks : just put the IP of the host where you installed LiveProd and you got it.
+	
 CAREFULL
 If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flash templates won’t  be working (but will work with html templates and simple logos displaying).
 Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be displayed.
