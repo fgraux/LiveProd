@@ -871,21 +871,22 @@ function pad2(number) {
 }
 
 function transButton(a,callback)	{
-			for (i = 6; i < 63; i=i+8){
+				pgm_active = parseInt(pgm_active) + 1;
+				pvw_active = parseInt(pvw_active) - 1;
+	if (connectedXKeys.length) {
+		for (i = 6; i < 63; i=i+8){
 				Xkeys80_1.setBacklight(i, true); //blue light on all PGM line buttons  
 				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
 				}
-			for (i = 7; i < 64; i=i+8){
+		for (i = 7; i < 64; i=i+8){
 				Xkeys80_1.setBacklight(i, true); //blue light on all PVW line buttons  
 				Xkeys80_1.setBacklight(i, false, true);//red light off all line buttons
 				}
-				pgm_active = parseInt(pgm_active) + 1;
-				pvw_active = parseInt(pvw_active) - 1;
 			    Xkeys80_1.setBacklight(pvw_active, true, true); //red light on button that goes from PVW to PGM
 				Xkeys80_1.setBacklight(pvw_active, false);//blue light off button that goes from PVW to PGM
 				Xkeys80_1.setBacklight(pgm_active, true, true); //red light on button that goes from PGM to PVW
 				Xkeys80_1.setBacklight(pgm_active, false);//blue light off button that goes from PGM to PVW
-				
+	} else { console.log("Could not find any connected X-keys panels.") };				
 				//CUT
 					if (a == '71' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));	
 										obs.send('TransitionToProgram', { 'with-transition.name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
@@ -897,13 +898,16 @@ function transButton(a,callback)	{
 										obs.send('TransitionToProgram', { 'with-transition.name': 'Fondu' }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
 										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
 										var b = 78;
+										term("\n"+dateTimeNow()+"\t^#^M^W MIX SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW :'+pvw_active+' - '+preview);
+	if (connectedXKeys.length) {
 										Xkeys80_1.setBacklight(a, true, true, true); //red flashing on button AUTO										
 										Xkeys80_1.setBacklight(b, true, true, true); //red flashing on button AUTO										
-										term("\n"+dateTimeNow()+"\t^#^M^W MIX SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW :'+pvw_active+' - '+preview);
 										setTimeout(function(){
 											Xkeys80_1.setBacklight(a, true, true); // Stop red flashing on button AUTO										
 										 	Xkeys80_1.setBacklight(b, true, true); //Stop red flashing on button AUTO			
 											}, 1000);}
+	else { console.log("Could not find any connected X-keys panels.") };
+									}
 						var tempo = preview;
 						preview = program;
 						program = tempo;
