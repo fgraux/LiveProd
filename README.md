@@ -20,16 +20,26 @@ LiveProd Client side can be an single global interface for any device, can be fu
 	  • Javascript + Node Js Commands Engineered.
 
 OPENED & SHARED
-LiveProd is a html5 – javascript – CSS script bundle : it means, every web developer can write easily and quickly any new interface, any feature for any needs. 
-For instance, if you need an E-Sport scoring interface that manage 20 scores realtime displaying, you just have to manage forms on your web pages and link it through the node websocket to your casparCG instance... and of course create the templates with 40 fields. Instead of losing money and time, it will take a few days to make it.
-We just recommend to share any development, according to our fair contributing philosophy.
-We can offer services : installing, configuring and developing, creating templates... for a standard fee, but you can also do it by yourselves.
+
+LiveProd is a html5 – javascript – CSS script bundle : 
+
+	  • Every web developer can write easily and quickly any new interface, any feature for any needs.
+	  
+	  • For instance, if you need an E-Sport scoring interface that manage 20 scores realtime displaying, you just have to manage forms on your web pages and link it through the node websocket to your casparCG instance... and of course create the templates with 40 fields. Instead of losing money and time, it will take a few days to make it.
+
+	  • We just recommend to share any development, according to our fair contributing philosophy.
+
+	  • We can offer services : installing, configuring and developing, creating templates... for a standard fee, but you can also do it by yourselves.
 
 CONTENT 
-Server side js file, with dependency
-Mongodb database backup (configured as a standalone server : all components are set on localhost)
-Casparcg config file incl. NDI config (one NDI channel include fill+key, very useful for dve)
-web app Client node express html 5 folder
+
+	  • Server side js file, with dependency
+
+	  • Mongodb database backup (configured as a standalone server : all components are set on localhost)
+
+	  • Casparcg config file incl. NDI config (one NDI channel include fill+key, very useful for dve)
+
+	  • web app Client node express html 5 folder
 
 INSTALL
 
