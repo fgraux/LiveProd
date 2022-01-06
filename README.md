@@ -7,7 +7,7 @@ UNIVERSAL
 LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX. LiveProd Client side is web based and can be deployed on any device without compatibility issues (Ubuntu, Windows, Mac OSX, Android, Apple, Raspery…).
 
 FLEXIBILITY 
-LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different tools for different users/operators : no issue, as all the commands are sync by node.
+LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : no issue, as all the commands are sync with node socket.
 •	Modular & Scalable
 •	Fully Html5 Designed
 •	Javascript + Node Js Commands Engineered
