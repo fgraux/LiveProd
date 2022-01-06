@@ -13,11 +13,11 @@ FLEXIBILITY
 
 LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : no issue, as all the commands are sync with node socket.
 
-	  • Modular & Scalable
+	  • Modular, Scalable & Sync.
   
-	  • Fully Html5 Designed
+	  • Fully Html5 Designed.
   
-	  • Javascript + Node Js Commands Engineered
+	  • Javascript + Node Js Commands Engineered.
 
 OPENED & SHARED
 LiveProd is a html5 – javascript – CSS script bundle : it means, every web developer can write easily and quickly any new interface, any feature for any needs. 
