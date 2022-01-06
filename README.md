@@ -64,3 +64,100 @@ If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flas
 Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be displayed.
 
 ![liveProd_01](https://user-images.githubusercontent.com/33838534/148247564-33cc4483-3994-413e-915b-ff1acc8317aa.PNG)
+
+
+OBS STUDIO INTEGRATION EXAMPLE
+
+The actual script was writen to remote 2 obs studio instance :
+
+	• The main one is dedicated for directing the show
+	
+	• The second one was introduced to fill the lack of aux output in obs :
+	
+		o Program is used as aux1
+		
+		o Preview is used as aux2
+		
+		o Both can feed screens inside a tv set
+		
+
+This example includes 8 casapr cg channels/layers that can easily be set up : 
+•	2 vtr that can play and adapt any video whatever format, resolution, framerate…
+•	2 bugs box to display any image format fullscreen or not
+•	4 dve to play caspar cg templates 
+
+1.	Integrated interface:
+•	Fully open sourced
+•	Modular & scalable plugin
+•	Fully html5 designed
+•	Javascript + node js commands engineered
+•	Add pro players & dve to obs
+•	Each module can be displayed separately
+
+2.	Pro players:
+•	2 channels… or more…
+•	Add video to a player with drag & drop
+•	Clickable progressbar
+•	Realtime timecode elapsed and remaining displayed
+
+
+
+
+
+
+
+
+
+3.	Playlist mode:
+•	Click on playlist button
+•	Create your playlist while drag & dropping videos
+•	Sort your items onto playlist
+•	Click on next or previous buttons
+
+4.	Powerfull integrated graphic server:
+•	Allow to play casparcg template inside obs using 1 ndi channel (fill+key incl.) Or 2 sdi channels (decklink)
+•	Both flash & html5 animated templates
+•	Templates can be edited with adobe animate (ex flash) or with any html5 editor
+•	Lowerthirds, scrolls, titles… 
+•	Any animation can be mixed with any data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.	Simply setup
+•	Define ip address & port of obs
+•	Most functions, sources, can be setted with drag and drop
+•	Affect obs scenes to buttons with drag and drop
+•	Affect cg templates while drag & droping template item to dve setup box
+
+6.	Physical & virtual panel fully synchonised
+•	Xkeys 80 touch industrial builded keyboard
+•	Both linked to obs & casparcg through sdk
+•	Fully customisable for differents needs
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
