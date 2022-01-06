@@ -426,10 +426,10 @@ socket.on('status',function(z) {
 	$('.dev2').attr('action',action2);
 	$('.dev2').attr('class',class2);
 	$('button.dev2').html(display2);
-	$('#bug1_box #bugAction').attr('action',action7);
-	$('#bug2_box #bugAction').attr('action',action8);
-	$('#bug1_box #bugAction').attr('class',class7);
-	$('#bug2_box #bugAction').attr('class',class8);
+	$('#bug1_box #bugAction').attr('action',action7,'class',class7);
+	$('#bug2_box #bugAction').attr('action',action8,'class',class8);
+	if (class7.includes("red") == true ){$('#bug1_box_key').addClass('red')} else {$('#bug1_box_key').removeClass('red')};
+	if (class8.includes("red") == true ){$('#bug2_box_key').addClass('red')} else {$('#bug2_box_key').removeClass('red')};
 	$('#bug1_box #bugAction').attr('logo',file7);
 	$('#bug2_box #bugAction').attr('logo',file8);
 	$('#bug1_box #bugAction').html(display7);
@@ -443,24 +443,28 @@ socket.on('status',function(z) {
 	$('#dve1_box').find('button').attr("Name", file3);
 	$('#dve1_box').find('button').attr("Title",thumb3);
 	$('#dve1_box .play').attr({'action': action3,'class': class3});
+	if (class3.includes("red") == true ){$('#dve1_box_key').addClass('red')} else {$('#dve1_box_key').removeClass('red')};
 	$('#dve1_box .play').html(display3);
 	$('#Temp2Name').html(file4);
 	$('#Temp2Title').html(thumb4);
 	$('#dve2_box').find('button').attr("Name", file4);
 	$('#dve2_box').find('button').attr("Title",thumb4);
 	$('#dve2_box .play').attr({'action': action4,'class': class4});
+	if (class4.includes("red") == true ){$('#dve2_box_key').addClass('red')} else {$('#dve2_box_key').removeClass('red')};
 	$('#dve2_box .play').html(display4);
 	$('#Temp3Name').html(file5);
 	$('#Temp3Title').html(thumb5);
 	$('#dve3_box').find('button').attr("Name", file5);
 	$('#dve3_box').find('button').attr("Title",thumb5);
 	$('#dve3_box .play').attr({'action': action5,'class': class5});
+	if (class5.includes("red") == true ){$('#dve3_box_key').addClass('red')} else {$('#dve3_box_key').removeClass('red')};
 	$('#dve3_box .play').html(display5);
 	$('#Temp4Name').html(file6);
 	$('#Temp4Title').html(thumb6);
 	$('#dve4_box').find('button').attr("Name", file6);
 	$('#dve4_box').find('button').attr("Title",thumb6);
 	$('#dve4_box .play').attr({'action': action6,'class': class6});
+	if (class6.includes("red") == true ){$('#dve4_box_key').addClass('red')} else {$('#dve4_box_key').removeClass('red')};
 	$('#dve4_box .play').html(display6);
 	
 	vcr1.find('.playList .plist tr').eq(Iplist1-1).addClass('red');		
@@ -600,6 +604,8 @@ function generateJSONTables(data){
 	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine1 tr');
 		});
 	$('#xkeys00').addClass('red');
+	$('#xkeys64').addClass('dveclass');
+	$('#xkeys72').addClass('dveclass');
 	
 	//LINE2 KEYBOARD LINE CONFIG
 	$('#XkeysLine2 tr').html('<td class="head"><h2>LINE 2</h2></td>');
@@ -609,6 +615,8 @@ function generateJSONTables(data){
 	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine2 tr');
 		});
 	$('#xkeys01').addClass('red');
+	$('#xkeys65').addClass('dveclass');
+	$('#xkeys73').addClass('dveclass');
 	
 	//LINE3 KEYBOARD LINE CONFIG
 	$('#XkeysLine3 tr').html('<td class="head"><h2>LINE 3</h2></td>');
@@ -618,14 +626,17 @@ function generateJSONTables(data){
 	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine3 tr');
 		});
 	$('#xkeys02').addClass('red');
+	$('#xkeys66').addClass('dveclass');
+	$('#xkeys74').addClass('dveclass');
 	
 	//LINE4 KEYBOARD LINE CONFIG
 	$('#XkeysLine4 tr').html('<td class="head"><h2>LINE 4</h2></td>');
 	var Line4data = [];
-	for (i = 3; i < 76; i=i+8){ Line4data.push(data[i]);}
+	for (i = 3; i < 60; i=i+8){ Line4data.push(data[i]);}
 		$.each(Line4data, function(index, item) {//index is the index & item is the field
 	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine4 tr');
 		});
+	$('#XkeysLine4 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="bug1_box_key" name="bug1"><h2 class="sTemp Xbut">68</h2><div>BUG 1</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="bug2_box_key" name="bug2"><h2 class="sTemp Xbut">76</h2><div>BUG 2</div></div></td>')
 	$('#xkeys03').addClass('red');
 	
 	//AUX1 KEYBOARD LINE CONFIG
@@ -1802,13 +1813,13 @@ $(document).on('click', '#bugAction', function(e){
 	thumb = '/'+name+'.png';
 	var player = $(this).closest('.card');
 	var	device = player.attr('id');
-	//var	keyboardBut = device+'_key';
+	var	keyboardBut = device+'_key';
 	if (action == 'bug') {
 		socket.emit('UI|action', {action: 'load' , channel: channel, layer: layer, file: name , options: ''});
 		$(this).attr('action','nobug');
 		$(this).html('<i class="fas fa-eject"></i> Off Air');
 		$(this).addClass('red');
-		//$('#'+keyboardBut).addClass('red');
+		$('#'+keyboardBut).addClass('red');
 		content = $(this).html();
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
@@ -1820,7 +1831,7 @@ $(document).on('click', '#bugAction', function(e){
 		$(this).attr('action','bug');
 		$(this).html('<i class="fas fa-play-circle"></i> On Air');
 		$(this).removeClass('red');	
-		//$('#'+keyboardBut).removeClass('red');
+		$('#'+keyboardBut).removeClass('red');
 		content = $(this).html();
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
@@ -2043,10 +2054,10 @@ $("#XkeysSetPVW").on('click', '.Xkeysbut', function()  {
 	$(".pvw").removeClass("red");	
 	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
-	socket.emit('UI|action', {action: 'XKeySend' , arg1: 'dve', arg2: 'pvw', arg3: obspvw});     
+	socket.emit('UI|action', {action: 'XKeySend' , arg1: changedKey, arg2: 'pvw', arg3: obspvw});     
 });
 
-//VIRTUAL KEYBOARD DVE	
+//VIRTUAL KEYBOARD DVE & BUG
 $(".card-xkeys").on('click', '.dveclass', function()  {
 	var whichdve = $(this).attr('name')+'_box'
 	var whichBUT = $('#'+whichdve).find('.play');
