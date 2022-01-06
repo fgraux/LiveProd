@@ -8,9 +8,12 @@ LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX. LivePro
 
 FLEXIBILITY 
 LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : no issue, as all the commands are sync with node socket.
-•	Modular & Scalable
-•	Fully Html5 Designed
-•	Javascript + Node Js Commands Engineered
+
+	  • Modular & Scalable
+  
+	  • Fully Html5 Designed
+  
+	  • Javascript + Node Js Commands Engineered
 
 OPENED & SHARED
 LiveProd is a html5 – javascript – CSS script bundle : it means, every web developer can write easily and quickly any new interface, any feature for any needs. 
@@ -25,12 +28,13 @@ Casparcg config file incl. NDI config (one NDI channel include fill+key, very us
 web app Client node express html 5 folder
 
 INSTALL
-install Node.js, MongoDB, MongoDB Database Tools, OBS within plugins (NDI, websocket…) , CasparCG, NDI tools.
-Use the liveprodb archive file to Restore the database with a mongorestore command.
-Start OBS & Caspar CG
-go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
-Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js.
-You should be now able to connect on the web UI while typing //localhost/ to your web browser (//localhost/keyboard/ for the single keyboard, //localhost/clock for the clock etc...)
+•	install Node.js, MongoDB, MongoDB Database Tools, OBS within plugins (NDI, websocket…) , CasparCG, NDI tools.
+•	Use the liveprodb archive file to Restore the database with a mongorestore command.
+•	Start OBS & Caspar CG.
+•	Go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
+•	Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js.
+•	You should be now able to connect on the web UI while typing //localhost/ to your web browser (//localhost/keyboard/ for the single keyboard, //localhost/clock for the clock etc...). 
+•	Then you can click on the button SetUP and configure your different hosts (OBS and CasparCG instance)... If on the same server, put localhost on every IP address field...
 
 CAREFULL
 If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flash templates won’t  be working (but will work with html templates and simple logos displaying).
