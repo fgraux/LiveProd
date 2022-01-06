@@ -4,9 +4,13 @@ A platform that blinds together different professional video tools, such as vide
 LIVEPROD actually includes gateways to CasparCG, OBS Studio, XKeys keyboards, NDI protocol… Mostly cost effective or open sourced materials, as well as Windows, Linux, Android & Apple devices. BlackMagic Atem can easily be integrated too.
 
 UNIVERSAL
-LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX. LiveProd Client side is web based and can be deployed on any device without compatibility issues (Ubuntu, Windows, Mac OSX, Android, Apple, Raspery…).
+
+	  • LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX.
+  
+	  • LiveProd Client side is web based and can be deployed on any device without compatibility issues (Ubuntu, Windows, Mac OSX, Android, Apple, Raspery…).
 
 FLEXIBILITY 
+
 LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : no issue, as all the commands are sync with node socket.
 
 	  • Modular & Scalable
