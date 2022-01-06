@@ -153,4 +153,5 @@ This example includes 8 Caspar CG channels/layers that can easily be set up :
 	• Both linked to obs & casparcg through sdk
 
 	• Fully customisable for differents needs
+![image](https://user-images.githubusercontent.com/33838534/148431935-34c558c7-292e-45dd-8438-7d45a09b5c31.png)
 
