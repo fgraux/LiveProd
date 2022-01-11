@@ -5,11 +5,6 @@ var socket = io.connect('//192.168.0.155:7777', {
     }
 });
 
-var loop1;
-var loop2;
-var loop;
-var optionnel1 = '';
-var optionnel2 = '';
 var server;
 var amcport;
 var oscport;
@@ -43,10 +38,75 @@ var auxserver;
 var auxport;
 var intervalID = 0;
 var socketisOpen = false;
+var device1;
+var action1;
+var class1;
+var display1;
+var file1;
+var thumb1;
+var loop1;
+var device2;
+var action2;
+var class2;
+var display2;
+var file2;
+var thumb2;
+var loop2;
+var loop;
+var device3;
+var action3;
+var class3;
+var display3;
+var file3;
+var thumb3;
+var device4;
+var action4;
+var class4;
+var display4;
+var file4;
+var thumb4;
+var device5;
+var action5;
+var class5;
+var display5;
+var file5;
+var thumb5;
+var device6;
+var action6;
+var class6;
+var display6;
+var file6;
+var thumb6;
+var device7;
+var action7;
+var class7;
+var display7;
+var file7;
+var thumb7;
+var device8;
+var action8;
+var class8;
+var display8;
+var file8;
+var thumb8;
+var device9;
+var aux1_active;
 var obsaux_1;
-var auxTouch_1;
+var device10;
+var aux2_active;
 var obsaux_2;
-var auxTouch_2;
+var device11;
+var pgm_active;
+var program;
+var device12;
+var pvw_active;
+var preview;
+var device13;
+var Hplist1;
+var Iplist1;
+var device14;
+var Hplist2;
+var Iplist2;
 var p1Time = '';
 var q1Time = '';
 var p2Time = '';
@@ -131,16 +191,6 @@ var xkey77;
 var xkey78;
 var xkey79;
 var xkey80;
-var aux1_active;
-var aux2_active;
-var pgm_active;
-var pvw_active;
-var Hplist1;
-var Hplist2;	
-var Rplist1;
-var Rplist2;		
-var Iplist1;
-var Iplist2;
 	
 // SIO || CONNECT
 socket.on('connect',function() {
@@ -321,8 +371,200 @@ socket.on('tempconf',function(z) {
 });
 
 // SIO || STATUS RECEIVED
+socket.on('solostatus',function(z) {
+	var Truc = JSON.parse(z);
+	a =  Truc[0].device;
+	vcr1 = $('#vtr1_box');
+	vcr2 = $('#vtr2_box');	
+		if (a === device1){	action1 = Truc[0].action;	//VTR1 STATE
+								class1 = Truc[0].hclass;
+								display1 = Truc[0].display;
+								file1 = Truc[0].file;
+								thumb1 = Truc[0].thumb;
+								loop1 = Truc[0].loop;
+								$('#vtr1_box .thumb').attr('src',thumb1);
+								$('#vtr1_box .clip').html(file1);
+									if (loop1 == 'loop'){
+										$('#vtr1_box .loop').addClass('looping');
+										$('#vtr1_box .loop').attr('action','loop');
+									} else {
+										$('#vtr1_box .loop').removeClass('looping');
+										$('#vtr1_box .loop').attr('action','');
+										}
+								$('.dev1').attr('action',action1);
+								$('.dev1').attr('class',class1);
+								$('button.dev1').html(display1);
+							}
+		if (a === device2){	action2 = Truc[0].action;	//VTR2 STATE
+								class2 = Truc[0].hclass;
+								display2 = Truc[0].display;
+								file2 = Truc[0].file;
+								thumb2 = Truc[0].thumb;
+								loop2 = Truc[0].loop;
+								$('#vtr2_box .thumb').attr('src',thumb2);
+								$('#vtr2_box .clip').html(file2);
+									if (loop2 == 'loop'){
+										$('#vtr2_box .loop').addClass('looping');
+										$('#vtr2_box .loop').attr('action','loop');
+									} else {
+										$('#vtr2_box .loop').removeClass('looping');
+										$('#vtr2_box .loop').attr('action','');
+										}
+								$('.dev2').attr('action',action2);
+								$('.dev2').attr('class',class2);
+								$('button.dev2').html(display2);
+							}
+		if (a === device3){	action3 = Truc[0].action;	//DVE1 STATE
+								class3 = Truc[0].hclass;
+								display3 = Truc[0].display;
+								file3 = Truc[0].file;
+								thumb3 = Truc[0].thumb;	
+								$('#Temp1Name').html(file3);
+								$('#Temp1Title').html(thumb3);
+								$('#dve1_box').find('button').attr("Name", file3);
+								$('#dve1_box').find('button').attr("Title",thumb3);
+								$('#dve1_box .play').attr({'action': action3,'class': class3});
+									if (class3.includes("red") == true ){$('#dve1_box_key').addClass('red')} else {$('#dve1_box_key').removeClass('red')};
+								$('#dve1_box .play').html(display3);
+							}
+		if (a === device4){	action4 = Truc[0].action;	//DVE2 STATE
+								class4 = Truc[0].hclass;
+								display4 = Truc[0].display;
+								file4 = Truc[0].file;
+								thumb4 = Truc[0].thumb;	
+								$('#Temp2Name').html(file4);
+								$('#Temp2Title').html(thumb4);
+								$('#dve2_box').find('button').attr("Name", file4);
+								$('#dve2_box').find('button').attr("Title",thumb4);
+								$('#dve2_box .play').attr({'action': action4,'class': class4});
+									if (class4.includes("red") == true ){$('#dve2_box_key').addClass('red')} else {$('#dve2_box_key').removeClass('red')};
+								$('#dve2_box .play').html(display4);
+							}
+		if (a === device5){	action5 = Truc[0].action;	//DVE3 STATE
+								class5 = Truc[0].hclass;
+								display5 = Truc[0].display;
+								file5 = Truc[0].file;
+								thumb5 = Truc[0].thumb;	
+								$('#Temp3Name').html(file5);
+								$('#Temp3Title').html(thumb5);
+								$('#dve3_box').find('button').attr("Name", file5);
+								$('#dve3_box').find('button').attr("Title",thumb5);
+								$('#dve3_box .play').attr({'action': action5,'class': class5});
+									if (class5.includes("red") == true ){$('#dve3_box_key').addClass('red')} else {$('#dve3_box_key').removeClass('red')};
+								$('#dve3_box .play').html(display5);
+							}
+		if (a === device6){	action6 = Truc[0].action;	//DVE4 STATE
+								class6 = Truc[0].hclass;
+								display6 = Truc[0].display;
+								file6 = Truc[0].file;
+								thumb6 = Truc[0].thumb;	
+								$('#Temp4Name').html(file6);
+								$('#Temp4Title').html(thumb6);
+								$('#dve4_box').find('button').attr("Name", file6);
+								$('#dve4_box').find('button').attr("Title",thumb6);
+								$('#dve4_box .play').attr({'action': action6,'class': class6});
+									if (class6.includes("red") == true ){$('#dve4_box_key').addClass('red')} else {$('#dve4_box_key').removeClass('red')};
+								$('#dve4_box .play').html(display6);
+							}
+		if (a === device7){	action7 = Truc[0].action;	//BUG1 STATE
+								class7 = Truc[0].hclass;
+								display7 = Truc[0].display;
+								file7 = Truc[0].file;
+								$('#bug1_box #bugAction').attr('action',action7,'class',class7);
+									if (class7.includes("red") == true ){$('#bug1_box_key').addClass('red')} else {$('#bug1_box_key').removeClass('red')};
+								$('#bug1_box #bugAction').attr('logo',file7);
+								$('#bug1_box #bugAction').html(display7);
+								$('#bug1_box .thumb').attr('src',thumb7);
+								$('#bug1_box .clip').html(file7);
+							}
+		if (a === device8){	action8 = Truc[0].action;	//BUG2 STATE
+								class8 = Truc[0].hclass;
+								display8 = Truc[0].display;
+								file8 = Truc[0].file;
+								$('#bug2_box #bugAction').attr('action',action8,'class',class8);
+									if (class8.includes("red") == true ){$('#bug2_box_key').addClass('red')} else {$('#bug2_box_key').removeClass('red')};
+								$('#bug2_box #bugAction').attr('logo',file8);
+								$('#bug2_box #bugAction').html(display8);
+								$('#bug2_box .thumb').attr('src',thumb8);
+								$('#bug2_box .clip').html(file8);
+							}
+		if (a === device9){	aux1_active = Truc[0].action;	//AUX1 STATE
+								obsaux_1 = Truc[0].hclass;	
+								$('#XkeysSetAux1').find('.Xkeysbut').removeClass('red');
+								$('#XkeysSetAux1').find('[scid="'+aux1_active+'"]').addClass('red');
+							}
+		if (a === device10){	aux2_active = Truc[0].action;	//AUX2 STATE
+								obsaux_2 = Truc[0].hclass;
+								$('#XkeysSetAux2').find('.Xkeysbut').removeClass('red');
+								$('#XkeysSetAux2').find('[scid="'+aux2_active+'"]').addClass('red');
+							}
+		if (a === device11){	pgm_active = Truc[0].action;	//PGM STATE
+								program = Truc[0].hclass;
+								$('#XkeysSetPGM').find('.Xkeysbut').removeClass('red');
+								$('#XkeysSetPGM').find('[scid="'+pgm_active+'"]').addClass('red');
+							}
+		if (a === device12){	pvw_active = Truc[0].action;	//PVW STATE
+								preview = Truc[0].hclass;
+								$('#XkeysSetPVW').find('.Xkeysbut').removeClass('red');
+								$('#XkeysSetPVW').find('[scid="'+pvw_active+'"]').addClass('red');
+							}
+		if (a === device13){	Hplist1 = Truc[0].action;	//PLAYLIST 1 STATE
+								Iplist1 = Number(TrucTruc[0].file);
+			if (Hplist1 == '') {
+						vcr1.attr('mode','playlist');
+						vcr1.find('.playList').removeClass('hide');
+						vcr1.find('.prev').removeClass('hide');
+						vcr1.find('.next').removeClass('hide');
+						vcr1.find('.empty').removeClass('hide');
+						vcr1.find('.red').removeClass('red');
+						vcr1.find('.playList .plist tr').eq(Iplist1-1).addClass('red');		
+
+			}
+				else {	vcr1.attr('mode','');
+						vcr1.find('.playList').addClass('hide');
+						vcr1.find('.prev').addClass('hide');
+						vcr1.find('.next').addClass('hide');
+						vcr1.find('.empty').addClass('hide');
+					}
+							}
+		if (a === device14){	Hplist2 = Truc[0].action;	//PLAYLIST 2 STATE
+										Iplist2 = Number(TrucTruc[0].file);
+			if (Hplist2 == '') {
+						vcr2.attr('mode','playlist');
+						vcr2.find('.playList').removeClass('hide');
+						vcr2.find('.prev').removeClass('hide');
+						vcr2.find('.next').removeClass('hide');
+						vcr2.find('.empty').removeClass('hide');
+						vcr2.find('.red').removeClass('red');
+						vcr2.find('.playList .plist tr').eq(Iplist2-1).addClass('red');		
+					}
+				else {	vcr2.attr('mode','');
+						vcr2.find('.playList').addClass('hide');
+						vcr2.find('.prev').addClass('hide');
+						vcr2.find('.next').addClass('hide');
+						vcr2.find('.empty').addClass('hide');
+					}
+							}
+});
+
+
+// SIO || STATUS RECEIVED
 socket.on('status',function(z) {
 	var Truc = JSON.parse(z);
+	device1 = Truc[0].device;
+	device2 = Truc[1].device;
+	device3 = Truc[2].device;
+	device4 = Truc[3].device;
+	device5 = Truc[4].device;
+	device6 = Truc[5].device;
+	device7 = Truc[12].device;
+	device8 = Truc[13].device;
+	device9 = Truc[6].device;
+	device10 = Truc[7].device;
+	device11 = Truc[8].device;
+	device12 = Truc[9].device;
+	device13 = Truc[10].device;
+	device14 = Truc[11].device;
 	action1 = Truc[0].action;
 	action2 = Truc[1].action;
 	action3 = Truc[2].action;
@@ -382,7 +624,8 @@ socket.on('status',function(z) {
 				vcr1.find('.next').removeClass('hide');
 				vcr1.find('.empty').removeClass('hide');
 				vcr1.find('.red').removeClass('red');
-	}
+				vcr1.find('.playList .plist tr').eq(Iplist1-1).addClass('red');		
+			}
 		else {	vcr1.attr('mode','');
 				vcr1.find('.playList').addClass('hide');
 				vcr1.find('.prev').addClass('hide');
@@ -395,6 +638,8 @@ socket.on('status',function(z) {
 				vcr2.find('.prev').removeClass('hide');
 				vcr2.find('.next').removeClass('hide');
 				vcr2.find('.empty').removeClass('hide');
+				vcr2.find('.red').removeClass('red');
+				vcr2.find('.playList .plist tr').eq(Iplist2-1).addClass('red');
 			}
 		else {	vcr2.attr('mode','');
 				vcr2.find('.playList').addClass('hide');
@@ -402,6 +647,7 @@ socket.on('status',function(z) {
 				vcr2.find('.next').addClass('hide');
 				vcr2.find('.empty').addClass('hide');
 			}
+			
 	$('#vtr1_box .thumb').attr('src',thumb1);
 	$('#vtr1_box .clip').html(file1);
 		if (loop1 == 'loop'){
@@ -414,6 +660,7 @@ socket.on('status',function(z) {
 	$('.dev1').attr('action',action1);
 	$('.dev1').attr('class',class1);
 	$('button.dev1').html(display1);
+	
 	$('#vtr2_box .thumb').attr('src',thumb2);
 	$('#vtr2_box .clip').html(file2);
 		if (loop2 == 'loop'){
@@ -426,18 +673,21 @@ socket.on('status',function(z) {
 	$('.dev2').attr('action',action2);
 	$('.dev2').attr('class',class2);
 	$('button.dev2').html(display2);
+	
 	$('#bug1_box #bugAction').attr('action',action7,'class',class7);
-	$('#bug2_box #bugAction').attr('action',action8,'class',class8);
 	if (class7.includes("red") == true ){$('#bug1_box_key').addClass('red')} else {$('#bug1_box_key').removeClass('red')};
-	if (class8.includes("red") == true ){$('#bug2_box_key').addClass('red')} else {$('#bug2_box_key').removeClass('red')};
 	$('#bug1_box #bugAction').attr('logo',file7);
-	$('#bug2_box #bugAction').attr('logo',file8);
 	$('#bug1_box #bugAction').html(display7);
-	$('#bug2_box #bugAction').html(display8);
 	$('#bug1_box .thumb').attr('src',thumb7);
-	$('#bug2_box .thumb').attr('src',thumb8);
 	$('#bug1_box .clip').html(file7);
+	
+	$('#bug2_box #bugAction').attr('action',action8,'class',class8);
+	if (class8.includes("red") == true ){$('#bug2_box_key').addClass('red')} else {$('#bug2_box_key').removeClass('red')};
+	$('#bug2_box #bugAction').attr('logo',file8);
+	$('#bug2_box #bugAction').html(display8);
+	$('#bug2_box .thumb').attr('src',thumb8);
 	$('#bug2_box .clip').html(file8);
+	
 	$('#Temp1Name').html(file3);
 	$('#Temp1Title').html(thumb3);
 	$('#dve1_box').find('button').attr("Name", file3);
@@ -445,6 +695,7 @@ socket.on('status',function(z) {
 	$('#dve1_box .play').attr({'action': action3,'class': class3});
 	if (class3.includes("red") == true ){$('#dve1_box_key').addClass('red')} else {$('#dve1_box_key').removeClass('red')};
 	$('#dve1_box .play').html(display3);
+	
 	$('#Temp2Name').html(file4);
 	$('#Temp2Title').html(thumb4);
 	$('#dve2_box').find('button').attr("Name", file4);
@@ -452,6 +703,7 @@ socket.on('status',function(z) {
 	$('#dve2_box .play').attr({'action': action4,'class': class4});
 	if (class4.includes("red") == true ){$('#dve2_box_key').addClass('red')} else {$('#dve2_box_key').removeClass('red')};
 	$('#dve2_box .play').html(display4);
+	
 	$('#Temp3Name').html(file5);
 	$('#Temp3Title').html(thumb5);
 	$('#dve3_box').find('button').attr("Name", file5);
@@ -459,6 +711,7 @@ socket.on('status',function(z) {
 	$('#dve3_box .play').attr({'action': action5,'class': class5});
 	if (class5.includes("red") == true ){$('#dve3_box_key').addClass('red')} else {$('#dve3_box_key').removeClass('red')};
 	$('#dve3_box .play').html(display5);
+	
 	$('#Temp4Name').html(file6);
 	$('#Temp4Title').html(thumb6);
 	$('#dve4_box').find('button').attr("Name", file6);
@@ -467,15 +720,16 @@ socket.on('status',function(z) {
 	if (class6.includes("red") == true ){$('#dve4_box_key').addClass('red')} else {$('#dve4_box_key').removeClass('red')};
 	$('#dve4_box .play').html(display6);
 	
-	vcr1.find('.playList .plist tr').eq(Iplist1-1).addClass('red');		
-	vcr2.find('.playList .plist tr').eq(Iplist2-1).addClass('red');		
 
 	$('#XkeysSetAux1').find('.Xkeysbut').removeClass('red');
 	$('#XkeysSetAux1').find('[scid="'+aux1_active+'"]').addClass('red');
+	
 	$('#XkeysSetAux2').find('.Xkeysbut').removeClass('red');
 	$('#XkeysSetAux2').find('[scid="'+aux2_active+'"]').addClass('red');
+	
 	$('#XkeysSetPGM').find('.Xkeysbut').removeClass('red');
 	$('#XkeysSetPGM').find('[scid="'+pgm_active+'"]').addClass('red');
+	
 	$('#XkeysSetPVW').find('.Xkeysbut').removeClass('red');
 	$('#XkeysSetPVW').find('[scid="'+pvw_active+'"]').addClass('red');
 });
