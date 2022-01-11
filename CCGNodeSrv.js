@@ -50,54 +50,74 @@ var json1;
 var json2;
 var json3;
 var json4;
+var device1;
 var action1;
 var class1;
 var display1;
 var file1;
 var thumb1;
 var loop1;
+var device2;
 var action2;
 var class2;
 var display2;
 var file2;
 var thumb2;
 var loop2;
+var device3;
 var action3;
 var class3;
 var display3;
 var file3;
 var thumb3;
+var device4;
 var action4;
 var class4;
 var display4;
 var file4;
 var thumb4;
+var device5;
 var action5;
 var class5;
 var display5;
 var file5;
 var thumb5;
+var device6;
 var action6;
 var class6;
 var display6;
 var file6;
 var thumb6;
+var device7;
 var action7;
 var class7;
 var display7;
 var file7;
 var thumb7;
+var device8;
 var action8;
 var class8;
 var display8;
 var file8;
 var thumb8;
+var device9;
 var aux1_active;
+var obsaux_1;
+var device10;
 var aux2_active;
+var obsaux_2;
+var device11;
 var pgm_active;
-var pvw_active;
 var program;
+var device12;
+var pvw_active;
 var preview;
+var device13;
+var Hplist1;
+var Iplist1;
+var device14;
+var Hplist2;
+var Iplist2;
 var titleList;
 var Xkeys80_1;
 var xKeys;
@@ -181,15 +201,7 @@ var xkey77;
 var xkey78;
 var xkey79;
 var xkey80;
-var obsaux_1;
-var auxTouch_1;
-var obsaux_2;
-var auxTouch_2;
-var dve_1 = 'false';
-var dve_2 = 'false';
-var dve_3 = 'false';
-var dve_4 = 'false';
-var streamS = false;
+var streamS = 'false';
 var dbo;
 let connectedXKeys;
 // TimerThingy
@@ -346,6 +358,96 @@ dbccg = JSON.stringify(truc);
 		});		
 }
 
+var DB1stateGet = (a) => {
+	const tserver = database.collection("state");
+	return new Promise((resolve, reject) => {
+		tserver.find({device: a}, { projection: { _id: 0, device: 1, action: 1, hclass: 1, display: 1, file: 1, thumb: 1, loop: 1} }).toArray(function(err, result) {
+			err 
+                ? reject(err) 
+                : resolve(result);
+			});
+		});
+};
+
+async function DB1statePrint(a) {
+let Truc = await DB1stateGet(a);
+statement = JSON.stringify(Truc);
+action = Truc[0].action;
+partial_retrieve(statement, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });
+		if (a === device1){	action1 = Truc[0].action;	//VTR1 STATE
+								class1 = Truc[0].hclass;
+								display1 = Truc[0].display;
+								file1 = Truc[0].file;
+								thumb1 = Truc[0].thumb;
+								loop1 = Truc[0].loop;
+							}
+		if (a === device2){	action2 = Truc[0].action;	//VTR2 STATE
+								class2 = Truc[0].hclass;
+								display2 = Truc[0].display;
+								file2 = Truc[0].file;
+								thumb2 = Truc[0].thumb;
+								loop2 = Truc[0].loop;
+							}
+		if (a === device3){	action3 = Truc[0].action;	//DVE1 STATE
+								class3 = Truc[0].hclass;
+								display3 = Truc[0].display;
+								file3 = Truc[0].file;
+								thumb3 = Truc[0].thumb;
+							}
+		if (a === device4){	action4 = Truc[0].action;	//DVE2 STATE
+								class4 = Truc[0].hclass;
+								display4 = Truc[0].display;
+								file4 = Truc[0].file;
+								thumb4 = Truc[0].thumb;
+							}
+		if (a === device5){	action5 = Truc[0].action;	//DVE3 STATE
+								class5 = Truc[0].hclass;
+								display5 = Truc[0].display;
+								file5 = Truc[0].file;
+								thumb5 = Truc[0].thumb;
+							}
+		if (a === device6){	action6 = Truc[0].action;	//DVE4 STATE
+								class6 = Truc[0].hclass;
+								display6 = Truc[0].display;
+								file6 = Truc[0].file;
+								thumb6 = Truc[0].thumb;
+							}
+		if (a === device7){	action7 = Truc[0].action;	//BUG1 STATE
+								class7 = Truc[0].hclass;
+								display7 = Truc[0].display;
+								file7 = Truc[0].file;
+							}
+		if (a === device8){	action8 = Truc[0].action;	//BUG2 STATE
+								class8 = Truc[0].hclass;
+								display8 = Truc[0].display;
+								file8 = Truc[0].file;
+							}
+		if (a === device9){	aux1_active = Truc[0].action;	//AUX1 STATE
+								obsaux_1 = Truc[0].hclass;
+							}
+		if (a === device10){	aux2_active = Truc[0].action;	//AUX2 STATE
+								obsaux_2 = Truc[0].hclass;
+							}
+		if (a === device11){	pgm_active = Truc[0].action;	//PGM STATE
+								program = Truc[0].hclass;
+							}
+		if (a === device12){	pvw_active = Truc[0].action;	//PVW STATE
+								preview = Truc[0].hclass;
+							}
+		if (a === device13){	Hplist1 = Truc[0].action;	//PLAYLIST 1 STATE
+								Iplist1 = Truc[0].file;
+							}
+		if (a === device14){	Hplist2 = Truc[0].action;	//PLAYLIST 2 STATE
+								Iplist2 = Truc[0].file;
+							}
+
+
+};
+
 var DBstateGet = () => {
 	const tserver = database.collection("state");
 	return new Promise((resolve, reject) => {
@@ -366,6 +468,21 @@ state_retrieve(statement, function(err, response){
                 term(response);
             }
         });
+
+device1 = Truc[0].device;
+device2 = Truc[1].device;
+device3 = Truc[2].device;
+device4 = Truc[3].device;
+device5 = Truc[4].device;
+device6 = Truc[5].device;
+device7 = Truc[12].device;
+device8 = Truc[13].device;
+device9 = Truc[6].device;
+device10 = Truc[7].device;
+device11 = Truc[8].device;
+device12 = Truc[9].device;
+device13 = Truc[10].device;
+device14 = Truc[11].device;
 action1 = Truc[0].action;
 action2 = Truc[1].action;
 action3 = Truc[2].action;
@@ -420,7 +537,7 @@ Iplist1 = Truc[10].file;
 Iplist2 = Truc[11].file;
 
 	xkey_detect(function(err, response){
-        if(!err){ term(response); }
+        if(!err){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS ^ \tConnected to Xkeys panel"); }
 			else{
 				if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS ^ \tDisconnected from any Xkeys panel"); }}
 		});		
@@ -521,16 +638,16 @@ async function DBXkeysPrint() {
 let truc = await DBXkeysGet();
 xKeys = JSON.stringify(truc);
 var xkeysL = JSON.parse(xKeys);
-xkey01 = xkeysL[0]['scenename']
-xkey02 = xkeysL[1]['scenename']
-xkey03 = xkeysL[2]['scenename']
-xkey04 = xkeysL[3]['scenename']
-xkey05 = xkeysL[4]['scenename']
-xkey06 = xkeysL[5]['scenename']
-xkey07 = xkeysL[6]['scenename']
-xkey08 = xkeysL[7]['scenename']
-xkey09 = xkeysL[8]['scenename']
-xkey10 = xkeysL[9]['scenename']
+xkey01 = xkeysL[00]['scenename']
+xkey02 = xkeysL[01]['scenename']
+xkey03 = xkeysL[02]['scenename']
+xkey04 = xkeysL[03]['scenename']
+xkey05 = xkeysL[04]['scenename']
+xkey06 = xkeysL[05]['scenename']
+xkey07 = xkeysL[06]['scenename']
+xkey08 = xkeysL[07]['scenename']
+xkey09 = xkeysL[08]['scenename']
+xkey10 = xkeysL[09]['scenename']
 xkey11 = xkeysL[10]['scenename']
 xkey12 = xkeysL[11]['scenename']
 xkey13 = xkeysL[12]['scenename']
@@ -648,7 +765,7 @@ async function DBupdateState(a,b,c,d,e,f,g) {
       },
     };
     const result = await tcollec.updateOne(filter, updField, options);
-	DBstatePrint();
+	DB1statePrint(a);
 }
 
 // Set to DB TITRAGE table
@@ -726,7 +843,7 @@ connectedXKeys = devices.filter(device => {
 })
 
 if (connectedXKeys.length) {
-	Xkeys80_1 = new XKeys(connectedXKeys[0].path)
+	Xkeys80_1 = new XKeys(connectedXKeys[0].path);
 
 Xkeys80_1.on('disconnected', () => {
 			console.log(term("\n"+dateTimeNow()+"\t^#^r^W XKEYS ^ \tDisconnected from any Xkeys panel"))
@@ -791,7 +908,12 @@ Xkeys80_1.on('down', a => {
 	if (a == '8'){ obs.send('SetSourceFilterVisibility', { 'source-name': 'CAM DELL'  }).catch(console.error);}				
 			
 	//TRANSITIONS 
-		if (a == '71' || a == '70') {transButton(a);	}
+		if (a === '71' || a === '70') {
+		transButton(a, function(err, response){
+            if(!err){
+                term(response);
+            }
+        });	}
 		
 		var cnumber = parseInt(a) + 1;
 		var cname = 'xkey'+pad2(cnumber);
@@ -824,42 +946,62 @@ Xkeys80_1.on('down', a => {
 			});
 		}
 
+	//SHOW BUGS
+		if (a == '67' ) {
+			IOSendData(['web'], 'sClick', 'bug1_box');
+			if (action7 === 'bug') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				action7 = 'nobug';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				action7 = 'bug';}
+		}
+		if (a == '75' ) {
+			IOSendData(['web'], 'sClick', 'bug2_box');
+			if (action8 === 'bug') {
+				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
+				action8 = 'nobug';}
+			else {
+				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
+				action8 = 'bug';}
+			}
+
 	//SHOW DVE
 		if (a == '68' ) {
 			IOSendData(['web'], 'sClick', 'dve1_box');
-			if (dve_1 == 'false') {
+			if (action3 === 'cg') {
 				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
-				dve_1 = 'true';}
+				action3 = 'nocg';}
 			else {
 				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
-				dve_1 = 'false';}
+				action3 = 'cg';}
 		}
 		if (a == '76' ) {
 			IOSendData(['web'], 'sClick', 'dve2_box');
-			if (dve_2 == 'false') {
+			if (action4 === 'cg') {
 				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
-				dve_2 = 'true';}
+				action4 = 'nocg';}
 			else {
 				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
-				dve_2 = 'false';}
+				action4 = 'cg';}
 			}
 		if (a == '69' ) {
 			IOSendData(['web'], 'sClick', 'dve3_box');
-			if (dve_3 == 'false') {
+			if (action5 === 'cg') {
 				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
-				dve_3 = 'true';}
+				action5 = 'nocg';}
 			else {
 				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
-				dve_3 = 'false';}
+				action5 = 'cg';}
 			}
 		if (a == '77' ) {
 			IOSendData(['web'], 'sClick', 'dve4_box');
-			if (dve_4 == 'false') {
+			if (action6 === 'cg') {
 				Xkeys80_1.setBacklight(a, true, true); //red light on selected button
-				dve_4 = 'true';}
+				action6 = 'nocg';}
 			else {
 				Xkeys80_1.setBacklight(a, false, true); //red light off selected button
-				dve_4 = 'false';}
+				action6 = 'cg';}
 			}
 	});
 	} else {
@@ -873,6 +1015,7 @@ function pad2(number) {
 function transButton(a,callback)	{
 				pgm_active = parseInt(pgm_active) + 1;
 				pvw_active = parseInt(pvw_active) - 1;
+				// {term("\n"+dateTimeNow()+"\t^#^M^W OBS ATTENTION^ \t ("+a+") "+pgm_active+" - "+pvw_active)}
 	if (connectedXKeys.length) {
 		for (i = 6; i < 63; i=i+8){
 				Xkeys80_1.setBacklight(i, true); //blue light on all PGM line buttons  
@@ -888,36 +1031,36 @@ function transButton(a,callback)	{
 				Xkeys80_1.setBacklight(pgm_active, false);//blue light off button that goes from PGM to PVW
 	} else { console.log("Could not find any connected X-keys panels.") };				
 				//CUT
-					if (a == '71' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));	
-										obs.send('TransitionToProgram', { 'with-transition.name': 'Coupure'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
-										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
-										term("\n"+dateTimeNow()+"\t^#^M^W CUT SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW : '+pvw_active+' - '+preview);}
+					if (a === '71' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
+										obs.send('SetCurrentScene', { 'scene-name': preview  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
+										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
+										term("\n"+dateTimeNow()+"\t^#^M^W CUT SWITCH^ \t=> MOVE PGM : "+program+' TO '+preview);}
 				//AUTO MIX 
-					if (a == '70' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Fondu'  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")); 
-										obs.send('SetTransitionDuration', { 'duration': 1000  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
-										obs.send('TransitionToProgram', { 'with-transition.name': 'Fondu' }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
-										obs.send('SetPreviewScene', { 'scene-name': program  }).catch(term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup"));
+					if (a === '70' ) {	obs.send('SetCurrentTransition', { 'transition-name': 'Fondu'  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
+										obs.send('SetTransitionDuration', { 'duration': 1000  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
+										obs.send('TransitionToProgram', { 'with-transition.name': 'Fondu' }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
 										var b = 78;
-										term("\n"+dateTimeNow()+"\t^#^M^W MIX SWITCH^ \t=> PGM : "+pgm_active+' - '+program+' TO PRW :'+pvw_active+' - '+preview);
+										term("\n"+dateTimeNow()+"\t^#^M^W MIX SWITCH^ \t=> MOVE PGM : "+program+' TO '+preview);
 	if (connectedXKeys.length) {
 										Xkeys80_1.setBacklight(a, true, true, true); //red flashing on button AUTO										
 										Xkeys80_1.setBacklight(b, true, true, true); //red flashing on button AUTO										
 										setTimeout(function(){
+											obs.send('SetPreviewScene', { 'scene-name': program  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR^ \tStart OBS or check network setup")});	
 											Xkeys80_1.setBacklight(a, true, true); // Stop red flashing on button AUTO										
-										 	Xkeys80_1.setBacklight(b, true, true); //Stop red flashing on button AUTO			
-											}, 1000);}
+										 	Xkeys80_1.setBacklight(b, true, true); //Stop red flashing on button AUTO	
+											var tempo = preview;
+											preview = program;
+											program = tempo;
+											tempo = pgm_active;
+											pgm_active = pad2(pvw_active);
+											pvw_active = pad2(tempo);
+												if (pgm_active == '54'){ IOSendData(['web'], 'sClick', 'vtr1_box'); }
+												if (pgm_active == '62'){ IOSendData(['web'], 'sClick', 'vtr2_box'); }
+											DBupdateState('pgm_active',pgm_active,program,'','','','');
+											DBupdateState('pvw_active',pvw_active,preview,'','','','');		
+											}, 600);}
 	else { console.log("Could not find any connected X-keys panels.") };
 									}
-						var tempo = preview;
-						preview = program;
-						program = tempo;
-						tempo = pgm_active;
-						pgm_active = pad2(pvw_active);
-						pvw_active = pad2(tempo);
-					if (pgm_active == '54'){ IOSendData(['web'], 'sClick', 'vtr1_box'); }
-					if (pgm_active == '62'){ IOSendData(['web'], 'sClick', 'vtr2_box'); }
-					DBupdateState('pgm_active',pgm_active,program,'','','','');
-					DBupdateState('pvw_active',pvw_active,preview,'','','','');
 					
 }				
  
@@ -1530,6 +1673,12 @@ function IOSendData(targets, type, vars, others){
             socketIO_Connection.to(target).emit('status', vars);
             });
         }
+		// SEND SOLO STATUS
+        if(type == 'solostatus'){
+            targets.forEach(function(target){
+            socketIO_Connection.to(target).emit('solostatus', vars);
+            });
+        }
 		// SEND OBS CONFIG
         if(type == 'obsconf'){
             targets.forEach(function(target){
@@ -1636,8 +1785,8 @@ obs.on('error', err => {
 					Xkeys80_1.setBacklight(14, true, true); //red light on selected button
 					Xkeys80_1.setBacklight(14, false);//blue light off selected button
 					IOSendData(['web'], 'rClick', 'xkeys14');
-					DBupdateState('pgm_active','15',program,'','','','');
-					pgm_active = '15';}
+					DBupdateState('pgm_active','14',program,'','','','');
+					pgm_active = '14';}
 				if (program == xkey23) {		
 					Xkeys80_1.setBacklight(22, true, true); //red light on selected button
 					Xkeys80_1.setBacklight(22, false);//blue light off selected button
@@ -2067,6 +2216,12 @@ function plist_retrieve(a,b, callback){
 function state_retrieve(a, callback){
 	IOSendData(['web'], 'status', a);
 	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tStatus transmited to webapp: "+a)
+		}	
+
+//Sent to webapp solo status retrieved from DB
+function partial_retrieve(a, callback){
+	IOSendData(['web'], 'solostatus', a);
+	callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b DATABASE ^ \tPartial Status transmited to webapp: "+a)
 		}	
 
 // CCG Get Media List
