@@ -65,8 +65,7 @@ Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be dis
 
 
 OBS STUDIO INTEGRATION EXAMPLE
-![liveProd_01](https://user-images.githubusercontent.com/33838534/148247564-33cc4483-3994-413e-915b-ff1acc8317aa.PNG)
-
+![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
 The actual script was writen to remote 2 obs studio instance :
 
 	• The main one is dedicated for directing the show
