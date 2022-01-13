@@ -119,10 +119,8 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Click on playlist button
 
-	• Create your playlist while drag & dropping videos
-
-	• Sort your items onto playlist
-
+	• Create your playlist while drag & dropping videos ![playlistdrag](https://user-images.githubusercontent.com/33838534/149331817-07f502ea-1b9a-48a6-a0d8-625019f1a943.png)
+	• Sort your items onto playlist ![playlistsort](https://user-images.githubusercontent.com/33838534/149331820-8a9fc596-fabc-4ca2-a71f-155beea87283.png)
 	• Click on next or previous buttons
 
 4. Powerfull integrated graphic server:
@@ -148,18 +146,18 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 6. Physical & virtual panel fully synchonised
 
 	• Xkeys 80 touch industrial builded keyboard
+	
 	• Both linked to obs & casparcg through sdk
+	
 	• Fully customisable for differents needs
+	
 ![Capturebug](https://user-images.githubusercontent.com/33838534/149331773-f68000f4-ef5d-4564-9888-4ad2b4a6cd8e.PNG)
 ![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
 ![integrated interface](https://user-images.githubusercontent.com/33838534/149331778-197aa174-1117-4d35-bb37-bd79d9441697.png)
 ![interfacePlaylist](https://user-images.githubusercontent.com/33838534/149331782-0d1bbaac-6b81-4e44-9b94-d102d1bb405b.png)
 ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
-![playlist](https://user-images.githubusercontent.com/33838534/149331794-0f1b8ff3-da79-47c2-9452-95614ec556c0.png)
 ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
 ![titles](https://user-images.githubusercontent.com/33838534/149331807-34b6acc2-e13a-4c93-b50a-0f339772924d.PNG)
 ![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
-![playlistdrag](https://user-images.githubusercontent.com/33838534/149331817-07f502ea-1b9a-48a6-a0d8-625019f1a943.png)
-![playlistsort](https://user-images.githubusercontent.com/33838534/149331820-8a9fc596-fabc-4ca2-a71f-155beea87283.png)
 
 ![bug+dve](https://user-images.githubusercontent.com/33838534/149331745-140bce96-ce02-4b86-b945-7370a4a49b6e.PNG)
