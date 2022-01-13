@@ -143,7 +143,8 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Most functions, sources, can be setted with drag and drop
 
-	• Affect obs scenes to buttons with drag and drop
+	• Affect obs scenes to buttons with drag and drop ![obsdrag](https://user-images.githubusercontent.com/33838534/149331789-e7e073ad-3186-4733-ac9c-2aa5c5b7ffad.png)
+
 
 	• Affect cg templates while drag & droping template item to dve setup box
 
@@ -159,7 +160,6 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 ![integrated interface](https://user-images.githubusercontent.com/33838534/149331778-197aa174-1117-4d35-bb37-bd79d9441697.png)
 ![interfacePlaylist](https://user-images.githubusercontent.com/33838534/149331782-0d1bbaac-6b81-4e44-9b94-d102d1bb405b.png)
 ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
-![obsdrag](https://user-images.githubusercontent.com/33838534/149331789-e7e073ad-3186-4733-ac9c-2aa5c5b7ffad.png)
 ![playlist](https://user-images.githubusercontent.com/33838534/149331794-0f1b8ff3-da79-47c2-9452-95614ec556c0.png)
 ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
 ![setup](https://user-images.githubusercontent.com/33838534/149331802-4403cef9-111c-41d5-8c6b-8ba3051ce373.png)
