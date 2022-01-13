@@ -139,21 +139,16 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 5. Simply setup
 
-	• Define ip address & port of obs
-
+	• Define ip address & port of obs![setup](https://user-images.githubusercontent.com/33838534/149331802-4403cef9-111c-41d5-8c6b-8ba3051ce373.png)
 	• Most functions, sources, can be setted with drag and drop
-
 	• Affect obs scenes to buttons with drag and drop ![obsdrag](https://user-images.githubusercontent.com/33838534/149331789-e7e073ad-3186-4733-ac9c-2aa5c5b7ffad.png)
+	• Affect cg templates while drag & droping template item to dve setup box![templatedrag](https://user-images.githubusercontent.com/33838534/149331805-beccbf39-7cac-4e72-b55c-bc3df0d653de.png)
 
-
-	• Affect cg templates while drag & droping template item to dve setup box
 
 6. Physical & virtual panel fully synchonised
 
 	• Xkeys 80 touch industrial builded keyboard
-
 	• Both linked to obs & casparcg through sdk
-
 	• Fully customisable for differents needs
 ![Capturebug](https://user-images.githubusercontent.com/33838534/149331773-f68000f4-ef5d-4564-9888-4ad2b4a6cd8e.PNG)
 ![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
@@ -162,8 +157,6 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
 ![playlist](https://user-images.githubusercontent.com/33838534/149331794-0f1b8ff3-da79-47c2-9452-95614ec556c0.png)
 ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
-![setup](https://user-images.githubusercontent.com/33838534/149331802-4403cef9-111c-41d5-8c6b-8ba3051ce373.png)
-![templatedrag](https://user-images.githubusercontent.com/33838534/149331805-beccbf39-7cac-4e72-b55c-bc3df0d653de.png)
 ![titles](https://user-images.githubusercontent.com/33838534/149331807-34b6acc2-e13a-4c93-b50a-0f339772924d.PNG)
 ![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
 ![playlistdrag](https://user-images.githubusercontent.com/33838534/149331817-07f502ea-1b9a-48a6-a0d8-625019f1a943.png)
