@@ -65,8 +65,8 @@ Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be dis
 
 
 OBS STUDIO INTEGRATION EXAMPLE
-![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
-The actual script was writen to remote 2 obs studio instance :
+ ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
+ The actual script was writen to remote 2 obs studio instance :
 
 	• The main one is dedicated for directing the show
 	
@@ -111,7 +111,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Add video to a player with drag & drop
 
 	• Clickable progressbar ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
-	• Realtime timecode elapsed and remaining displayed ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
+	• Realtime timecode elapsed and remaining displayed
 
 
 3. Playlist mode:
