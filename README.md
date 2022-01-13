@@ -126,6 +126,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Allow to play casparcg template inside obs using 1 ndi channel (fill+key incl.) Or 2 sdi channels (decklink) ![bug+dve](https://user-images.githubusercontent.com/33838534/149331745-140bce96-ce02-4b86-b945-7370a4a49b6e.PNG)
 	• Both flash & html5 animated templates![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
+	
 	• Templates can be edited with adobe animate (ex flash) or with any html5 editor
 
 	• Lowerthirds, scrolls, titles… ![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
