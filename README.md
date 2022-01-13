@@ -86,6 +86,8 @@ This example includes 8 Caspar CG channels/layers that can easily be set up :
 	• 2 vtr that can play and adapt any video whatever format, resolution, framerate…
 	
 	• 2 bugs box to display any image format fullscreen or not
+		simply drag & drop images to the box
+		![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
 	
 	• 4 dve to play caspar cg templates 
 	
@@ -170,6 +172,5 @@ This example includes 8 Caspar CG channels/layers that can easily be set up :
 ![titledrag](https://user-images.githubusercontent.com/33838534/149331813-6a32c77a-b191-405f-a8ca-b39595361478.png)
 ![playlistdrag](https://user-images.githubusercontent.com/33838534/149331817-07f502ea-1b9a-48a6-a0d8-625019f1a943.png)
 ![playlistsort](https://user-images.githubusercontent.com/33838534/149331820-8a9fc596-fabc-4ca2-a71f-155beea87283.png)
-![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
 
 ![bug+dve](https://user-images.githubusercontent.com/33838534/149331745-140bce96-ce02-4b86-b945-7370a4a49b6e.PNG)
