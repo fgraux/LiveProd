@@ -83,13 +83,12 @@ The actual script was writen to remote 2 obs studio instance :
 
 This example includes 8 Caspar CG channels/layers that can easily be set up : 
 
-	• 2 vtr that can play and adapt any video whatever format, resolution, framerate…
+2 vtr that can play and adapt any video whatever format, resolution, framerate…
 	
-	• 2 bugs box to display any image format fullscreen or not
-		simply drag & drop images to the box
-		![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
-	
-	• 4 dve to play caspar cg templates 
+bugs box to display any image format fullscreen or not
+simply drag & drop images to the box
+![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
+4 dve to play caspar cg templates 
 	
 
 1. Integrated interface:
