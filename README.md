@@ -146,7 +146,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 6. Physical & virtual panel fully synchonised
 
 	• Xkeys 80 touch industrial builded keyboard
-	
+	![xkeys](https://user-images.githubusercontent.com/33838534/149340530-4b16dc23-48fa-419b-b29d-9b65469825de.jpg)
 	• Both linked to obs & casparcg through sdk
 	
 	• Fully customisable for differents needs
