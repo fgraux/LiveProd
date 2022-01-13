@@ -131,8 +131,8 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Templates can be edited with adobe animate (ex flash) or with any html5 editor
 
-	• Lowerthirds, scrolls, titles… 
-
+	• Lowerthirds, scrolls, titles… ![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
+	• CSV files can be export or inport to the titles list, you also can add any entry : ![titles](https://user-images.githubusercontent.com/33838534/149331807-34b6acc2-e13a-4c93-b50a-0f339772924d.PNG)
 	• Any animation can be mixed with any data
 
 5. Simply setup
@@ -157,7 +157,5 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 ![interfacePlaylist](https://user-images.githubusercontent.com/33838534/149331782-0d1bbaac-6b81-4e44-9b94-d102d1bb405b.png)
 ![interfaceprogressb](https://user-images.githubusercontent.com/33838534/149331784-bd27aa7f-628d-40b0-9ff2-258d951f8838.png)
 ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
-![titles](https://user-images.githubusercontent.com/33838534/149331807-34b6acc2-e13a-4c93-b50a-0f339772924d.PNG)
-![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
 
 ![bug+dve](https://user-images.githubusercontent.com/33838534/149331745-140bce96-ce02-4b86-b945-7370a4a49b6e.PNG)
