@@ -154,7 +154,6 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Both linked to obs & casparcg through sdk
 
 	• Fully customisable for differents needs
-![image](https://user-images.githubusercontent.com/33838534/148431935-34c558c7-292e-45dd-8438-7d45a09b5c31.png)
 ![Capturebug](https://user-images.githubusercontent.com/33838534/149331773-f68000f4-ef5d-4564-9888-4ad2b4a6cd8e.PNG)
 ![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
 ![integrated interface](https://user-images.githubusercontent.com/33838534/149331778-197aa174-1117-4d35-bb37-bd79d9441697.png)
