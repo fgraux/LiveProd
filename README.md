@@ -63,10 +63,9 @@ CAREFULL
 If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flash templates won’t  be working (but will work with html templates and simple logos displaying).
 Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be displayed.
 
-![liveProd_01](https://user-images.githubusercontent.com/33838534/148247564-33cc4483-3994-413e-915b-ff1acc8317aa.PNG)
-
 
 OBS STUDIO INTEGRATION EXAMPLE
+![liveProd_01](https://user-images.githubusercontent.com/33838534/148247564-33cc4483-3994-413e-915b-ff1acc8317aa.PNG)
 
 The actual script was writen to remote 2 obs studio instance :
 
