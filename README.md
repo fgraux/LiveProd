@@ -45,7 +45,7 @@ INSTALL
 
 	• install Node.js, MongoDB, MongoDB Database Tools, OBS within plugins (NDI, websocket…) , CasparCG, NDI tools.
 	
-	• Use the liveprodb archive file to Restore the database with a mongorestore command.
+	• Use the liveprodb archive folder to Restore the database with a mongorestore command (you may need to sudo while using ubuntu)
 	
 	• Start OBS & Caspar CG.
 	
