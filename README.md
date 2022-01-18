@@ -130,7 +130,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Templates can be edited with adobe animate (ex flash) or with any html5 editor
 
 	• Lowerthirds, scrolls, titles… ![video](https://user-images.githubusercontent.com/33838534/149331808-188130d9-a858-4d9a-8450-113d3cfb3d90.PNG)
-	• CSV files can be export or inport to the titles list, you also can add any entry : ![image](https://user-images.githubusercontent.com/33838534/149986211-cf35e53c-c617-46d3-81ec-d32060655668.png)
+	• CSV files can be export or inport to the titles list, you also can add any entry, you can sort the title list whith drag & drop, then press the drag button will allow you to drag & drop to any DVE : ![image](https://user-images.githubusercontent.com/33838534/149986211-cf35e53c-c617-46d3-81ec-d32060655668.png)
 	
 	• Any animation can be mixed with any data
 
