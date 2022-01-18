@@ -1,5 +1,5 @@
 // SOCKETIO CONNECT
-var socket = io.connect('//replace_with_your_ip:your_port', {
+var socket = io.connect('//replace_with_your_ip:7777', {
     query: {
         room: 'web'
     }
