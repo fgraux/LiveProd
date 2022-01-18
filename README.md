@@ -51,7 +51,7 @@ INSTALL
 	
 	• Go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
 	
-	• Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type node CCGNodeSrv.js.
+	• Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type 'node LiveProdSrv.js'.
 	
 	• You should be now able to connect on the web UI while typing //localhost/ to your web browser (//localhost/keyboard/ for the single keyboard, //localhost/clock for the clock etc...). 
 	
