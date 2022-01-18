@@ -387,8 +387,8 @@
 				</table>
 				<table id="TitleList" class="" width="100%"><thead><tr><th>Name</th><th>Title</th></tr></thead><tbody></tbody></table>
 				<table class="inputCont">
-						<tr><th><label for="name">Name:</label></th><th><label for="name">Title:</label></th></tr>
-						<tr><form id="Title1Ad" method="post"><td><input type="text" name="name" id="name1"></td><td><input type="text" name="title" id="title1"></td></form><td><button class="TitleDB">Add</button></td><td><button id="export">Export</button></td><td><button id="empty">Empty</button></td><td><button id="sort">Sort</button></td><td><label for="fileUpload" id="choose">File</label><input type="file" id="fileUpload" style="visibility:hidden;"/></td><td><button id="upload">Upload</button></td></tr>
+						<tr><th><label for="name">Name</label></th><th><label for="name">Title</label></th></tr>
+						<tr><form id="Title1Ad" method="post"><td><input type="text" name="name" id="name1"></td><td><input type="text" name="title" id="title1"></td></form><td><button class="TitleDB">Add</button></td><td><button id="export">Export</button></td><td><button id="empty">Empty</button></td><td><button id="sort" class="nosort">Drag</button></td><td><label for="fileUpload" id="choose"><i class="far fa-folder-open"></i> File</label><input type="file" id="fileUpload" style="width:0; min-width:0;visibility:hidden;"/></td><td><button id="upload" class="hide">Upload</button></td></tr>
 					</table>
 				</td>
 				<td>
@@ -552,7 +552,6 @@
             </div>          
         </div>      
     </div> 
-	<!-- <video id="video" src="http://localhost:8080/desktop.ogg" autoplay="autoplay"> -->
     <!-- Core Libraries -->
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>    
     <script type="text/javascript" src="/javascripts/jquery-ui.min.js"></script>
