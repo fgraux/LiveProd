@@ -741,15 +741,13 @@ socket.on('status',function(z) {
 // SIO || XKEYS CONFIG LIST RECEIVED
 socket.on('xkeys',function(xkeys) {
 	var xkeysL = JSON.parse(xkeys);
-	generateJSONTables(xkeysL);
-	//alert(xkeys);
+	generateXKEYSTable(xkeysL);
 });
 
 // SIO || SAVED TITLES LIST RECEIVED
 socket.on('titles',function(titles) {
 	var titlesL = JSON.parse(titles);
 	generateJSONTable(titlesL,'#TitleList tbody','Name','Title');
-	//alert(titles);
 });
 
 // SIO || SAVED PLAYLIST LIST RECEIVED
@@ -840,7 +838,6 @@ function generateJSONTable(data,dest,col1,col2){
 				$('<td>').text(item.timecode),
 				$('<td class="hide">').text(item.duration)).appendTo(dest); });}
 				else {
-	//$(dest).html('<thead><tr><th>'+col1+'</th><th>'+col2+'</th></tr></thead>');
 	$.each(data, function(index, item) {//index is the index & item is the field
         if (col2 == 'Address'){
 			var $tr = $('<tr class="event" name="'+item.name+'" addr="'+item.urlAddress+'" draggable="true">').append(
@@ -853,7 +850,7 @@ function generateJSONTable(data,dest,col1,col2){
     });
 	}}
 	
-function generateJSONTables(data){
+function generateXKEYSTable(data){
 	//LINE1 KEYBOARD LINE CONFIG
 	$('#XkeysLine1 tr').html('<td class="head"><h2>LINE 1</h2></td>');
 	var Line1data = [];
@@ -1732,6 +1729,7 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						butplay.removeClass('cligno');
+						butplay.removeClass('green');
 						player.find('button').attr("Video", '');
 						player.find('.clip').html('');
 						player.find('.thumb').attr("src",'/images/'+screen);	
@@ -1758,6 +1756,7 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						butplay.removeClass('cligno');
+						butplay.addClass('green');
 						divclass = butplay.attr('class');
 						var id = playerlist.find('.red').index()+1;
 						var video = playerlist.find('.red').find('td').eq(0).text();
@@ -1780,6 +1779,7 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						butplay.html('<i class="fas fa-play"></i> Ready');
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
+						butplay.removeClass('green');
 						butplay.addClass('cligno');
 						divclass = butplay.attr('class');
 						var id = playerlist.find('.red').index()+1;
@@ -1905,6 +1905,7 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						butplay.removeClass('cligno');
+						butplay.addClass('green');
 						divclass = butplay.attr('class');
 						original = playerlist.find('tr').length;
 						if (playerlist.find('.red').length > 0) {
@@ -1941,6 +1942,7 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						butplay.removeClass('cligno');
+						butplay.removeClass('green');
 						player.find('button').attr("Video", '');
 						player.find('.clip').html('');
 						player.find('.thumb').attr("src",'/images/'+screen);	
@@ -1964,9 +1966,10 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						state = butplay.attr('action');
+						butplay.removeClass('cligno');
+						butplay.addClass('green');
 						divclass = butplay.attr('class');
 						file = player.find('.clip').html();
-						butplay.removeClass('cligno');
 						thumb = player.find('.thumb').attr("src");
 						socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: file, state: state, thumb: thumb, divclass: divclass, loop: loop});
 					}
@@ -1978,9 +1981,10 @@ $(document).on('click', '#uiAction', function(e){	//VTR OTHERS BUTTONS
 						content = butplay.html();
 						content = content.replace(/'/g, "\\'");
 						state = butplay.attr('action');
+						butplay.removeClass('green');
+						butplay.addClass('cligno');
 						divclass = butplay.attr('class');
 						file = player.find('.clip').html();
-						butplay.addClass('cligno');
 						thumb = player.find('.thumb').attr("src");
 						socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: file, state: state, thumb: thumb, divclass: divclass, loop: loop});
 					}
@@ -2072,7 +2076,7 @@ $(document).on('click', '#bugAction', function(e){
 	var	device = player.attr('id');
 	var	keyboardBut = device+'_key';
 	if (action == 'bug') {
-		socket.emit('UI|action', {action: 'load' , channel: channel, layer: layer, file: name , options: ''});
+		socket.emit('UI|action', {action: 'bugload' , channel: channel, layer: layer, file: name, device: device});
 		$(this).attr('action','nobug');
 		$(this).html('<i class="fas fa-eject"></i> Off Air');
 		$(this).addClass('red');
@@ -2084,7 +2088,7 @@ $(document).on('click', '#bugAction', function(e){
 		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: thumb, divclass: divclass});
 		} 
 	if (action == 'nobug') {
-		socket.emit('UI|action', {action: 'stop' , channel: channel, layer: layer, file: name , options: ''});
+		socket.emit('UI|action', {action: 'bugstop' , channel: channel, layer: layer, device: device});
 		$(this).attr('action','bug');
 		$(this).html('<i class="fas fa-play-circle"></i> On Air');
 		$(this).removeClass('red');	
@@ -2119,6 +2123,11 @@ butSet.on('click', function(e){
 var butCon = $('#Konnek');
 butCon.on('click', function(e){
 	socket.emit('UI|action', {action: 'CCGget'});
+	socket.emit('UI|action', {action: 'xkeysget'});     
+	socket.emit('UI|action', {action: 'tempGet' });
+	socket.emit('UI|action', {action: 'titleGet' });
+	socket.emit('UI|action', {action: 'plistGet', plist: 'plist1' });
+	socket.emit('UI|action', {action: 'plistGet', plist: 'plist2' });
 	socket.emit('UI|action', {action: 'StateGet'});
 });
 
@@ -2182,25 +2191,24 @@ $(".TitleDB").click(function saveTitles() {
 });
 
 // Empty Titles  from table and MariaDB
-$("#empty").click(function delTitles() {
-	$("#TitleList").html('');
-	$("#TitleList").html('<tr><th>Name</th><th>Title</th></tr>');
+$("#empty").click(function () {
+	// $("#TitleList").html('');
+	// $("#TitleList").html('<thead><tr><th>Name</th><th>Title</th></tr></thead><tbody></tbody>');
     socket.emit('UI|action', {action: 'saveTitrage', type: 'suppr'});    
 });
 
- 
-
-/** Make Titles sortable (but no more droppable to DVE) from table and MariaDB => NE MARCHE PAS ENCORE
+// Make Titles sortable (but no more droppable to DVE) or droppable (but no more sortable) from table and MongoDB 
 $("#sort").click(function sorting() {
-	$("#TitleList").addClass('sort');
- 
-});
-
-
-
-$("#TitleList tbody").sortable({
-    axis: 'y',
-    update: function (event, ui) {
+	if ($("#TitleList tbody").data('ui-sortable')) {
+		$("#TitleList tbody").sortable("destroy");
+		$(this).removeClass('sort');
+		$(this).addClass('nosort');
+		$(this).html('Sort');
+	} else {
+		$("#TitleList tbody").sortable({
+		axis: 'y',
+		update: function (event, ui) {
+			if( $("#TitleList").hasClass('sort') ) {  
 			socket.emit('UI|action', {action: 'saveTitrage', type: 'suppr'});
 			$('#TitleList tbody tr').each(function(){
 				var sname =  $(this).find('td').eq(0).text();
@@ -2208,21 +2216,73 @@ $("#TitleList tbody").sortable({
 					setTimeout(function(){
 						socket.emit('UI|action', {action: 'saveTitrage', type: 'add', name: sname, title: stitle});
 						}, 30);			
-	});}
+	});}}    
+
+});  
+		// $("#TitleList tbody").removeClass('ui-sortable-disabled');  
+		$(this).addClass('sort');
+		$(this).removeClass('nosort');
+		$(this).html('Drag');
+	} 
+	
 });
 
-$("#TitleList td[contenteditable=true]").blur(function(){	//DOES NOT WORK !!!!
-	var line = $(this).closest('tr');
-	var sValue = $(this).text();
-	var name = line.find('td').eq(0).text();
-	var title = line.find('td').eq(1).text();
-		if (name == sValue){socket.emit('UI|action', {action: 'saveTitrage', type: 'name', name: name, title: title});}
-		else
-		if (title == sValue){socket.emit('UI|action', {action: 'saveTitrage', type: 'title', name: name, title: title});}
-        });
-	**/
-//Import table from csv 
-$("#upload").bind("click", function () {
+$("#TitleList tbody").sortable({
+		axis: 'y',
+		update: function (event, ui) {
+			if( $("#TitleList").hasClass('sort') ) {  
+			socket.emit('UI|action', {action: 'saveTitrage', type: 'suppr'});
+			$('#TitleList tbody tr').each(function(){
+				var sname =  $(this).find('td').eq(0).text();
+				var stitle = $(this).find('td').eq(1).text();
+					setTimeout(function(){
+						socket.emit('UI|action', {action: 'saveTitrage', type: 'add', name: sname, title: stitle});
+						}, 30);			
+	});}}    
+
+});
+
+// $("#TitleList td[contenteditable=true]").blur(function(){	//DOES NOT WORK !!!!
+	// var line = $(this).closest('tr'); alert(line.html());
+	// var sValue = $(this).text();
+	// var name = line.find('td').eq(0).text();
+	// var title = line.find('td').eq(1).text();
+		// if (name === sValue){socket.emit('UI|action', {action: 'saveTitrage', type: 'name', name: name, title: title});}
+		// else
+		// if (title === sValue){socket.emit('UI|action', {action: 'saveTitrage', type: 'title', name: name, title: title});}
+        // });
+    $("#TitleList td").click(function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        $td = $(this);
+        // if already editing, do nothing.
+        if ($td.data('editing')) return;
+        // mark as editing
+        $td.data('editing', true);
+        // make input
+        var $input = $('<input type="text" class="editfield">');
+        $input.val(txt);
+        // clean td and add the input
+        $td.empty();
+        $td.append($input);
+		var line = $(this).closest('tr');
+		var name = line.find('td').eq(0).text();
+		var title = line.find('td').eq(1).text();
+		if (name === $input.text()){socket.emit('UI|action', {action: 'saveTitrage', type: 'name', name: name, title: title});}
+		else if (title === $input.text()){socket.emit('UI|action', {action: 'saveTitrage', type: 'title', name: name, title: title});}
+    });
+
+//OPEN THE EXPLORER WINDOW TO CHOOSE A CSV FILE TO IMPORT
+	$("#fileUpload").change(function() {
+	  filename = this.files[0].name
+	  $(".inputCont tbody").append('<tr><td></td><td><h2 style="color:red;">File '+filename+' is a valid file: please click on Upload button</h2></td></td>');
+	  console.log(filename);
+	  $("#choose").addClass('hide');
+	  $("#upload").removeClass('hide');
+	});
+		
+//UPLOAD CSV COMPUTATION
+	$("#upload").bind("click", function () {
             var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
             if (regex.test($("#fileUpload").val().toLowerCase())) {
                 if (typeof (FileReader) != "undefined") {
@@ -2230,7 +2290,7 @@ $("#upload").bind("click", function () {
                     reader.onload = function (e) {
                         var table = $("<tbody/>");
                         var rows = e.target.result.split("\n");
-	                    $("#TitleList").html('<tr><th>Name</th><th>Title</th></tr>');
+	                    $("#TitleList").html('<thead><tr><th>Name</th><th>Title</th></tr></thead><tbody class="ui-sortable"></tbody>');
 						socket.emit('UI|action', {action: 'saveTitrage', type: 'suppr'}); 
                         for (var i = 1; i < rows.length; i++) {
                             var cells = rows[i].split(";");
@@ -2246,7 +2306,10 @@ $("#upload").bind("click", function () {
 								socket.emit('UI|action', {action: 'saveTitrage', type: 'add', name: cells[0], title: cells[1]}); 
                             }
                         }
-                        $("#TitleList").append(table);
+                        $("#TitleList.ui-sortable").append(table);
+						$(".inputCont tbody tr").eq(2).remove();
+						$("#choose").removeClass('hide');
+						$("#upload").addClass('hide');
                     }
                     reader.readAsText($("#fileUpload")[0].files[0]);
                 } else {
@@ -2256,11 +2319,7 @@ $("#upload").bind("click", function () {
                 alert("Please upload a valid CSV file.");
             }
         });
-$("#fileUpload").change(function() {
-  filename = this.files[0].name
-  console.log(filename);
-});
-
+		
 //EXPORT TABLE TO CSV
 $("#export").on('click', function() {
 		var data = "";
