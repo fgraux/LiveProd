@@ -935,28 +935,28 @@ statement = JSON.stringify(Truc);
 
 			//AUX1 XKEYS ACTIONS
 				if (a == '4' || a == '12' || a == '20' || a == '28' || a == '36' || a == '44' || a == '52' || a == '60') {
-					KeyChange(a, 'aux1', eval(cname), function(err, response){
+					KeyChange(a, 'aux1', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//AUX2 XKEYS ACTIONS
 				if (a == '5' || a == '13' || a == '21' || a == '29' || a == '37' || a == '45' || a == '53' || a == '61') {
-					KeyChange(a, 'aux2', eval(cname), function(err, response){
+					KeyChange(a, 'aux2', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//PROGRAM XKEYS ACTIONS
 				if (a == '6' || a == '14' || a == '22' || a == '30' || a == '38' || a == '46' || a == '54' || a == '62') {
-					KeyChange(a, 'pgm', eval(cname), function(err, response){
+					KeyChange(a, 'pgm', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//PREVIEW XKEYS ACTIONS
 				if (a == '7' || a == '15' || a == '23' || a == '31' || a == '39' || a == '47' || a == '55' || a == '63') {
-					KeyChange(a, 'pvw', eval(cname), function(err, response){
+					KeyChange(a, 'pvw', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
@@ -1029,21 +1029,6 @@ statement = JSON.stringify(Truc);
 	function transButton(a,callback)	{ //MIX & CUT SWITCH FROM XKEYS OR VIRTUAL PANEL
 		pgm_active = parseInt(pgm_active) + 1;
 		pvw_active = parseInt(pvw_active) - 1;
-			if (connectedXKeys.length) {
-				for (i = 6; i < 63; i=i+8){
-					Xkeys80_1.setBacklight(i, true); //blue light POWER ON all PGM line buttons  
-					Xkeys80_1.setBacklight(i, false, true);//red light POWER OFF all line buttons
-					}
-				for (i = 7; i < 64; i=i+8){
-					Xkeys80_1.setBacklight(i, true); //blue light POWER ON all PVW line buttons  
-					Xkeys80_1.setBacklight(i, false, true);//red light POWER OFF all line buttons
-					}
-				Xkeys80_1.setBacklight(pvw_active, true, true); //red light POWER ON button that goes from PVW to PGM
-				Xkeys80_1.setBacklight(pvw_active, false);//blue light POWER OFF button that goes from PVW to PGM
-				Xkeys80_1.setBacklight(pgm_active, true, true); //red light POWER ON button that goes from PGM to PVW
-				Xkeys80_1.setBacklight(pgm_active, false);//blue light POWER OFF button that goes from PGM to PVW
-			} else { console.log("Could not find any connected X-keys panels.") };				
-			
 			//CUT
 				if (a === '71' ){	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
 									obs.send('SetCurrentScene', { 'scene-name': preview  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
@@ -1068,14 +1053,9 @@ statement = JSON.stringify(Truc);
 												tempo = pgm_active;
 												pgm_active = pad2(pvw_active);
 												pvw_active = pad2(tempo);
-													if (pgm_active == '54'){ IOSendData(['web'], 'sClick', 'vtr1_box'); }
-													if (pgm_active == '62'){ IOSendData(['web'], 'sClick', 'vtr2_box'); }
-												DBupdateState('pgm_active',pgm_active,program,'','','','');
-												DBupdateState('pvw_active',pvw_active,preview,'','','','');		
 												}, 600);
 										} else { console.log("Could not find any connected X-keys panels.") };
-								}
-						
+								}						
 	}				
  
 // OSC PROTOCOL
@@ -1196,7 +1176,7 @@ statement = JSON.stringify(Truc);
 			obsAux_detect(auxAddr,function(err, response){ // START OBS AUX Connector
 				if(!err){ term(response);
 				} else {
-					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W OBSCONNEC ^ \tDisconnected from OBS aux instance"); }
+					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W AUXCONNEC ^ \tDisconnected from OBS aux instance"); }
 				}
 			});		
 		}			 
@@ -1307,11 +1287,11 @@ statement = JSON.stringify(Truc);
 				} else if (type == 'suppr'){DBdropPlist(plist)}
 				DPlaylistPrint(plist);
 		}
-		if(uiActionReceived.action == 'XKeySend') {		//RECEIVES ACTION FROM THE WEBAPP VIRTUAL XKEYS PANEL
+		if(uiActionReceived.action == 'VirtualKey') {		//RECEIVES ACTION FROM THE WEBAPP VIRTUAL XKEYS PANEL
 			var tKey = uiActionReceived.arg1;
 			var tline = uiActionReceived.arg2;
 			var tName = uiActionReceived.arg3;
-			KeyChange(tKey, tline, tName, function(err, response){
+			KeyChange(tKey, tline, tName, 'virtual', function(err, response){
 				if(!err){ term(response); }
 			});
 		}
@@ -1588,9 +1568,8 @@ statement = JSON.stringify(Truc);
 	}
 
 //VIDEO SWITCHING FUNCTION
-	function KeyChange(a,b,c,callback){			
+	function KeyChange(a,b,c,d,callback){			
 		obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
-
 		if (b == 'aux1'){
 			obsAux.send('SetCurrentScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tNo OBS Aux instance actually connected!")});
 			aux1_active = a;
@@ -1631,25 +1610,25 @@ statement = JSON.stringify(Truc);
 					if (program == xkey07) {		
 						Xkeys80_1.setBacklight(6, true, true); //red light POWER ON selected button
 						Xkeys80_1.setBacklight(6, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys06');
+						IOSendData(['web'], 'rClick', 'xkeys06');//idem for the virtual Keyboard
 						DBupdateState('pgm_active','06',program,'','','');
 						pgm_active = '06';}
 					if (program == xkey15) {		
 						Xkeys80_1.setBacklight(14, true, true); //red light POWER ON selected button
 						Xkeys80_1.setBacklight(14, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys14');
+						IOSendData(['web'], 'rClick', 'xkeys14');//idem for the virtual Keyboard
 						DBupdateState('pgm_active','14',program,'','','','');
 						pgm_active = '14';}
 					if (program == xkey23) {		
 						Xkeys80_1.setBacklight(22, true, true); //red light POWER ON selected button
 						Xkeys80_1.setBacklight(22, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys22');
+						IOSendData(['web'], 'rClick', 'xkeys22');//idem for the virtual Keyboard
 						DBupdateState('pgm_active','22',program,'','','','');
 						pgm_active = '22';}
 					if (program == xkey31) {		
 						Xkeys80_1.setBacklight(30, true, true); //red light POWER ON selected button
 						Xkeys80_1.setBacklight(30, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys30');
+						IOSendData(['web'], 'rClick', 'xkeys30');//idem for the virtual Keyboard
 						DBupdateState('pgm_active','30',program,'','','','');
 						pgm_active = '30';} 
 					if (program == xkey39) {		
