@@ -1,5 +1,5 @@
 // SOCKETIO CONNECT
-var socket = io.connect('//replace_with_your_ip:7777', {
+var socket = io.connect('//192.168.0.155:7777', {
     query: {
         room: 'web'
     }
@@ -2123,6 +2123,8 @@ butSet.on('click', function(e){
 var butCon = $('#Konnek');
 butCon.on('click', function(e){
 	socket.emit('UI|action', {action: 'CCGget'});
+	socket.emit('UI|action', {action: 'OBSget'});
+	socket.emit('UI|action', {action: 'AUXget'});
 	socket.emit('UI|action', {action: 'xkeysget'});     
 	socket.emit('UI|action', {action: 'tempGet' });
 	socket.emit('UI|action', {action: 'titleGet' });
@@ -2134,6 +2136,8 @@ butCon.on('click', function(e){
 // on load pages Action
 function ignition(){
 	socket.emit('UI|action', {action: 'CCGget'});
+	socket.emit('UI|action', {action: 'OBSget'});
+	socket.emit('UI|action', {action: 'AUXget'});
 	socket.emit('UI|action', {action: 'xkeysget'});     
 	socket.emit('UI|action', {action: 'tempGet' });
 	socket.emit('UI|action', {action: 'titleGet' });
@@ -2346,7 +2350,7 @@ $("#XkeysSetAux1").on('click', '.Xkeysbut', function()  {
 	$(".aux1").removeClass("red");	
 	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
-	socket.emit('UI|action', {action: 'XKeySend' , arg1: changedKey, arg2: 'aux1', arg3: obsaux_1});     
+	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'aux1', arg3: obsaux_1});     
 });
 
 $("#XkeysSetAux2").on('click', '.Xkeysbut', function()  {
@@ -2354,7 +2358,7 @@ $("#XkeysSetAux2").on('click', '.Xkeysbut', function()  {
 	$(".aux2").removeClass("red");	
 	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
-	socket.emit('UI|action', {action: 'XKeySend' , arg1: changedKey, arg2: 'aux2', arg3:obsaux_2});  
+	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'aux2', arg3:obsaux_2});  
 });
 
 $("#XkeysSetPGM").on('click', '.Xkeysbut', function()  {
@@ -2362,7 +2366,7 @@ $("#XkeysSetPGM").on('click', '.Xkeysbut', function()  {
 	$(".pgm").removeClass("red");	
 	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
-	socket.emit('UI|action', {action: 'XKeySend' , arg1: changedKey, arg2: 'pgm', arg3: obspgm});
+	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'pgm', arg3: obspgm});
 });
 
 $("#XkeysSetPVW").on('click', '.Xkeysbut', function()  {
@@ -2370,7 +2374,7 @@ $("#XkeysSetPVW").on('click', '.Xkeysbut', function()  {
 	$(".pvw").removeClass("red");	
 	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
-	socket.emit('UI|action', {action: 'XKeySend' , arg1: changedKey, arg2: 'pvw', arg3: obspvw});     
+	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'pvw', arg3: obspvw});     
 });
 
 //VIRTUAL KEYBOARD DVE & BUG
