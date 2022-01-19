@@ -1,4 +1,5 @@
-# LiveProd
+# LiveProd![LiveProd](https://user-images.githubusercontent.com/33838534/150188937-3cc607f8-6647-4f15-95e9-ce03e03b67f4.png)
+
 A platform that blinds together different professional video tools, such as video switchers, video servers, CG servers, industrial keyboards, camcorders… in a unique IP control environment, using Node.js architecture.
 
 LIVEPROD actually includes gateways to CasparCG, OBS Studio, XKeys keyboards, NDI protocol… Mostly cost effective or open sourced materials, as well as Windows, Linux, Android & Apple devices. BlackMagic Atem can easily be integrated too. LiveProd uses several Javascript library such as casparcg-connection & xkeys from SuperFly.tv or obs-websocket-js.
