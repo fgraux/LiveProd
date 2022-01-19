@@ -1,4 +1,4 @@
-# LiveProd![LiveProd](https://user-images.githubusercontent.com/33838534/150188937-3cc607f8-6647-4f15-95e9-ce03e03b67f4.png)
+# LiveProd![LiveProd min](https://user-images.githubusercontent.com/33838534/150189219-42d6e18c-7cab-4c44-bde5-2e50a02ce68b.png)
 
 A platform that blinds together different professional video tools, such as video switchers, video servers, CG servers, industrial keyboards, camcorders… in a unique IP control environment, using Node.js architecture.
 
