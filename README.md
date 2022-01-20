@@ -39,7 +39,7 @@ CONTENT
 
 	  • Mongodb database backup (configured as a standalone server : all components are set on localhost)
 
-	  • Casparcg config file incl. NDI config (one NDI channel include fill+key, very useful for dve)
+	  • Casparcg config file incl. NDI config (2 NDI channel include fill+key, very useful for dve)
 
 	  • web app Client node express html 5 folder
 
@@ -49,7 +49,9 @@ INSTALL
 	
 	• Use the liveprodb archive folder to Restore the database with a mongorestore command (you may need to sudo while using ubuntu)
 	
-	• Start OBS & Caspar CG.
+	• Modify the CasparCG config file with your own specs then Start CasparCG server & scanner.
+	
+	• Start OBS and add the scenes & sources to complete CasparCG configuration (Bugs & DVE would be sources added to all camera scenes...)
 	
 	• Go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
 	
