@@ -22,8 +22,12 @@ LiveProd Client side can be an single global interface for any device, can be fu
 	  • Javascript + Node Js Commands Engineered.
 	 
 DESIGNABLE
-As LiveProd uses web techno (html5, javascript & css), it is totally free to design : Please find (in "Public/stylesheets/" folder) an uploaded alternative css that shows another presentation of the keyboard close to BMD Atem Design. The file "LiveProdStyle.css" is the standard one relative to the picture you can see
 
+As LiveProd uses web techno (html5, javascript & css), it is totally free to design : Please find (in "Public/stylesheets/" folder) an uploaded alternative css that shows another presentation of the keyboard close to BMD Atem Design. 
+
+	  • The file "LiveProdStyle.css" is the standard one relative to the picture you can see below.
+	  • The file "LiveProdStyleAtem.css" is the Atem style modified one.
+	  • The file "LiveProdKeyboardStyle.css" is an Atem style modified for the page that only displays the keyboard.
 
 OPENED & SHARED
 
