@@ -161,7 +161,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Xkeys 80 touch industrial builded keyboard ![xkeys](https://user-images.githubusercontent.com/33838534/149340530-4b16dc23-48fa-419b-b29d-9b65469825de.jpg)
 	• Both linked to obs & casparcg through sdk ![virtualkeyboard](https://user-images.githubusercontent.com/33838534/149344923-6b781489-3407-4b35-a291-d0b48fc29480.PNG)
-	![image](https://user-images.githubusercontent.com/33838534/150516473-2e65171b-eaf0-48a3-8797-bd050cccb061.png)
+	• The alternative Atem style design ![image](https://user-images.githubusercontent.com/33838534/150516473-2e65171b-eaf0-48a3-8797-bd050cccb061.png)
 	
 	• Fully customisable for differents needs	
 ![integrated interface](https://user-images.githubusercontent.com/33838534/149331778-197aa174-1117-4d35-bb37-bd79d9441697.png)
