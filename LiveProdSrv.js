@@ -248,14 +248,22 @@ let connectedXKeys;
 	app.get('/', cors(corsOptions), function(req, res, next) {
 	  res.render('index', { title: 'LiveProd' });
 	});
+
 // GET KEYBOARD PAGE
 	app.get('/keyboard', cors(corsOptions), function(req, res, next) {
 	  res.render('keyboard', { title: 'LiveProdKeyboard' });
-	});
+	});	
+
+// GET KEYBOARD PAGE WITH ATEM STYLE
+	app.get('/keyboard2', cors(corsOptions), function(req, res, next) {
+	  res.render('keyboard_AtemStyle', { title: 'LiveProdKeyboard' });
+	});	
+
 // GET CLOCK PAGE
 	app.get('/clock', cors(corsOptions), function(req, res, next) {
 	  res.render('clock', { title: 'LiveProdClock' });
 	});
+
 // GET TALLY PAGE
 	app.get('/tally', cors(corsOptions), function(req, res, next) {
 	  res.render('tally', { title: 'LiveProdTally' });
