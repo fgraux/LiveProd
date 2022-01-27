@@ -13,7 +13,7 @@ UNIVERSAL
 
 FLEXIBLE 
 
-LiveProd Client side can be an single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : no issue, as all the commands are sync with node socket.
+LiveProd Client side can be used as a single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : without any issue, as all the commands are sync with node socket.
 
 	  • Modular, Scalable & Sync.
   
