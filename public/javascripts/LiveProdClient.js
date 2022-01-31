@@ -915,7 +915,7 @@ function generateXKEYSTable(data){
 	$('#xkeys05').addClass('red');
 	
 	//PGM KEYBOARD LINE CONFIG
-	$('#XkeysSetPGM tr').html('<td class="head"><h2>PROGRAM</h2></td>');
+	$('#XkeysSetPGM tr').html('<td class="head"><h2>PGM</h2></td>');
 	var PGMdata = [];
 	for (i = 6; i < 63; i=i+8){ PGMdata.push(data[i]);}
 		$.each(PGMdata, function(index, item) {//index is the index & item is the field
@@ -925,7 +925,7 @@ function generateXKEYSTable(data){
 	$('#xkeys06').addClass('red');
 	
 	//PVW KEYBOARD LINE CONFIG
-	$('#XkeysSetPVW tr').html('<td class="head"><h2>PREVIEW</h2></td>');
+	$('#XkeysSetPVW tr').html('<td class="head"><h2>PVW</h2></td>');
 	var PVWdata = [];
 	for (i = 7; i < 64; i=i+8){ PVWdata.push(data[i]);}
 		$.each(PVWdata, function(index, item) {//index is the index & item is the field
