@@ -248,22 +248,25 @@ let connectedXKeys;
 	app.get('/', cors(corsOptions), function(req, res, next) {
 	  res.render('index', { title: 'LiveProd' });
 	});
-
 // GET KEYBOARD PAGE
 	app.get('/keyboard', cors(corsOptions), function(req, res, next) {
 	  res.render('keyboard', { title: 'LiveProdKeyboard' });
-	});	
-
+	});
+	
 // GET KEYBOARD PAGE WITH ATEM STYLE
 	app.get('/keyboard2', cors(corsOptions), function(req, res, next) {
 	  res.render('keyboard_AtemStyle', { title: 'LiveProdKeyboard' });
 	});	
-
+	
+// GET KEYBOARD PAGE WITH ATEM STYLE
+	app.get('/keyboard3', cors(corsOptions), function(req, res, next) {
+	  res.render('keyboard_Atem_min', { title: 'LiveProdKeyboard' });
+	});	
+	
 // GET CLOCK PAGE
 	app.get('/clock', cors(corsOptions), function(req, res, next) {
 	  res.render('clock', { title: 'LiveProdClock' });
 	});
-
 // GET TALLY PAGE
 	app.get('/tally', cors(corsOptions), function(req, res, next) {
 	  res.render('tally', { title: 'LiveProdTally' });
@@ -278,7 +281,7 @@ module.exports = app;
 
 //MONGO DATABASE
 	const MongoClient = require("mongodb").MongoClient;
-	const  url = 'mongodb://localhost:27017';
+	const  url = 'mongodb://0.0.0.0:27017';
 	const client = new MongoClient(url, { useUnifiedTopology: true }, { useNewUrlParser: true }, { writeConcern: true });
 	client.connect();    
 	const database = client.db("liveprodb");
@@ -2101,6 +2104,9 @@ statement = JSON.stringify(Truc);
 	function ccg_LoadMedia(ccgChannel, ccgLayer, file, options, callback){
 		if(CasparCG_Connection != undefined){
 			CasparCG_Connection.load(ccgChannel, ccgLayer, file, options).catch(console.error);
+			var calling = 'ADD '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
+			var command = new AMCP.CustomCommand(calling);
+			CasparCG_Connection.do(command).catch(console.error).catch(console.error);
 			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPAR CG ^ \tMedia Loaded:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+file+' '+options)
 		}
 	}
@@ -2126,7 +2132,7 @@ statement = JSON.stringify(Truc);
 		if(CasparCG_Connection != undefined){
 			var calling = 'CALL '+ccgChannel+'-'+ccgLayer+' SEEK '+options;
 			var command = new AMCP.CustomCommand(calling);
-			CasparCG_Connection.do(command).catch(console.error).catch(console.error);
+			CasparCG_Connection.do(command).catch(console.error);
 			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPAR CG ^ \tMedia seeked:\t\t[Video]\t\ "+calling)
 		}
 	}
@@ -2161,6 +2167,9 @@ statement = JSON.stringify(Truc);
 	function ccg_StopMedia(ccgChannel, ccgLayer, callback){
 		if(CasparCG_Connection != undefined){
 			CasparCG_Connection.stop(ccgChannel, ccgLayer).catch(console.error);
+			var calling = 'REMOVE  '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
+			var command = new AMCP.CustomCommand(calling);
+			CasparCG_Connection.do(command).catch(console.error);
 			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPAR CG ^ \tMedia Stopped:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer)
 		}
 	}
