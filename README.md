@@ -49,8 +49,13 @@ As LiveProd is a nodejs application, that communicates with tools using websocke
 
 	  • You can easily use LiveProd to command OBS and CCG over the internet, while setting up a port redirection, a vpn or a ssl tunnel.
 	  
-	  • While controling OBS, you can stream OBS multiview over the internet, setting up a ffmpeg udp stream for instance.
+	  • While controling OBS, you can stream OBS multiview over the internet, setting up a ffmpeg udp stream on distant server for instance:
 	  
+		o Windows screen stream cmd: "ffmpeg -f dshow -i video="UScreenCapture" -framerate 5 -video_size 1366x768 -i :0.0 -f pulse -i default -c:v libx264 -b:v 600k -maxrate 800k -bufsize 50k -g 60 -vf format=yuv420p -an -tune zerolatency -f mpegts udp://your_ip:your_port"
+		o OSX screen stream cmd: "ffmpeg -f avfoundation -i "<screen device index>:<audio device index>" -framerate 5 -video_size 1366x768 -i :0.0 -f pulse -i default -c:v libx264 -b:v 600k -maxrate 800k -bufsize 50k -g 60 -vf format=yuv420p -an -tune zerolatency -f mpegts udp://your_ip:your_port"
+		o Ubuntu screen stream cmd: "ffmpeg -f x11grab -framerate 5 -video_size 1366x768 -i :0.0 -f pulse -i default -c:v libx264 -b:v 600k -maxrate 800k -bufsize 50k -g 60 -vf format=yuv420p -an -tune zerolatency -f mpegts udp://your_ip:your_port"		
+		o On the controling device, just use simple cmd: ffplay udp://your_ip:your_port"
+		
 CONTENT 
 
 	  • Server side js file, with dependency
