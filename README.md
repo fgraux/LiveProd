@@ -43,6 +43,14 @@ LiveProd is a html5 – javascript – CSS script bundle :
 
 	  • We can offer services : installing, configuring and developing, creating templates... for a standard fee, but you can also do it by yourselves.
 
+REMOTABLE
+
+As LiveProd is a nodejs application, that communicates with tools using websocket commands, it is totally possible to use it to control distant tools over internet.
+
+	  • You can easily use LiveProd to command OBS and CCG over the internet, while setting up a port redirection, a vpn or a ssl tunnel.
+	  
+	  • While controling OBS, you can stream OBS multiview over the internet, setting up a ffmpeg udp stream for instance.
+	  
 CONTENT 
 
 	  • Server side js file, with dependency
