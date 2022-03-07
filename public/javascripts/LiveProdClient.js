@@ -764,16 +764,6 @@ socket.on('obslist',function(obsList) {
 	generateTable(obsL,'#OBSList','obsTab');
 });
 
-// SIO || BUTTONS CLASS RECEIVED
-socket.on('rClick',function(a) {
-	var b = $('#'+a);
-	if (a == 'xkeys04' || a == 'xkeys12' || a == 'xkeys20' || a == 'xkeys28' || a == 'xkeys36' || a == 'xkeys44' || a == 'xkeys52' || a == 'xkeys60') { $("#XkeysSetAux1 .aux1").removeClass("red");}
-	if (a == 'xkeys05' || a == 'xkeys13' || a == 'xkeys21' || a == 'xkeys29' || a == 'xkeys37' || a == 'xkeys45' || a == 'xkeys53' || a == 'xkeys61') { $("#XkeysSetAux2 .aux2").removeClass("red");}
-	if (a == 'xkeys06' || a == 'xkeys14' || a == 'xkeys22' || a == 'xkeys30' || a == 'xkeys38' || a == 'xkeys46' || a == 'xkeys54' || a == 'xkeys62') { $("#XkeysSetPGM .pgm").removeClass("red");}
-	if (a == 'xkeys07' || a == 'xkeys15' || a == 'xkeys23' || a == 'xkeys31' || a == 'xkeys39' || a == 'xkeys47' || a == 'xkeys55' || a == 'xkeys63') { $("#XkeysSetPVW .pvw").removeClass("red");}
-	b.addClass("red");
-});
-
 // SIO || BOXES (VTR & DVE) CLICK RECEIVED 
 socket.on('sClick',function(a) {
 	var targ = $('#'+a).find('.play');
@@ -856,9 +846,8 @@ function generateXKEYSTable(data){
 	var Line1data = [];
 	for (i = 0; i < 73; i=i+8){ Line1data.push(data[i]);}
 		$.each(Line1data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine1 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine1 tr');
 		});
-	$('#xkeys00').addClass('red');
 	$('#xkeys64').addClass('dveclass');
 	$('#xkeys72').addClass('dveclass');
 	
@@ -867,9 +856,8 @@ function generateXKEYSTable(data){
 	var Line2data = [];
 	for (i = 1; i < 74; i=i+8){ Line2data.push(data[i]);}
 		$.each(Line2data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine2 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine2 tr');
 		});
-	$('#xkeys01').addClass('red');
 	$('#xkeys65').addClass('dveclass');
 	$('#xkeys73').addClass('dveclass');
 	
@@ -878,9 +866,8 @@ function generateXKEYSTable(data){
 	var Line3data = [];
 	for (i = 2; i < 75; i=i+8){ Line3data.push(data[i]);}
 		$.each(Line3data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine3 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine3 tr');
 		});
-	$('#xkeys02').addClass('red');
 	$('#xkeys66').addClass('dveclass');
 	$('#xkeys74').addClass('dveclass');
 	
@@ -889,50 +876,45 @@ function generateXKEYSTable(data){
 	var Line4data = [];
 	for (i = 3; i < 60; i=i+8){ Line4data.push(data[i]);}
 		$.each(Line4data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine4 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysLine4 tr');
 		});
-	$('#XkeysLine4 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="bug1_box_key" name="bug1"><h2 class="sTemp Xbut">68</h2><div>BUG 1</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="bug2_box_key" name="bug2"><h2 class="sTemp Xbut">76</h2><div>BUG 2</div></div></td>')
-	$('#xkeys03').addClass('red');
+	$('#XkeysLine4 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="bug1_box_key" name="bug1"><h2 class="sTemp Xbut">68</h2><div>BUG 1</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="bug2_box_key" name="bug2"><h2 class="sTemp Xbut">76</h2><div>BUG 2</div></div></td>');
 	
 	//AUX1 KEYBOARD LINE CONFIG
 	$('#XkeysSetAux1 tr').html('<td class="head"><h2>AUX 1</h2></td>');
 	var Aux1data = [];
 	for (i = 4; i < 61; i=i+8){ Aux1data.push(data[i]);}
 		$.each(Aux1data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetAux1 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux1" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetAux1 tr');
 		});
-	$('#XkeysSetAux1 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="dve1_box_key" name="dve1"><h2 class="sTemp Xbut">69</h2><div>DVE 1</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="dve2_box_key" name="dve2"><h2 class="sTemp Xbut">77</h2><div>DVE 2</div></div></td>')
-	$('#xkeys04').addClass('red');
+	$('#XkeysSetAux1 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="dve1_box_key" name="dve1"><h2 class="sTemp Xbut">69</h2><div>DVE 1</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="dve2_box_key" name="dve2"><h2 class="sTemp Xbut">77</h2><div>DVE 2</div></div></td>');
 	
 	//AUX2 KEYBOARD LINE CONFIG
 	$('#XkeysSetAux2 tr').html('<td class="head"><h2>AUX 2</h2></td>');
 	var Aux2data = [];
 	for (i = 5; i < 62; i=i+8){ Aux2data.push(data[i]);}
 		$.each(Aux2data, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux2" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetAux2 tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut aux2" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetAux2 tr');
 		});
-	$('#XkeysSetAux2 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="dve3_box_key" name="dve3"><h2 class="sTemp Xbut">70</h2><div>DVE 3</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="dve4_box_key" name="dve4"><h2 class="sTemp Xbut">78</h2><div>DVE 4</div></div></td>')
-	$('#xkeys05').addClass('red');
+	$('#XkeysSetAux2 tr').append('<td class="nondrop"><div class="XkeysAction dveclass" id="dve3_box_key" name="dve3"><h2 class="sTemp Xbut">70</h2><div>DVE 3</div></div></td><td class="nondrop"><div class="XkeysAction dveclass" id="dve4_box_key" name="dve4"><h2 class="sTemp Xbut">78</h2><div>DVE 4</div></div></td>');
 	
 	//PGM KEYBOARD LINE CONFIG
 	$('#XkeysSetPGM tr').html('<td class="head"><h2>PGM</h2></td>');
 	var PGMdata = [];
 	for (i = 6; i < 63; i=i+8){ PGMdata.push(data[i]);}
 		$.each(PGMdata, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut pgm" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetPGM tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut pgm" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetPGM tr');
 		});
-	$('#XkeysSetPGM tr').append('<td class="nondrop"><div class="XkeysAction AutoButton"><h2 class="sTemp Xbut">71 - 79</h2><div>AUTO</div></div></td>')
-	$('#xkeys06').addClass('red');
+	$('#XkeysSetPGM tr').append('<td class="nondrop"><div class="XkeysAction AutoButton"><h2 class="sTemp Xbut">71 - 79</h2><div>AUTO</div></div></td>');
 	
 	//PVW KEYBOARD LINE CONFIG
 	$('#XkeysSetPVW tr').html('<td class="head"><h2>PVW</h2></td>');
 	var PVWdata = [];
 	for (i = 7; i < 64; i=i+8){ PVWdata.push(data[i]);}
 		$.each(PVWdata, function(index, item) {//index is the index & item is the field
-	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut pvw" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid+1)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetPVW tr');
+	        var $td = $('<td xkeysid="'+item.xkid+'" scene="'+item.scenename+'"><div id="xkeys'+item.xkid+'" class="Xkeysbut pvw" ScID="'+item.xkid+'" ScName="'+item.scenename+'"><h2 class="sTemp Xbut">'+(+item.xkid)+'</h2><div>'+item.scenename+'</div></div></td>').appendTo('#XkeysSetPVW tr');
 		});
-	$('#XkeysSetPVW tr').append('<td class="nondrop"><div class="XkeysAction CutButton"><h2 class="sTemp Xbut">72 - 80</h2><div>CUT</div></div></td>')
-	$('#xkeys07').addClass('red');
+	$('#XkeysSetPVW tr').append('<td class="nondrop"><div class="XkeysAction CutButton"><h2 class="sTemp Xbut">72 - 80</h2><div>CUT</div></div></td>');
 	
 }
 	
@@ -2030,7 +2012,6 @@ $(document).on('click', '#tempAction', function(e){
 		} else {
 		data = '<templateData><componentData id=\"f0\"><data id=\"text\" value=\"'+name+'\"/></componentData><componentData id=\"f1\"><data id=\"text\" value=\"'+title+'\"/></componentData></templateData>' }
 	if (action == 'cg') {
-		socket.emit('UI|action', {channel: channel, layer: layer, action: action , template: template , data: data , device: device, dve:'true'});
 		$(this).attr('action','nocg');
 		$(this).html('<i class="fas fa-eject"></i> Off Air');
 		$(this).addClass('red');
@@ -2039,18 +2020,16 @@ $(document).on('click', '#tempAction', function(e){
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
 		state = 'nocg';
-		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});
-		} 
+		socket.emit('UI|action', {channel: channel, layer: layer, action: action , template: template , data: data , device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});
+		};
 	if (action == 'up') {
-		socket.emit('UI|action', {channel: channel, layer: layer, action: action, data: data , device: device, dve:'true'});	
 		divclass = player.find('.play').attr('class');
 		content: player.find('.play').html();
 		content = content.replace(/'/g, "\\'");	
 		state = player.find('.play').attr('action');
-		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});
-	};   
+		socket.emit('UI|action', {channel: channel, layer: layer, action: action, data: data , device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});	
+		};   
 	if (action == 'nocg') {
-		socket.emit('UI|action', {channel: channel, layer: layer, action: action, device: device, dve:'false'});
 		$(this).attr('action','cg');
 		$(this).html('<i class="fas fa-play-circle"></i> On Air');
 		$(this).removeClass('red');	
@@ -2059,10 +2038,8 @@ $(document).on('click', '#tempAction', function(e){
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
 		state = 'cg';
-		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});
-	}
-	
-		
+		socket.emit('UI|action', {channel: channel, layer: layer, action: action, device: device, display: content, file: name, state: state, thumb: title, divclass: divclass});
+		};	
 });
 
 //Click BUG buttons
@@ -2076,7 +2053,6 @@ $(document).on('click', '#bugAction', function(e){
 	var	device = player.attr('id');
 	var	keyboardBut = device+'_key';
 	if (action == 'bug') {
-		socket.emit('UI|action', {action: 'bugload' , channel: channel, layer: layer, file: name, device: device});
 		$(this).attr('action','nobug');
 		$(this).html('<i class="fas fa-eject"></i> Off Air');
 		$(this).addClass('red');
@@ -2085,10 +2061,9 @@ $(document).on('click', '#bugAction', function(e){
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
 		state = 'nobug';
-		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: thumb, divclass: divclass});
+		socket.emit('UI|action', {action: 'bugload' , channel: channel, layer: layer, file: name, device: device, display: content, file: name, state: state, thumb: thumb, divclass: divclass});
 		} 
 	if (action == 'nobug') {
-		socket.emit('UI|action', {action: 'bugstop' , channel: channel, layer: layer, device: device});
 		$(this).attr('action','bug');
 		$(this).html('<i class="fas fa-play-circle"></i> On Air');
 		$(this).removeClass('red');	
@@ -2097,7 +2072,7 @@ $(document).on('click', '#bugAction', function(e){
 		content = content.replace(/'/g, "\\'");	
 		divclass = $(this).attr('class');
 		state = 'bug';
-		socket.emit('UI|action', {action: 'saveState', device: device, display: content, file: name, state: state, thumb: '/images/CH1.png', divclass: divclass});
+		socket.emit('UI|action', {action: 'bugstop' , channel: channel, layer: layer, device: device, display: content, file: name, state: state, thumb: '/images/CH1.png', divclass: divclass});
 	}
 	
 		
@@ -2122,15 +2097,15 @@ butSet.on('click', function(e){
 
 var butCon = $('#Konnek');
 butCon.on('click', function(e){
-	socket.emit('UI|action', {action: 'CCGget'});
-	socket.emit('UI|action', {action: 'OBSget'});
-	socket.emit('UI|action', {action: 'AUXget'});
-	socket.emit('UI|action', {action: 'xkeysget'});     
-	socket.emit('UI|action', {action: 'tempGet' });
-	socket.emit('UI|action', {action: 'titleGet' });
-	socket.emit('UI|action', {action: 'plistGet', plist: 'plist1' });
-	socket.emit('UI|action', {action: 'plistGet', plist: 'plist2' });
-	socket.emit('UI|action', {action: 'StateGet'});
+	// socket.emit('UI|action', {action: 'CCGget'});
+	// socket.emit('UI|action', {action: 'OBSget'});
+	// socket.emit('UI|action', {action: 'AUXget'});
+	// socket.emit('UI|action', {action: 'xkeysget'});     
+	// socket.emit('UI|action', {action: 'tempGet' });
+	// socket.emit('UI|action', {action: 'titleGet' });
+	// socket.emit('UI|action', {action: 'plistGet', plist: 'plist1' });
+	// socket.emit('UI|action', {action: 'plistGet', plist: 'plist2' });
+	// socket.emit('UI|action', {action: 'StateGet'});
 });
 
 // on load pages Action
@@ -2171,8 +2146,8 @@ $("#addSRV").on('click', function()  {
 
 //Change OBS-Main on db and socket
 $("#addObs").on('click', function()  {
-	obsserver = document.getElementById('obsserver').value;
-	obsport = document.getElementById('obsport').value;
+	obsserver = $("#obsserver").val();
+	obsport = $("#obsport").val();
 	socket.emit('UI|action', {action: 'OBSsave' , obssrv: obsserver, obsport: obsport});     
 });
 
@@ -2347,32 +2322,24 @@ $("#export").on('click', function() {
 //VIRTUAL KEYBOARD COMMUTS	
 $("#XkeysSetAux1").on('click', '.Xkeysbut', function()  {
 	obsaux_1 = $(this).attr('scname');
-	$(".aux1").removeClass("red");	
-	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
 	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'aux1', arg3: obsaux_1});     
 });
 
 $("#XkeysSetAux2").on('click', '.Xkeysbut', function()  {
 	obsaux_2 = $(this).attr('scname');
-	$(".aux2").removeClass("red");	
-	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
 	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'aux2', arg3:obsaux_2});  
 });
 
 $("#XkeysSetPGM").on('click', '.Xkeysbut', function()  {
 	obspgm = $(this).attr('scname');
-	$(".pgm").removeClass("red");	
-	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
 	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'pgm', arg3: obspgm});
 });
 
 $("#XkeysSetPVW").on('click', '.Xkeysbut', function()  {
 	obspvw = $(this).attr('scname');
-	$(".pvw").removeClass("red");	
-	$(this).addClass("red");
 	var changedKey = $(this).attr("scid").toString();
 	socket.emit('UI|action', {action: 'VirtualKey' , arg1: changedKey, arg2: 'pvw', arg3: obspvw});     
 });
@@ -2386,9 +2353,9 @@ $(".card-xkeys").on('click', '.dveclass', function()  {
 
 //VIRTUAL KEYBOARD TRANSITIONS
 $("#XkeysSetPGM").on('click', '.AutoButton', function()  {
-	socket.emit('UI|action', {action: 'transKey' , arg: '70'});     
+	socket.emit('UI|action', {action: 'transKey' , arg: '71'});     
 });
 
 $("#XkeysSetPVW").on('click', '.CutButton', function()  {
-	socket.emit('UI|action', {action: 'transKey' , arg: '71'});     
+	socket.emit('UI|action', {action: 'transKey' , arg: '72'});     
 });
