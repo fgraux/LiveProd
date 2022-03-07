@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  background-color: #333;
+  background-color: #31363b;
   color: #ddd;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -25,8 +25,10 @@ body {
     color: #f8f9fa!important;
 }
 
-.commut, .hide {display:none;}
+.commut, .hide {display:none!important;}
+
 .row .sTemp { margin-left: 20px;}
+
 #Konnek{ 
 	width:100%;
 	}
@@ -116,15 +118,70 @@ td {
     min-width:30px;
 	font-weight: bolder;}
 	
-#uiAction, #tempAction, #bugAction, #vtr1_box .loop, #vtr2_box .loop,#plAction {
+#uiAction, #tempAction, #plAction {
 	padding: 9px 5px;
-    border: 1px solid rgb(175, 176, 183)!important;
-    border-radius: 5px;
-    background: #323131;
-    box-shadow: 1px 1px 1px grey, -1px -1px 2px white;
-    color: #d2cccc;
+	box-sizing: border-box;
+	margin: 0 0.3rem 0 0;
+	position: relative;
+	box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset;
+	border-radius: 5px;
+	display: inline-table;
+	height: 4rem;
+	line-height: 1.4rem;
+	color: #000;
+	font-weight: bold;
+	font-size: 1rem;
+	text-align: center;
+	vertical-align: middle;
 	cursor: pointer;
+    z-index: 0;
+	background-color: rgba(0, 0, 0, 0.2);
 }	
+	
+#bugAction, #vtr1_box .loop, #vtr2_box .loop, #tempAction.sTemp {
+	padding: 9px 5px;
+	box-sizing: border-box;
+	margin: 0 0.3rem 0 1rem;
+	position: relative;
+	box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset;
+	border-radius: 5px;
+	display: inline-table;
+	height: 4rem;
+	line-height: 1.4rem;
+	color: #000;
+	font-weight: bold;
+	font-size: 1rem;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+    z-index: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+}	
+
+#uiAction:before, #tempAction:before, #bugAction:before, #vtr1_box .loop:before, #vtr2_box .loop:before,#plAction:before {
+  content: ' ';
+  position: absolute;
+  left: 8%;
+  top: 8%;
+  width: 84%;
+  height: 84%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 3px;
+  z-index: -2;
+}
+
+#uiAction:after, #tempAction:after, #bugAction:after, #vtr1_box .loop:after, #vtr2_box .loop:after,#plAction:after {
+  position: absolute;
+  left: 8%;
+  top: 8%;
+  width: 84%;
+  height: 84%;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(200, 200, 200, 0.15));
+  content: " ";
+  border-radius: 4rem;
+  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
 
 #choose, .TitleDB, #export, #empty, #sort, #upload {
     min-width: 60px;
@@ -156,7 +213,7 @@ button, select {
 	font-size: 1rem;
 }
 
-#uiAction:hover, #tempAction:hover, #vtr1_box .loop:hover, #vtr2_box .loop:hover,#plAction:hover, button:hover, #choose:hover, .TitleDB:hover, #export:hover, #empty:hover, #sort:hover {
+#uiAction:hover, #bugAction:hover, #tempAction:hover, #vtr1_box .loop:hover, #vtr2_box .loop:hover,#plAction:hover, button:hover, #choose:hover, .TitleDB:hover, #export:hover, #empty:hover, #sort:hover {
     background: #777573;
 }
 
@@ -278,12 +335,13 @@ select {
 	}
 
 #CH3, #CH4, #CH5, #CH6 {
+	margin: 0.3rem 0 0.5rem 1rem!important;
 	width: 200% !important ;
 	height: 100% !important ;
 	position: relative;
 	}	
 .card-body {
-	background: #354675!important;
+	background: #373636!important;
 	color: #f8f9fa ;
     padding: 0;
 	border: 2px solid rgb(175, 176, 183)!important;
@@ -299,7 +357,7 @@ select {
 }
 
 .card-cg {
-	background: #400707!important;
+	background: #373636!important;
 	color: #f8f9fa ;
     padding: 0;
 	border: 2px solid rgb(175, 176, 183)!important;
@@ -307,9 +365,9 @@ select {
 }
 
 .card-bug {
-	background: #151128!important;
+	background: #373636!important;
 	color: #f8f9fa ;
-    padding: 0;
+    padding: 0 0 7px 0;
 	border: 2px solid rgb(175, 176, 183)!important;
     border-radius: 5px;
 }
@@ -329,27 +387,28 @@ select {
 	box-shadow: 0px 0px 3px black inset;
 	display: inline-flex;
 	flex-flow: wrap;
-	padding: 10px;
+	padding: 5px;
 	position: relative;
 	z-index: 0;
 	margin-bottom: 4px;
 }
 
 .Xkeysbut {
-  box-sizing: border-box;
-  margin: 0 0.3rem 0 0;
-  position: relative;
-  box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset;
-  border-radius: 5px;
-  display: inline-table;
-  width: 4rem;
-  height: 4rem;
-  line-height: 1.4rem;
-  color: #000;
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: center;
-  vertical-align: middle;
+	box-sizing: border-box;
+	margin: 0 0.3rem 0 0;
+	position: relative;
+	box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset;
+	border-radius: 5px;
+	display: inline-table;
+	width: 4rem;
+	height: 4rem;
+	line-height: 1.4rem;
+	color: #000;
+	font-weight: bold;
+	font-size: 1rem;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
 }
 
 .Xkeysbut:before {
@@ -362,6 +421,7 @@ select {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 3px;
   z-index: -2;
+	cursor: pointer;
 }
 
 .Xkeysbut:after {
@@ -375,13 +435,14 @@ select {
   border-radius: 4rem;
   box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.8);
   z-index: -1;
+	cursor: pointer;
 }
 
 .red {
-  box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset, 0 0 30px 0 red, 0 0 30px 5px red inset; }
+  box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset, 0 0 30px 0 red, 0 0 30px 5px red inset!important; }
 
-.Xkeysbut.red:before {
-  background-color: rgba(255, 150, 150, 0.7); }
+.red:before {
+  background-color: rgba(255, 150, 150, 0.7)!important; }
 
 .Xkeysbut.green {
   box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset, 0 0 30px 0 green, 0 0 30px 5px green inset; }
@@ -390,21 +451,21 @@ select {
   background-color: rgba(150, 255, 150, 0.7); }
 
 .XkeysAction{
-  box-sizing: border-box;
-  margin: 0 0.3rem 0 0;
-  position: relative;
-  box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset, 0 0 30px 0 rgba(255, 233, 0, 0.8), 0 0 10px 5px #ffc200 inset, 0 0 50px 13px rgba(255, 165, 0, 0.7) inset; 
-  border-radius: 5px;
-  display: inline-table;
-  width: 4rem;
-  height: 4rem;
-  line-height: 1.4rem;
-  color: #000;
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: center;
-  vertical-align: middle;
-
+	box-sizing: border-box;
+	margin: 0 0.3rem 0 0;
+	position: relative;
+	box-shadow: 0 0 0 2px black, 0 1px 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 50px rgba(255, 255, 255, 0.1) inset, 0 0 30px 0 rgba(255, 233, 0, 0.8), 0 0 10px 5px #ffc200 inset, 0 0 50px 13px rgba(255, 165, 0, 0.7) inset; 
+	border-radius: 5px;
+	display: inline-table;
+	width: 4rem;
+	height: 4rem;
+	line-height: 1.4rem;
+	color: #000;
+	font-weight: bold;
+	font-size: 1rem;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
 }
 
 .XkeysAction:before {
@@ -445,7 +506,6 @@ select {
 }
 .Xkeysbut:hover, .Xkeysbut.red:hover, .XkeysAction:hover{
 	background: #240d0da6!important;
-	cursor:grab;
 }
 
 .Xkeysbut h2, .XkeysAction h2{
@@ -457,7 +517,7 @@ select {
 }
 
 .nondrop .AutoButton, .nondrop .CutButton {
-    min-width: 138px!important;
+    min-width: 138px!important;	
 }
 
 
@@ -478,14 +538,12 @@ select {
 	background: #232629;
 	}
 
-	
-.mb-4 {
-    margin-bottom: 0.5rem!important;
-}
+
 
 .progress {
-	margin: 5px 15px!important;
-	width: 73%;
+	margin: 0.5rem 0 0.5rem 2rem!important;
+	width: calc(100% - 3rem);
+	cursor: pointer;
 
 }
 .col-4 {
