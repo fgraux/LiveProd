@@ -205,7 +205,7 @@ var xkey79;
 var xkey80;
 var streamS = 'false';
 var dbo;
-let connectedXKeys;
+let connectedXKeys = 'false';
 
 // TimerThingy
 	var timexe = require('timexe');
@@ -335,7 +335,7 @@ dbSrv = JSON.stringify(truc);
 				else{
 					if(err == 'disconnected'){term("\n"+dateTimeNow()+"\t^#^y^B CASPAR CG ^ \tDisconnected from CasparCG Server :"+cgsrv+":"+cgamcp);}}
 				});
-				
+		
 		// GET CCG MEDIAS LIST	
 			ccg_cls(cgsrv, cgscan, function(err, response){
 					if(!err){term(response);}
@@ -447,21 +447,22 @@ statement = JSON.stringify(Truc);
 	Iplist1 = Truc[10].file;	
 	Iplist2 = Truc[11].file;
 
-	xkey_detect(function(err, response){
-        if(!err){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS GET ^ \tConnected to Xkeys panel"); }
-			else{
-				if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS OUT^ \tDisconnected from any Xkeys panel"); }}
-		});		
-	if (connectedXKeys.length) {
-			Xkeys80_1.setBacklight(aux1_active, true, true); //red light POWER ON AUX1, AUX2, PGM, PVW first buttons 
-			Xkeys80_1.setBacklight(aux1_active, false);//blue light POWER OFF AUX1, AUX2, PGM, PVW first buttons
-			Xkeys80_1.setBacklight(aux2_active, true, true); //red light POWER ON AUX1, AUX2, PGM, PVW first buttons 
-			Xkeys80_1.setBacklight(aux2_active, false);//blue light POWER OFF AUX1, AUX2, PGM, PVW first buttons
-			Xkeys80_1.setBacklight(pgm_active, true, true); //red light POWER ON AUX1, AUX2, PGM, PVW first buttons 
-			Xkeys80_1.setBacklight(pgm_active, false);//blue light POWER OFF AUX1, AUX2, PGM, PVW first buttons
-			Xkeys80_1.setBacklight(pvw_active, true, true); //red light POWER ON AUX1, AUX2, PGM, PVW first buttons 
-			Xkeys80_1.setBacklight(pvw_active, false);//blue light POWER OFF AUX1, AUX2, PGM, PVW first buttons
-	}}
+	// xkey_detect(function(err, response){
+        // if(!err){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS GET ^ \tConnected to Xkeys panel"); }
+			// else{
+				// if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W XKEYS OUT^ \tDisconnected from any Xkeys panel"); }}
+		// });		
+		// if (connectedXKeys == true) {
+				// Xkeys80_1.setBacklight(aux1_active, true, true);	//red light POWER ON AUX1 stored active button 
+				// Xkeys80_1.setBacklight(aux1_active, false);			//blue light POWER OFF AUX1 stored active button
+				// Xkeys80_1.setBacklight(aux2_active, true, true);	//red light POWER ON AUX2 stored active button 
+				// Xkeys80_1.setBacklight(aux2_active, false);			//blue light POWER OFF AUX2 stored active button
+				// Xkeys80_1.setBacklight(pgm_active, true, true);		//red light POWER ON PGM stored active button 
+				// Xkeys80_1.setBacklight(pgm_active, false);			//blue light POWER OFF PGM stored active button
+				// Xkeys80_1.setBacklight(pvw_active, true, true);		//red light POWER ON PVW stored active button 
+				// Xkeys80_1.setBacklight(pvw_active, false);			//blue light POWER OFF PVW stored active button
+		// }
+	}
    
 //RETURN THE PROMISE DEMAND TO PREVIOUS FUNCTION (DBstatePrint)
 	var DBstateGet = () => {
@@ -485,71 +486,72 @@ statement = JSON.stringify(Truc);
 					term(response);
 				}
 			});
-			if (a === device1){	action1 = Truc[0].action;	//VTR1 STATE
-									class1 = Truc[0].hclass;
-									display1 = Truc[0].display;
-									file1 = Truc[0].file;
-									thumb1 = Truc[0].thumb;
-									loop1 = Truc[0].loop;
+			if (a == device1){	action1 = Truc[0].action;	//VTR1 STATE
+								class1 = Truc[0].hclass;
+								display1 = Truc[0].display;
+								file1 = Truc[0].file;
+								thumb1 = Truc[0].thumb;
+								loop1 = Truc[0].loop;
 								}
-			if (a === device2){	action2 = Truc[0].action;	//VTR2 STATE
-									class2 = Truc[0].hclass;
-									display2 = Truc[0].display;
-									file2 = Truc[0].file;
-									thumb2 = Truc[0].thumb;
-									loop2 = Truc[0].loop;
+			if (a == device2){	action2 = Truc[0].action;	//VTR2 STATE
+								class2 = Truc[0].hclass;
+								display2 = Truc[0].display;
+								file2 = Truc[0].file;
+								thumb2 = Truc[0].thumb;
+								loop2 = Truc[0].loop;
 								}
-			if (a === device3){	action3 = Truc[0].action;	//DVE1 STATE
-									class3 = Truc[0].hclass;
-									display3 = Truc[0].display;
-									file3 = Truc[0].file;
-									thumb3 = Truc[0].thumb;
+			if (a == device3){	action3 = Truc[0].action;	//DVE1 STATE
+								class3 = Truc[0].hclass;
+								display3 = Truc[0].display;
+								file3 = Truc[0].file;
+								thumb3 = Truc[0].thumb;
+								// if (action3 == 'nocg'){	Xkeys80_1.setBacklight(69,'red'); } else {	Xkeys80_1.setBacklight(69,false); }
 								}
-			if (a === device4){	action4 = Truc[0].action;	//DVE2 STATE
-									class4 = Truc[0].hclass;
-									display4 = Truc[0].display;
-									file4 = Truc[0].file;
-									thumb4 = Truc[0].thumb;
+			if (a == device4){	action4 = Truc[0].action;	//DVE2 STATE
+								class4 = Truc[0].hclass;
+								display4 = Truc[0].display;
+								file4 = Truc[0].file;
+								thumb4 = Truc[0].thumb;
 								}
-			if (a === device5){	action5 = Truc[0].action;	//DVE3 STATE
-									class5 = Truc[0].hclass;
-									display5 = Truc[0].display;
-									file5 = Truc[0].file;
-									thumb5 = Truc[0].thumb;
+			if (a == device5){	action5 = Truc[0].action;	//DVE3 STATE
+								class5 = Truc[0].hclass;
+								display5 = Truc[0].display;
+								file5 = Truc[0].file;
+								thumb5 = Truc[0].thumb;
 								}
-			if (a === device6){	action6 = Truc[0].action;	//DVE4 STATE
-									class6 = Truc[0].hclass;
-									display6 = Truc[0].display;
-									file6 = Truc[0].file;
-									thumb6 = Truc[0].thumb;
+			if (a == device6){	action6 = Truc[0].action;	//DVE4 STATE
+								class6 = Truc[0].hclass;
+								display6 = Truc[0].display;
+								file6 = Truc[0].file;
+								thumb6 = Truc[0].thumb;
 								}
-			if (a === device7){	action7 = Truc[0].action;	//BUG1 STATE
-									class7 = Truc[0].hclass;
-									display7 = Truc[0].display;
-									file7 = Truc[0].file;
+			if (a == device7){	action7 = Truc[0].action;	//BUG1 STATE
+								class7 = Truc[0].hclass;
+								display7 = Truc[0].display;
+								file7 = Truc[0].file;
 								}
-			if (a === device8){	action8 = Truc[0].action;	//BUG2 STATE
-									class8 = Truc[0].hclass;
-									display8 = Truc[0].display;
-									file8 = Truc[0].file;
+			if (a == device8){	action8 = Truc[0].action;	//BUG2 STATE
+								class8 = Truc[0].hclass;
+								display8 = Truc[0].display;
+								file8 = Truc[0].file;
 								}
-			if (a === device9){	aux1_active = Truc[0].action;	//AUX1 STATE
+			if (a == device9){	aux1_active = Truc[0].action;	//AUX1 STATE
 									obsaux_1 = Truc[0].hclass;
 								}
-			if (a === device10){	aux2_active = Truc[0].action;	//AUX2 STATE
-									obsaux_2 = Truc[0].hclass;
+			if (a == device10){	aux2_active = Truc[0].action;	//AUX2 STATE
+								obsaux_2 = Truc[0].hclass;
 								}
-			if (a === device11){	pgm_active = Truc[0].action;	//PGM STATE
-									program = Truc[0].hclass;
+			if (a == device11){	pgm_active = Truc[0].action;	//PGM STATE
+								program = Truc[0].hclass;
 								}
-			if (a === device12){	pvw_active = Truc[0].action;	//PVW STATE
-									preview = Truc[0].hclass;
+			if (a == device12){	pvw_active = Truc[0].action;	//PVW STATE
+								preview = Truc[0].hclass;
 								}
-			if (a === device13){	Hplist1 = Truc[0].action;	//PLAYLIST 1 STATE
-									Iplist1 = Truc[0].file;
+			if (a == device13){	Hplist1 = Truc[0].action;	//PLAYLIST 1 STATE
+								Iplist1 = Truc[0].file;
 								}
-			if (a === device14){	Hplist2 = Truc[0].action;	//PLAYLIST 2 STATE
-									Iplist2 = Truc[0].file;
+			if (a == device14){	Hplist2 = Truc[0].action;	//PLAYLIST 2 STATE
+								Iplist2 = Truc[0].file;
 								}
 	};
 
@@ -646,6 +648,9 @@ statement = JSON.stringify(Truc);
 	async function DBXkeysPrint() {
 	let truc = await DBXkeysGet();
 	xKeys = JSON.stringify(truc);
+	xkeys_retrieve(xKeys, function(err, response){
+				if(!err){ term(response); }
+			});
 	var xkeysL = JSON.parse(xKeys);
 	xkey01 = xkeysL[00]['scenename']
 	xkey02 = xkeysL[01]['scenename']
@@ -760,7 +765,7 @@ statement = JSON.stringify(Truc);
 		  },
 		};
 		const result = await tcollec.updateOne(filter, updField, options);
-	DBserverPrint();
+	// DBserverPrint();
 	}
 
 // UPDATE XKEYS ASSIGNMENT IN DATABASE
@@ -858,182 +863,175 @@ statement = JSON.stringify(Truc);
 
 //SET UP XKEYS PANEL
 	const HID = require('node-hid')
-	const { XKeys } = require('xkeys');
-	const devices = HID.devices();
+	const { XKeysWatcher } = require('xkeys');
+	const watcher = new XKeysWatcher();
+	watcher.on('connected', (Xkeys80_1) => {
+			myXkeys = Xkeys80_1;
+						connectedXKeys = 'true';
+						console.log(term("\n"+dateTimeNow()+`\t^#^r^W XKEYS GET ^ \tConnected from any Xkeys panel of type ${Xkeys80_1.info.name} `+connectedXKeys));
+			Xkeys80_1.on('reconnected', () => {
+						connectedXKeys = 'true';
+						console.log(term("\n"+dateTimeNow()+`\t^#^r^W XKEYS GET ^ \tReconnected from any Xkeys panel of type ${Xkeys80_1.info.name} `+connectedXKeys));
+					})
 
-//CONNECT TO A XKEYS PANEL
-	function xkey_detect(callback){
-		connectedXKeys = devices.filter(device => {
-			return (device.vendorId === XKeys.vendorId && device.interface === 0) // Make sure that the interface-property is set to 0
-									})
-
-		if (connectedXKeys.length) { //AKA IF A XKEYS PANEL IS CONNECTED
-			Xkeys80_1 = new XKeys(connectedXKeys[0].path);
 			Xkeys80_1.on('disconnected', () => {
-						console.log(term("\n"+dateTimeNow()+"\t^#^r^W XKEYS OUT ^ \tDisconnected from any Xkeys panel"))
 						// Clean up stuff
 						Xkeys80_1.removeAllListeners()
+						connectedXKeys = 'false';
+						console.log(term("\n"+dateTimeNow()+`\t^#^r^W XKEYS OUT ^ \tDisconnected from any Xkeys panel of type ${Xkeys80_1.info.name} `+connectedXKeys));
 					})
 			Xkeys80_1.on('error', err => {
-				term("\n"+dateTimeNow()+"\t^#^M^W XKEYS OUT ^ \t\tDisconnected from any Xkeys panel");
-				Xkeys80_1.removeAllListeners();
-				connectedXKeys = '';
+						connectedXKeys = 'false';
+						console.log(term("\n"+dateTimeNow()+"\t^#^M^W XKEYS OUT ^ \t\tDisconnected from any Xkeys panel "+connectedXKeys));
 			});
 
 	// INITIALIZING THE XKEY PANEL
-		for (i = 4; i < 61; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all AUX1 line buttons  
-						Xkeys80_1.setBacklight(i, false, true); //red light POWER OFF all AUX1 line buttons
-						}
 		for (i = 5; i < 62; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all AUX2 buttons  
-						Xkeys80_1.setBacklight(i, false, true); //red light POWER OFF all AUX2 buttons		
-						}				
+						Xkeys80_1.setBacklight(i, '0000ff'); //blue light POWER ON all AUX1 line buttons  
+						}
 		for (i = 6; i < 63; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all PGM line buttons  
-						Xkeys80_1.setBacklight(i, false, true);//red light POWER OFF all line buttons
-						}
+						Xkeys80_1.setBacklight(i, '0000ff'); //blue light POWER ON all AUX2 buttons  
+						}				
 		for (i = 7; i < 64; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all PVW line buttons  
-						Xkeys80_1.setBacklight(i, false, true);//red light POWER OFF all line buttons
+						Xkeys80_1.setBacklight(i, '0000ff'); //blue light POWER ON all PGM line buttons  
 						}
-		for (i = 70; i < 79; i=i+8){
-						Xkeys80_1.setBacklight(i, true, true); //red light POWER ON AUTO buttons
-						Xkeys80_1.setBacklight(i, false);//blue light POWER OFF AUTO buttons				
+		for (i = 8; i < 65; i=i+8){
+						Xkeys80_1.setBacklight(i, '0000ff'); //blue light POWER ON all PVW line buttons  
 						}
 		for (i = 71; i < 80; i=i+8){
-						Xkeys80_1.setBacklight(i, true, true); //red light POWER ON CUT buttons
-						Xkeys80_1.setBacklight(i, false);//blue light POWER OFF CUT buttons				
+						Xkeys80_1.setBacklight(i, 'red'); //red light POWER ON AUTO buttons
 						}
-		Xkeys80_1.setBacklight(72, false, true); //flash red light POWER ON REC button
-		Xkeys80_1.setBacklight(73, false, true); //flash red light POWER ON REC button		
+		for (i = 72; i < 81; i=i+8){
+						Xkeys80_1.setBacklight(i, 'red'); //red light POWER ON CUT buttons
+						}
+		setTimeout(function(){
+				Xkeys80_1.setBacklight(pgm_active, 'red'); //red light POWER ON DB stored active PGM source
+				Xkeys80_1.setBacklight(pvw_active, 'red'); //red light POWER ON DB stored active PVW source
+				Xkeys80_1.setBacklight(aux1_active, 'red'); //red light POWER ON DB stored active AUX1 source
+				Xkeys80_1.setBacklight(aux2_active, 'red'); //red light POWER ON DB stored active AUX2 source
+				if (action3 == 'nocg'){ Xkeys80_1.setBacklight('69', 'red')} else { Xkeys80_1.setBacklight('69', false)}; //red light POWER ON or OFF DVE1 button
+				if (action4 == 'nocg'){ Xkeys80_1.setBacklight('77', 'red')} else { Xkeys80_1.setBacklight('77', false)}; //red light POWER ON or OFF DVE2 button
+				if (action5 == 'nocg'){ Xkeys80_1.setBacklight('70', 'red')} else { Xkeys80_1.setBacklight('70', false)}; //red light POWER ON or OFF DVE3 button
+				if (action6 == 'nocg'){ Xkeys80_1.setBacklight('78', 'red')} else { Xkeys80_1.setBacklight('78', false)}; //red light POWER ON or OFF DVE4 button		
+						}, 100);			               // Wait 100 ms when app load to retrieve from DB pgm_active & pvw_active values
 		
 		Xkeys80_1.on('down', a => {
 	
 			//START STREAMING
+				// if (a == '73') {
+					// console.log(streamS);
+					// if (streamS != false){	obs.send('StopStreaming').catch(console.error);
+											// Xkeys80_1.setBacklight('73', 'red', true); //flash red light POWER ON REC button
+											// Xkeys80_1.setBacklight('74', 'red', true); //flash red light POWER ON REC button	
+											// streamS = false;
+					// }			else	{	obs.send('StartStreaming').catch(console.error);
+											// Xkeys80_1.setBacklight('73', false); //flash red light POWER OFF REC button
+											// Xkeys80_1.setBacklight('74', false); //flash red light POWER OFF REC button	
+											// streamS = true;
+					// }
+				
+				// }
+						
+			//CUT SWITCH  
 				if (a == '72') {
-					console.log(streamS);
-					if (streamS != false){	obs.send('StopStreaming').catch(console.error);
-											Xkeys80_1.setBacklight(72, false, true); //flash red light POWER OFF REC button
-											Xkeys80_1.setBacklight(73, false, true); //flash red light POWER ON REC button
-											streamS = false;
-					}			else	{	obs.send('StartStreaming').catch(console.error);
-											Xkeys80_1.setBacklight(72, true, true, true); //flash red light POWER ON REC button
-											Xkeys80_1.setBacklight(73, true, true, true); //flash red light POWER ON REC button
-											streamS = true;
-					}
-				
+				transButton(a, function(err, response){	if(!err){ term(response);	}	});	
 				}
-						
-				if (a == '0'){obs_filter(function(err, response){
-						if(!err){
-							term(response);
-						}
-						})}	
-						
-				if (a == '8'){ obs.send('SetSourceFilterVisibility', { 'source-name': 'CAM DELL'  }).catch(console.error);}				
-					
-			//TRANSITIONS 
-				if (a === '71' || a === '70') {
-				transButton(a, function(err, response){
-					if(!err){
-						term(response);
-					}
-				});	}
+			//AUTO SWITCH 
+				if (a == '71') {
+				transButton(a, function(err, response){	if(!err){ term(response);	}	});	
+											Xkeys80_1.setBacklight(a, 'red', true); //red flashing on button AUTO										
+											Xkeys80_1.setBacklight(79, 'red', true); //red flashing on button AUTO										
+											setTimeout(function(){
+												Xkeys80_1.setBacklight(a, 'red'); // Stop red flashing on button AUTO										
+												Xkeys80_1.setBacklight(79, 'red'); //Stop red flashing on button AUTO
+												}, 600);
+				}
 				
-				var cnumber = parseInt(a) + 1;
+				var cnumber = parseInt(a);
 				var cname = 'xkey'+pad2(cnumber);
 
 			//AUX1 XKEYS ACTIONS
-				if (a == '4' || a == '12' || a == '20' || a == '28' || a == '36' || a == '44' || a == '52' || a == '60') {
+				if (a == '5' || a == '13' || a == '21' || a == '29' || a == '37' || a == '45' || a == '53' || a == '61') {
 					KeyChange(a, 'aux1', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//AUX2 XKEYS ACTIONS
-				if (a == '5' || a == '13' || a == '21' || a == '29' || a == '37' || a == '45' || a == '53' || a == '61') {
+				if (a == '6' || a == '14' || a == '22' || a == '30' || a == '38' || a == '46' || a == '54' || a == '62') {
 					KeyChange(a, 'aux2', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//PROGRAM XKEYS ACTIONS
-				if (a == '6' || a == '14' || a == '22' || a == '30' || a == '38' || a == '46' || a == '54' || a == '62') {
+				if (a == '7' || a == '15' || a == '23' || a == '31' || a == '39' || a == '47' || a == '55' || a == '63') {
 					KeyChange(a, 'pgm', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//PREVIEW XKEYS ACTIONS
-				if (a == '7' || a == '15' || a == '23' || a == '31' || a == '39' || a == '47' || a == '55' || a == '63') {
+				if (a == '8' || a == '16' || a == '24' || a == '32' || a == '40' || a == '48' || a == '56' || a == '64') {
 					KeyChange(a, 'pvw', eval(cname), 'real', function(err, response){
 						if(!err){ term(response); }
 					});
 				}
 
 			//SHOW BUGS
-				if (a == '67' ) {
+				if (a == '68' ) {
 					IOSendData(['web'], 'sClick', 'bug1_box');
-					if (action7 === 'bug') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
-						action7 = 'nobug';}
-					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
-						action7 = 'bug';}
+					if (action7 == 'bug') { action7 = 'nobug';}
+					else { action7 = 'bug';}
 				}
-				if (a == '75' ) {
+				
+				if (a == '76' ) {
 					IOSendData(['web'], 'sClick', 'bug2_box');
-					if (action8 === 'bug') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
-						action8 = 'nobug';}
-					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
-						action8 = 'bug';}
-					}
+					if (action8 == 'bug') { action8 = 'nobug';}
+					else { action8 = 'bug';}
+				}
 
 			//SHOW DVE
-				if (a == '68' ) {
+				if (a == '69' ) {
 					IOSendData(['web'], 'sClick', 'dve1_box');
-					if (action3 === 'cg') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
+					if (action3 == 'cg') {
+						Xkeys80_1.setBacklight(a, 'red'); //red light POWER ON selected button
 						action3 = 'nocg';}
 					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
+						Xkeys80_1.setBacklight(a, false); //red light POWER OFF selected button
 						action3 = 'cg';}
 				}
-				if (a == '76' ) {
+				if (a == '77' ) {
 					IOSendData(['web'], 'sClick', 'dve2_box');
-					if (action4 === 'cg') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
+					if (action4 == 'cg') {
+						Xkeys80_1.setBacklight(a, 'red'); //red light POWER ON selected button
 						action4 = 'nocg';}
 					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
+						Xkeys80_1.setBacklight(a, false); //red light POWER OFF selected button
 						action4 = 'cg';}
 					}
-				if (a == '69' ) {
+				if (a == '70' ) {
 					IOSendData(['web'], 'sClick', 'dve3_box');
-					if (action5 === 'cg') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
+					if (action5 == 'cg') {
+						Xkeys80_1.setBacklight(a, 'red'); //red light POWER ON selected button
 						action5 = 'nocg';}
 					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
+						Xkeys80_1.setBacklight(a, false); //red light POWER OFF selected button
 						action5 = 'cg';}
 					}
-				if (a == '77' ) {
+				if (a == '78' ) {
 					IOSendData(['web'], 'sClick', 'dve4_box');
-					if (action6 === 'cg') {
-						Xkeys80_1.setBacklight(a, true, true); //red light POWER ON selected button
+					if (action6 == 'cg') {
+						Xkeys80_1.setBacklight(a, 'red'); //red light POWER ON selected button
 						action6 = 'nocg';}
 					else {
-						Xkeys80_1.setBacklight(a, false, true); //red light POWER OFF selected button
+						Xkeys80_1.setBacklight(a, false); //red light POWER OFF selected button
 						action6 = 'cg';}
 					}
 					});
-			} else { console.log("Could not find any connected X-keys panels.") }
-	};
+	});
 
-	function pad2(number) { //LITTLE FUNCTION THAT ADD A ZERO TO INTEGER < 0 (01,02,03...)
+	function pad2(number) {	//LITTLE FUNCTION THAT ADD A ZERO TO INTEGER < 0 (01,02,03...)
 	   return (number < 10 ? '0' : '') + number
 	}
 
@@ -1041,23 +1039,18 @@ statement = JSON.stringify(Truc);
 		pgm_active = parseInt(pgm_active) + 1;
 		pvw_active = parseInt(pvw_active) - 1;
 			//CUT
-				if (a === '71' ){	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
+				if (a == '72' ){	obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
 									obs.send('SetCurrentScene', { 'scene-name': preview  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
 									obs.send('SetPreviewScene', { 'scene-name': program  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
 									term("\n"+dateTimeNow()+"\t^#^M^W CUTSWITCH ^ \t=> MOVE PGM : "+program+' TO '+preview);}
 			//AUTO MIX 
-				if (a === '70' ){	obs.send('SetCurrentTransition', { 'transition-name': 'Fondu'  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
+				if (a == '71' ){	obs.send('SetCurrentTransition', { 'transition-name': 'Fondu'  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
 									obs.send('SetTransitionDuration', { 'duration': 1000  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
 									obs.send('TransitionToProgram', { 'with-transition.name': 'Fondu' }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
-									var b = 78;
-									term("\n"+dateTimeNow()+"\t^#^M^W MIXSWITCH ^ \t=> MOVE PGM : "+program+' TO '+preview);
-										if (connectedXKeys.length) {
-											Xkeys80_1.setBacklight(a, true, true, true); //red flashing on button AUTO										
-											Xkeys80_1.setBacklight(b, true, true, true); //red flashing on button AUTO										
+									var b = 79;
+									term("\n"+dateTimeNow()+"\t^#^M^W MIXSWITCH ^ \t=> MOVE PGM : "+program+' TO '+preview);								
 											setTimeout(function(){
 												obs.send('SetPreviewScene', { 'scene-name': program  }).catch(err => {term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tStart OBS or check network setup")});	
-												Xkeys80_1.setBacklight(a, true, true); // Stop red flashing on button AUTO										
-												Xkeys80_1.setBacklight(b, true, true); //Stop red flashing on button AUTO	
 												var tempo = preview;
 												preview = program;
 												program = tempo;
@@ -1065,7 +1058,7 @@ statement = JSON.stringify(Truc);
 												pgm_active = pad2(pvw_active);
 												pvw_active = pad2(tempo);
 												}, 600);
-										} else { console.log("Could not find any connected X-keys panels.") };
+									
 								}						
 	}				
  
@@ -1150,20 +1143,14 @@ statement = JSON.stringify(Truc);
 			DBupdateSrv('oscport',cgosc); 
 			cgscan = uiActionReceived.port3;
 			DBupdateSrv('scanport',cgscan); 
-			ccgConnector(cgsrv, cgamcp, function(err, response){	// START CASPARCG Connector
-				if(!err){ ccgConnectOSC(cgosc, function(err, response){
-					if(!err){ term(response); 
-					} else {
-						if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W CASPAR CG ^ \tCasparCG Server OSC issue"); }
-					}
-				});
-					term(response);
-				}
-				else {
-					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W CASPAR CG ^ \tDisconnected from CasparCG Server");
-					}
-				}
-			});
+			CasparCG_Connection = null;
+			DBserverPrint();
+		}
+		if(uiActionReceived.action == 'OBSget'){			//PUSH CASPARCG CONFIG STORED IN DB TO WEBAPP
+			DBserverPrint();
+		}
+		if(uiActionReceived.action == 'AUXget'){			//PUSH CASPARCG CONFIG STORED IN DB TO WEBAPP
+			DBserverPrint();
 		}
 		if (uiActionReceived.action == 'OBSsave'){			//UPDATE OBS CONFIG FROM WEBAPP (to variables & DB)
 			obssrv = uiActionReceived.obssrv;
@@ -1171,12 +1158,7 @@ statement = JSON.stringify(Truc);
 			obsport = uiActionReceived.obsport;
 			DBupdateSrv('obsport',obsport); 
 			obsAddr = obssrv+':'+obsport;
-			obsMain_detect(obsAddr,function(err, response){	// START OBS Connector
-				if(!err){ term(response);
-				} else {
-					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W OBSCONNEC ^ \tDisconnected from OBS main instance"); }
-					}	
-			});	
+			DBserverPrint();
 		}	
 		if(uiActionReceived.action == 'AUXsave'){			//UPDATE OBS AUX CONFIG FROM WEBAPP (to variables & DB)
 			auxsrv = uiActionReceived.auxsrv;
@@ -1184,13 +1166,24 @@ statement = JSON.stringify(Truc);
 			auxport = uiActionReceived.auxport;
 			DBupdateSrv('auxport',auxport); 
 			auxAddr =  auxsrv+':'+auxport;
-			obsAux_detect(auxAddr,function(err, response){ // START OBS AUX Connector
-				if(!err){ term(response);
-				} else {
-					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W AUXCONNEC ^ \tDisconnected from OBS aux instance"); }
-				}
-			});		
-		}			 
+			DBserverPrint();
+		}	
+		if(uiActionReceived.action == 'tempGet'){			//PUSH CASPARCG TEMPLATES PER CHANNEL STORED IN DB TO WEBAPP
+			DBtemplatePrint();
+		}				 
+		if(uiActionReceived.action == 'StateGet'){			//RECEIVES DEMAND FROM WEBAPP : STATUS OF ALL DEVICES
+			DBstatePrint();
+		}
+		if(uiActionReceived.action == 'xkeysget'){			//PUSH XKEYS CONFIG STORED IN DB TO WEBAPP
+			DBXkeysPrint();
+		}
+		if(uiActionReceived.action == 'titleGet'){			//PUSH TITLES LIST STORED IN DB TO WEBAPP
+			DBtitragePrint();
+		}
+		if(uiActionReceived.action == 'plistGet'){			//PUSH PLAYLIST STORED IN DB TO WEBAPP
+			var Plist = uiActionReceived.plist;
+			DPlaylistPrint(Plist);
+		}
 		if(uiActionReceived.action == 'configUP'){			//UPDATE 1 CONFIG ELEMENT (CasparCG channels & Xkeys assignment) FROM WEBAPP (to variables & DB)
 			var arg1 = uiActionReceived.arg1;
 			var arg2 = uiActionReceived.arg2;
@@ -1255,10 +1248,6 @@ statement = JSON.stringify(Truc);
 			var loop = uiActionReceived.loop;
 				if (device == 'vtr1_box'){ action1 = state; class1 = divclass; display1 = display; file1 = file; thumb1 = thumb; loop1 = loop;}
 				if (device == 'vtr2_box'){ action2 = state; class2 = divclass; display2 = display; file2 = file; thumb2 = thumb; loop2 = loop;}
-				if (device == 'dve1_box'){ action3 = state; class3 = divclass; display3 = display; file3 = file; thumb3 = thumb;}
-				if (device == 'dve2_box'){ action4 = state; class4 = divclass; display4 = display; file4 = file; thumb4 = thumb;}
-				if (device == 'dve3_box'){ action5 = state; class5 = divclass; display5 = display; file5 = file; thumb5 = thumb;}
-				if (device == 'dve4_box'){ action6 = state; class6 = divclass; display6 = display; file6 = file; thumb6 = thumb;}
 			DBupdateState(device, state, divclass, display, file, thumb, loop).catch(err => {  console.log(err);});
 		}
 		if(uiActionReceived.action == 'saveTemplate') {		//RECEIVES TEMPLATES SETUP CHANGES FROM THE WEBAPP 
@@ -1312,34 +1301,6 @@ statement = JSON.stringify(Truc);
 				if(!err){ term(response); }
 			});
 		}
-		if(uiActionReceived.action == 'StateGet'){			//RECEIVES DEMAND FROM WEBAPP : STATUS OF ALL DEVICES
-			DBstatePrint();
-		}
-		if(uiActionReceived.action == 'xkeysget'){			//PUSH XKEYS CONFIG STORED IN DB TO WEBAPP
-			xkeys_retrieve(xKeys, function(err, response){
-				if(!err){ term(response); }
-			});
-		}
-		if(uiActionReceived.action == 'titleGet'){			//PUSH TITLES LIST STORED IN DB TO WEBAPP
-			DBtitragePrint();
-		}
-		if(uiActionReceived.action == 'plistGet'){			//PUSH PLAYLIST STORED IN DB TO WEBAPP
-			var Plist = uiActionReceived.plist;
-			DPlaylistPrint(Plist);
-		}
-		if(uiActionReceived.action == 'OBSget'){			//PUSH OBS CONFIG STORED IN DB TO WEBAPP
-			obs_retrieve(obssrv, obsport,function(err, response){
-				if(!err){ term(response); }
-			});
-		}
-		if(uiActionReceived.action == 'AUXget'){
-			aux_retrieve(auxsrv, auxport,function(err, response){		//PUSH OBS AUX CONFIG STORED IN DB TO WEBAPP
-				if(!err){ term(response); }
-			});
-		}
-		if(uiActionReceived.action == 'tempGet'){			//PUSH CASPARCG TEMPLATES PER CHANNEL STORED IN DB TO WEBAPP
-			DBtemplatePrint();
-		}		
 		if(uiActionReceived.action == 'tls'){				//PUSH CASPARCG TEMPLATES LIST FROM THE FOLDER TO WEBAPP
 			ccg_tls(cgsrv, cgscan, function(err, response){
 				if(!err){ term(response); }
@@ -1363,12 +1324,17 @@ statement = JSON.stringify(Truc);
 			ccgChannel = uiActionReceived.channel;
 			ccgLayer = uiActionReceived.layer;
 			videoFile = uiActionReceived.file;
-			bugbox = uiActionReceived.device;
+			bugbox = uiActionReceived.device;	
+			state = uiActionReceived.state;
+			divclass = uiActionReceived.divclass;
+			display = uiActionReceived.display;
+			file = uiActionReceived.file;
+			thumb = uiActionReceived.thumb;	
 			options ='';
-			if (connectedXKeys.length) {
-				if (bugbox == 'bug1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('67', true, true); }//red light POWER ON selected button 
-				if (bugbox == 'bug2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('75', true, true); }//red light POWER ON selected button
-			}
+				if (bugbox == 'bug1_box'){ action7 = state; class7 = divclass; display7 = display; file7 = file; thumb7 = thumb; j = '68'; }
+				if (bugbox == 'bug2_box'){ action8 = state; class8 = divclass; display8 = display; file8 = file; thumb8 = thumb; j = '76'; }
+			if (connectedXKeys == 'true') { myXkeys.setBacklight( j, 'red')}; //red light POWER ON selected button 			
+			DBupdateState(bugbox, state, divclass, display, file, thumb).catch(err => {  console.log(err);});
 			ccg_LoadMedia(ccgChannel, ccgLayer, videoFile, options, function(err, response){
 				if(!err){ term(response); }
 			});
@@ -1422,11 +1388,16 @@ statement = JSON.stringify(Truc);
 		if(uiActionReceived.action == 'bugstop'){				//LOAD AN IMAGE TO CASPARCG CHANNEL
 			ccgChannel = uiActionReceived.channel;
 			ccgLayer = uiActionReceived.layer;
-			bugbox = uiActionReceived.device;
-			if (connectedXKeys.length) {
-				if (bugbox == 'bug1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('67', false, true); }//red light POWER OFF selected button 
-				if (bugbox == 'bug2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('75', false, true); }//red light POWER OFF selected button
-			}
+			bugbox = uiActionReceived.device;	
+			state = uiActionReceived.state;
+			divclass = uiActionReceived.divclass;
+			display = uiActionReceived.display;
+			file = uiActionReceived.file;
+			thumb = uiActionReceived.thumb;	
+				if (bugbox == 'bug1_box'){ action7 = state; class7 = divclass; display7 = display; file7 = file; thumb7 = thumb; j = '68'; }
+				if (bugbox == 'bug2_box'){ action8 = state; class8 = divclass; display8 = display; file8 = file; thumb8 = thumb; j = '76'; }
+			if (connectedXKeys == 'true') { myXkeys.setBacklight( j, false)};//red light POWER OFF selected button
+			DBupdateState(bugbox, state, divclass, display, file, thumb).catch(err => {  console.log(err);});
 			ccg_StopMedia(ccgChannel, ccgLayer, function(err, response){
 				if(!err){ term(response); }
 			});
@@ -1437,12 +1408,17 @@ statement = JSON.stringify(Truc);
 			templateName = uiActionReceived.template;
 			tempData = uiActionReceived.data;
 			dvebox = uiActionReceived.device;
-			if (connectedXKeys.length) {
-				if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('68', true, true); }//red light POWER ON selected button 
-				if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('76', true, true); }//red light POWER ON selected button
-				if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve; Xkeys80_1.setBacklight('69', true, true); }//red light POWER ON selected button
-				if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve; Xkeys80_1.setBacklight('77', true, true); }//red light POWER ON selected button
-			}
+			state = uiActionReceived.state;
+			divclass = uiActionReceived.divclass;
+			display = uiActionReceived.display;
+			file = uiActionReceived.file;
+			thumb = uiActionReceived.thumb;
+				if (dvebox == 'dve1_box'){ action3 = state; class3 = divclass; display3 = display; file3 = file; thumb3 = thumb; j = '69'};
+				if (dvebox == 'dve2_box'){ action4 = state; class4 = divclass; display4 = display; file4 = file; thumb4 = thumb; j = '77'};
+				if (dvebox == 'dve3_box'){ action5 = state; class5 = divclass; display5 = display; file5 = file; thumb5 = thumb; j = '70'};
+				if (dvebox == 'dve4_box'){ action6 = state; class6 = divclass; display6 = display; file6 = file; thumb6 = thumb; j = '78'};
+			if (connectedXKeys == 'true') { myXkeys.setBacklight( j, 'red')};//red light POWER ON selected button
+			DBupdateState(dvebox, state, divclass, display, file, thumb).catch(err => {  console.log(err);});
 			ccg_cgMedia(ccgChannel, ccgLayer, templateName, tempData, function(err, response){
 				if(!err){ term(response); }
 			});
@@ -1451,12 +1427,17 @@ statement = JSON.stringify(Truc);
 			ccgChannel = uiActionReceived.channel;
 			ccgLayer = uiActionReceived.layer;
 			dvebox = uiActionReceived.device;
-			if (connectedXKeys.length) {
-				if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve; Xkeys80_1.setBacklight('68', false, true); }//red light POWER OFF selected button
-				if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve; Xkeys80_1.setBacklight('76', false, true); }//red light POWER OFF selected button
-				if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve; Xkeys80_1.setBacklight('69', false, true); }//red light POWER OFF selected button
-				if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve; Xkeys80_1.setBacklight('77', false, true); }//red light POWER OFF selected button
-			}
+			state = uiActionReceived.state;
+			divclass = uiActionReceived.divclass;
+			display = uiActionReceived.display;
+			file = uiActionReceived.file;
+			thumb = uiActionReceived.thumb;
+				if (dvebox == 'dve1_box'){ action3 = state; class3 = divclass; display3 = display; file3 = file; thumb3 = thumb; j = '69'};
+				if (dvebox == 'dve2_box'){ action4 = state; class4 = divclass; display4 = display; file4 = file; thumb4 = thumb; j = '77'};
+				if (dvebox == 'dve3_box'){ action5 = state; class5 = divclass; display5 = display; file5 = file; thumb5 = thumb; j = '70'};
+				if (dvebox == 'dve4_box'){ action6 = state; class6 = divclass; display6 = display; file6 = file; thumb6 = thumb; j = '78'};
+			if (connectedXKeys == 'true') { myXkeys.setBacklight( j, false)};//red light POWER OFF selected button
+			DBupdateState(dvebox, state, divclass, display, file, thumb).catch(err => {  console.log(err);});
 			ccg_nocgMedia(ccgChannel, ccgLayer, function(err, response){
 				if(!err){ term(response); }
 			});
@@ -1466,10 +1447,16 @@ statement = JSON.stringify(Truc);
 			ccgLayer = uiActionReceived.layer;
 			tempData = uiActionReceived.data;
 			dvebox = uiActionReceived.device;
-			if (dvebox == 'dve1_box'){dve_1 = uiActionReceived.dve}
-			if (dvebox == 'dve2_box'){dve_2 = uiActionReceived.dve}
-			if (dvebox == 'dve3_box'){dve_3 = uiActionReceived.dve}
-			if (dvebox == 'dve4_box'){dve_4 = uiActionReceived.dve}
+			state = uiActionReceived.state;
+			divclass = uiActionReceived.divclass;
+			display = uiActionReceived.display;
+			file = uiActionReceived.file;
+			thumb = uiActionReceived.thumb;
+				if (dvebox == 'dve1_box'){ action3 = state; class3 = divclass; display3 = display; file3 = file; thumb3 = thumb;}
+				if (dvebox == 'dve2_box'){ action4 = state; class4 = divclass; display4 = display; file4 = file; thumb4 = thumb;}
+				if (dvebox == 'dve3_box'){ action5 = state; class5 = divclass; display5 = display; file5 = file; thumb5 = thumb;}
+				if (dvebox == 'dve4_box'){ action6 = state; class6 = divclass; display6 = display; file6 = file; thumb6 = thumb;}
+			DBupdateState(dvebox, state, divclass, display, file, thumb).catch(err => {  console.log(err);});
 			ccg_upMedia(ccgChannel, ccgLayer, tempData, function(err, response){
 				if(!err){ term(response); }
 			});
@@ -1581,6 +1568,7 @@ statement = JSON.stringify(Truc);
 //VIDEO SWITCHING FUNCTION
 	function KeyChange(a,b,c,d,callback){			
 		obs.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
+		obsAux.send('SetCurrentTransition', { 'transition-name': 'Coupure'  }).catch(err => {});
 		if (b == 'aux1'){
 			obsAux.send('SetCurrentScene', { 'scene-name': c }).catch(err => {	term("\n"+dateTimeNow()+"\t^#^M^W OBS ERROR ^ \tNo OBS Aux instance actually connected!")});
 			aux1_active = a;
@@ -1613,348 +1601,82 @@ statement = JSON.stringify(Truc);
 		}).catch((error) => { term("\n"+dateTimeNow()+"\t^#^r^W OBSCONNEC ^ \tNo OBS Main instance actually connected!"); });
 		obs.on('error', err => { term("\n"+dateTimeNow()+"\t^#^r^W OBSCONNEC ^ \t^No OBS Main instance actually connected!"); });
 		obs.on('SwitchScenes', data => {		//OBS PROGRAM SWITCH CHANGE! 
-			program = (`${data.sceneName}`);
-				if (connectedXKeys.length){		//IF THERE IS A CONNECTED XKEYS PANEL
-					for (i = 6; i < 63; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all line buttons  
-						Xkeys80_1.setBacklight(i, false, true)};//red light POWER OFF all line buttons				
-					if (program == xkey07) {		
-						Xkeys80_1.setBacklight(6, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(6, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys06');//idem for the virtual Keyboard
-						DBupdateState('pgm_active','06',program,'','','');
-						pgm_active = '06';}
-					if (program == xkey15) {		
-						Xkeys80_1.setBacklight(14, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(14, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys14');//idem for the virtual Keyboard
-						DBupdateState('pgm_active','14',program,'','','','');
-						pgm_active = '14';}
-					if (program == xkey23) {		
-						Xkeys80_1.setBacklight(22, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(22, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys22');//idem for the virtual Keyboard
-						DBupdateState('pgm_active','22',program,'','','','');
-						pgm_active = '22';}
-					if (program == xkey31) {		
-						Xkeys80_1.setBacklight(30, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(30, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys30');//idem for the virtual Keyboard
-						DBupdateState('pgm_active','30',program,'','','','');
-						pgm_active = '30';} 
-					if (program == xkey39) {		
-						Xkeys80_1.setBacklight(38, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(38, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys38');
-						DBupdateState('pgm_active','38',program,'','','','');
-						pgm_active = '38';}
-					if (program == xkey47) {		
-						Xkeys80_1.setBacklight(46, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(46, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys46');
-						DBupdateState('pgm_active','46',program,'','','','');
-						pgm_active = '46';} 
-					if (program == xkey55) {		
-						Xkeys80_1.setBacklight(54, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(54, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys54');
-						DBupdateState('pgm_active','54',program,'','','','');
-						pgm_active = '54';}
-					if (program == xkey63) {		
-						Xkeys80_1.setBacklight(62, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(62, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys62');
-						DBupdateState('pgm_active','62',program,'','','','');
-						pgm_active = '62';}
-				} else {		//IF THERE IS NONE CONNECTED XKEYS PANEL
-					if (program == xkey07) { IOSendData(['web'], 'rClick', 'xkeys06');
-							DBupdateState('pgm_active','06',program,'','','','');
-							pgm_active = '06';}
-					if (program == xkey15) { IOSendData(['web'], 'rClick', 'xkeys14');
-							DBupdateState('pgm_active','14',program,'','','','');
-							pgm_active = '14';}
-					if (program == xkey23) { IOSendData(['web'], 'rClick', 'xkeys22');
-							DBupdateState('pgm_active','22',program,'','','','');
-							pgm_active = '22';}
-					if (program == xkey31) { IOSendData(['web'], 'rClick', 'xkeys30');
-							DBupdateState('pgm_active','30',program,'','','','');
-							pgm_active = '30';} 
-					if (program == xkey39) { IOSendData(['web'], 'rClick', 'xkeys38');
-							DBupdateState('pgm_active','38',program,'','','','');
-							pgm_active = '38';}
-					if (program == xkey47) { IOSendData(['web'], 'rClick', 'xkeys46');
-							DBupdateState('pgm_active','46',program,'','','','');
-							pgm_active = '46';} 
-					if (program == xkey55) { IOSendData(['web'], 'rClick', 'xkeys54');
-							DBupdateState('pgm_active','54',program,'','','','');
-							pgm_active = '54';}
-					if (program == xkey63) { IOSendData(['web'], 'rClick', 'xkeys62');
-							DBupdateState('pgm_active','62',program,'','','','');
-							pgm_active = '62';}
-				}	
-			term("\n"+dateTimeNow()+"\t^#^M^W OBSPGM OK ^ \tKey pressed: \t"+pgm_active+' - '+program);
+				program = (`${data.sceneName}`);
+					if (program == xkey07) { pgm_active = '07'; j = 7;}
+					if (program == xkey15) { pgm_active = '15'; j = 15;}
+					if (program == xkey23) { pgm_active = '23'; j = 23;}
+					if (program == xkey31) { pgm_active = '31'; j = 31;} 
+					if (program == xkey39) { pgm_active = '39'; j = 39;}
+					if (program == xkey47) { pgm_active = '47'; j = 47;} 
+					if (program == xkey55) { pgm_active = '55'; j = 55;}
+					if (program == xkey63) { pgm_active = '63'; j = 63;}
+				DBupdateState('pgm_active',pgm_active,program,'','','','');
+					if (connectedXKeys == 'true'){
+						for (i = 7; i < 64; i=i+8){ myXkeys.setBacklight(i, '0000ff')}; //blue light POWER ON all line buttons 
+						myXkeys.setBacklight(j, 'red')}; //red light POWER ON selected button		
+				term("\n"+dateTimeNow()+"\t^#^M^W OBSPGM OK ^ \tKey pressed: \t"+pgm_active+' - '+program);			
 		});						
 		obs.on('PreviewSceneChanged', dt => {			//OBS PREVIEW SWITCH CHANGE! 
-			preview = (`${dt.sceneName}`);
-				if (connectedXKeys.length){				//IF THERE IS A CONNECTED XKEYS PANEL
-					for (i = 7; i < 64; i=i+8){
-							Xkeys80_1.setBacklight(i, true); //blue light POWER ON all line buttons  
-							Xkeys80_1.setBacklight(i, false, true);}//blue light POWER OFF selected button						
-					if (preview == xkey08) {		
-						Xkeys80_1.setBacklight(7, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(7, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys07');
-						DBupdateState('pvw_active','07',preview,'','','','');
-						pvw_active = '07';}
-					if (preview == xkey16) {		
-						Xkeys80_1.setBacklight(15, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(15, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys15');
-						DBupdateState('pvw_active','15',preview,'','','','');
-						pvw_active = '15';}
-					if (preview == xkey24) {		
-						Xkeys80_1.setBacklight(23, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(23, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys23');
-						DBupdateState('pvw_active','23',preview,'','','','');
-						pvw_active = '23';} 
-					if (preview == xkey32) {		
-						Xkeys80_1.setBacklight(31, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(31, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys31');
-						DBupdateState('pvw_active','31',preview,'','','','');
-						pvw_active = '31';} 
-					if (preview == xkey40) {		
-						Xkeys80_1.setBacklight(39, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(39, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys39');
-						DBupdateState('pvw_active','39',preview,'','','','');
-						pvw_active = '39';} 
-					if (preview == xkey48) {		
-						Xkeys80_1.setBacklight(47, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(47, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys47');
-						DBupdateState('pvw_active','47',preview,'','','','');
-						pvw_active = '47';}
-					if (preview == xkey56) {		
-						Xkeys80_1.setBacklight(55, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(55, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys55');
-						DBupdateState('pvw_active','55',preview,'','','','');
-						pvw_active = '55';}
-					if (preview == xkey64) {		
-						Xkeys80_1.setBacklight(63, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(63, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys63');
-						DBupdateState('pvw_active','63',preview,'','','','');
-						pvw_active = '63';}
-				} else {		//IF THERE IS NONE CONNECTED XKEYS PANEL
-					if (preview == xkey08) { IOSendData(['web'], 'rClick', 'xkeys07');
-							DBupdateState('pvw_active','07',preview,'','','','');
-							pvw_active = '07';}
-					if (preview == xkey16) { IOSendData(['web'], 'rClick', 'xkeys15');
-							DBupdateState('pvw_active','15',preview,'','','','');
-							pvw_active = '15';}
-					if (preview == xkey24) { IOSendData(['web'], 'rClick', 'xkeys23');
-							DBupdateState('pvw_active','23',preview,'','','','');
-							pvw_active = '23';}
-					if (preview == xkey32) { IOSendData(['web'], 'rClick', 'xkeys31');
-							DBupdateState('pvw_active','31',preview,'','','','');
-							pvw_active = '31';} 
-					if (preview == xkey40) { IOSendData(['web'], 'rClick', 'xkeys39');
-							DBupdateState('pvw_active','39',preview,'','','','');
-							pvw_active = '39';}
-					if (preview == xkey48) { IOSendData(['web'], 'rClick', 'xkeys47');
-							DBupdateState('pvw_active','47',preview,'','','','');
-							pvw_active = '47';} 
-					if (preview == xkey56) { IOSendData(['web'], 'rClick', 'xkeys55');
-							DBupdateState('pvw_active','55',preview,'','','','');
-							pvw_active = '55';}
-					if (preview == xkey64) { IOSendData(['web'], 'rClick', 'xkeys63');
-							DBupdateState('pvw_active','63',preview,'','','','');
-							pvw_active = '63';}
-				}
-			term("\n"+dateTimeNow()+"\t^#^M^W OBSPVW OK ^ \tKey pressed: \t"+pvw_active+' - '+preview);
+				preview = (`${dt.sceneName}`);
+					if (preview == xkey08) { pvw_active = '08'; j = 8;}
+					if (preview == xkey16) { pvw_active = '16'; j = 16;}
+					if (preview == xkey24) { pvw_active = '24'; j = 24;}
+					if (preview == xkey32) { pvw_active = '32'; j = 32;}
+					if (preview == xkey40) { pvw_active = '40'; j = 40;}
+					if (preview == xkey48) { pvw_active = '48'; j = 48;}
+					if (preview == xkey56) { pvw_active = '56'; j = 56;}
+					if (preview == xkey64) { pvw_active = '64'; j = 64;}
+				DBupdateState('pvw_active',pvw_active,preview,'','','','');
+					if (connectedXKeys == 'true'){
+						for (i = 8; i < 65; i=i+8){ myXkeys.setBacklight(i, '0000ff')}; //blue light POWER ON all line buttons 
+						myXkeys.setBacklight(j, 'red')}; //red light POWER ON selected button
+				term("\n"+dateTimeNow()+"\t^#^M^W OBSPVW OK ^ \tKey pressed: \t"+pvw_active+' - '+preview);
 		});
 		obs.on('StreamStatus', dt => {
 			streamS = (`${dt.streaming}`);
 			console.log('STREAMING: '+streamS);
 		});		
-}
+	}
 
 //CONNECT TO AN OBS AUX DEVICE 
 	function obsAux_detect(auxAddr,callback){
 		obsAux.connect({ address: auxAddr, password: '' }).then(() => {
-			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W AUXCONNEC ^ \tOBS AUX INSTANCE Connected to: \t"+auxAddr)
-			
+			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W AUXCONNEC ^ \tOBS AUX INSTANCE Connected to: \t"+auxAddr)			
 		}).catch((error) => { term("\n"+dateTimeNow()+"\t^#^r^W AUXCONNEC ^ \tNo OBS Aux instance actually connected!"); });
 		obsAux.on('error', err => { term("\n"+dateTimeNow()+"\t^#^r^W AUXCONNEC ^ \t^No OBS Aux instance actually connected!"); });
 		obsAux.on('SwitchScenes', data => {		//OBS AUX PROGRAM (AKA AUX1) SWITCH CHANGE! 
-			obsaux_1 = (`${data.sceneName}`);
-				if (connectedXKeys.length){		//IF THERE IS A CONNECTED XKEYS PANEL
-					for (i = 4; i < 61; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all line buttons  
-						Xkeys80_1.setBacklight(i, false, true)};//red light POWER OFF all line buttons					
-					if (obsaux_1 == xkey05) {		
-						Xkeys80_1.setBacklight(4, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(4, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys04');
-						DBupdateState('aux1_active','04',obsaux_1,'','','','');
-						aux1_active = '04';}
-					if (obsaux_1 == xkey13) {		
-						Xkeys80_1.setBacklight(12, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(12, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys12');
-						DBupdateState('aux1_active','12',obsaux_1,'','','','');
-						aux1_active = '12';}
-					if (obsaux_1 == xkey21) {		
-						Xkeys80_1.setBacklight(20, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(20, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys20');
-						DBupdateState('aux1_active','20',obsaux_1,'','','','');
-						aux1_active = '20';}
-					if (obsaux_1 == xkey29) {		
-						Xkeys80_1.setBacklight(28, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(28, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys28');
-						DBupdateState('aux1_active','28',obsaux_1,'','','','');
-						aux1_active = '28';} 
-					if (obsaux_1 == xkey37) {		
-						Xkeys80_1.setBacklight(36, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(36, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys36');
-						DBupdateState('aux1_active','36',obsaux_1,'','','','');
-						aux1_active = '36';}
-					if (obsaux_1 == xkey45) {		
-						Xkeys80_1.setBacklight(44, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(44, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys44');
-						DBupdateState('aux1_active','44',obsaux_1,'','','','');
-						aux1_active = '44';} 
-					if (obsaux_1 == xkey53) {		
-						Xkeys80_1.setBacklight(52, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(52, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys52');
-						DBupdateState('aux1_active','52',obsaux_1,'','','','');
-						aux1_active = '52';}
-					if (obsaux_1 == xkey61) {		
-						Xkeys80_1.setBacklight(60, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(60, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys60');
-						DBupdateState('aux1_active','60',obsaux_1,'','','','');
-						aux1_active = '60';}
-				} else {		//IF THERE IS NONE CONNECTED XKEYS PANEL
-					if (obsaux_1 == xkey05) { IOSendData(['web'], 'rClick', 'xkeys04');
-							DBupdateState('aux1_active','04',obsaux_1,'','','','');
-							aux1_active = '04';}
-					if (obsaux_1 == xkey13) { IOSendData(['web'], 'rClick', 'xkeys12');
-							DBupdateState('aux1_active','12',obsaux_1,'','','','');
-							aux1_active = '12';}
-					if (obsaux_1 == xkey21) { IOSendData(['web'], 'rClick', 'xkeys20');
-							DBupdateState('aux1_active','20',obsaux_1,'','','','');
-							aux1_active = '20';}
-					if (obsaux_1 == xkey29) { IOSendData(['web'], 'rClick', 'xkeys28');
-							DBupdateState('aux1_active','28',obsaux_1,'','','','');
-							aux1_active = '28';} 
-					if (obsaux_1 == xkey37) { IOSendData(['web'], 'rClick', 'xkeys36');
-							DBupdateState('aux1_active','36',obsaux_1,'','','','');
-							aux1_active = '36';}
-					if (obsaux_1 == xkey45) { IOSendData(['web'], 'rClick', 'xkeys44');
-							DBupdateState('aux1_active','44',obsaux_1,'','','','');
-							aux1_active = '44';} 
-					if (obsaux_1 == xkey53) { IOSendData(['web'], 'rClick', 'xkeys52');
-							DBupdateState('aux1_active','52',obsaux_1,'','','','');
-							aux1_active = '52';}
-					if (obsaux_1 == xkey61) { IOSendData(['web'], 'rClick', 'xkeys60');
-							DBupdateState('aux1_active','60',obsaux_1,'','','','');
-							aux1_active = '60';}
-				}
-			term("\n"+dateTimeNow()+"\t^#^M^W AUXCONNEC ^ \tKey pressed: \t"+aux1_active+' - '+obsaux_1+"");
+				obsaux_1 = (`${data.sceneName}`);
+					if (obsaux_1 == xkey05) { aux1_active = '05'; j = 5;}
+					if (obsaux_1 == xkey13) { aux1_active = '13'; j = 13;}
+					if (obsaux_1 == xkey21) { aux1_active = '21'; j = 21;}
+					if (obsaux_1 == xkey29) { aux1_active = '29'; j = 29;} 
+					if (obsaux_1 == xkey37) { aux1_active = '37'; j = 37;}
+					if (obsaux_1 == xkey45) { aux1_active = '45'; j = 45;} 
+					if (obsaux_1 == xkey53) { aux1_active = '53'; j = 53;}
+					if (obsaux_1 == xkey61) { aux1_active = '61'; j = 61;}
+				DBupdateState('aux1_active',aux1_active,obsaux_1,'','','','');
+					if (connectedXKeys == 'true'){
+						for (i = 5; i < 62; i=i+8){ myXkeys.setBacklight(i, '0000ff')}; //blue light POWER ON all line buttons 
+						myXkeys.setBacklight(j, 'red')}; //red light POWER ON selected button
+				term("\n"+dateTimeNow()+"\t^#^M^W OBS AUX 1 ^ \tKey pressed: \t"+aux1_active+' - '+obsaux_1+"");
 		});		
 		obsAux.on('PreviewSceneChanged', dt => {			//OBS AUX PREVIEW (AKA AUX2) SWITCH CHANGE! 
-			obsaux_2 = (`${dt.sceneName}`);
-			if (connectedXKeys.length){						//IF THERE IS A CONNECTED XKEYS PANEL
-				for (i = 5; i < 62; i=i+8){
-						Xkeys80_1.setBacklight(i, true); //blue light POWER ON all line buttons  
-						Xkeys80_1.setBacklight(i, false, true);}//blue light POWER OFF selected button
-						
-					if (obsaux_2 == xkey06) {		
-						Xkeys80_1.setBacklight(5, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(5, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys05');
-						DBupdateState('aux2_active','05',obsaux_2,'','','','');
-						aux2_active = '05';}
-					if (obsaux_2 == xkey14) {		
-						Xkeys80_1.setBacklight(13, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(13, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys13');
-						DBupdateState('aux2_active','13',obsaux_2,'','','','');
-						aux2_active = '13';}
-					if (obsaux_2 == xkey22) {		
-						Xkeys80_1.setBacklight(21, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(21, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys21');
-						DBupdateState('aux2_active','21',obsaux_2,'','','','');
-						aux2_active = '21';} 
-					if (obsaux_2 == xkey30) {		
-						Xkeys80_1.setBacklight(29, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(29, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys29');
-						DBupdateState('aux2_active','29',obsaux_2,'','','','');
-						aux2_active = '29';} 
-					if (obsaux_2 == xkey38) {		
-						Xkeys80_1.setBacklight(37, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(37, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys37');
-						DBupdateState('aux2_active','37',obsaux_2,'','','','');
-						aux2_active = '37';} 
-					if (obsaux_2 == xkey46) {		
-						Xkeys80_1.setBacklight(45, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(45, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys45');
-						DBupdateState('aux2_active','45',obsaux_2,'','','','');
-						aux2_active = '45';}
-					if (obsaux_2 == xkey54) {		
-						Xkeys80_1.setBacklight(53, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(53, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys53');
-						DBupdateState('aux2_active','53',obsaux_2,'','','','');
-						aux2_active = '53';}
-					if (obsaux_2 == xkey62) {		
-						Xkeys80_1.setBacklight(61, true, true); //red light POWER ON selected button
-						Xkeys80_1.setBacklight(61, false);//blue light POWER OFF selected button
-						IOSendData(['web'], 'rClick', 'xkeys61');
-						DBupdateState('aux2_active','61',obsaux_2,'','','','');
-						aux2_active = '61';}
-				} else {		//IF THERE IS NONE CONNECTED XKEYS PANEL
-					if (obsaux_2 == xkey06) { IOSendData(['web'], 'rClick', 'xkeys05');
-							DBupdateState('aux2_active','05',obsaux_2,'','','','');
-							aux2_active = '05';}
-					if (obsaux_2 == xkey14) { IOSendData(['web'], 'rClick', 'xkeys13');
-							DBupdateState('aux2_active','13',obsaux_2,'','','','');
-							aux2_active = '13';}
-					if (obsaux_2 == xkey22) { IOSendData(['web'], 'rClick', 'xkeys21');
-							DBupdateState('aux2_active','21',obsaux_2,'','','','');
-							aux2_active = '21';}
-					if (obsaux_2 == xkey30) { IOSendData(['web'], 'rClick', 'xkeys29');
-							DBupdateState('aux2_active','29',obsaux_2,'','','','');
-							aux2_active = '29';} 
-					if (obsaux_2 == xkey38) { IOSendData(['web'], 'rClick', 'xkeys37');
-							DBupdateState('aux2_active','37',obsaux_2,'','','','');
-							aux2_active = '37';}
-					if (obsaux_2 == xkey46) { IOSendData(['web'], 'rClick', 'xkeys45');
-							DBupdateState('aux2_active','45',obsaux_2,'','','','');
-							aux2_active = '45';} 
-					if (obsaux_2 == xkey54) { IOSendData(['web'], 'rClick', 'xkeys53');
-							DBupdateState('aux2_active','53',obsaux_2,'','','','');
-							aux2_active = '53';}
-					if (obsaux_2 == xkey62) { IOSendData(['web'], 'rClick', 'xkeys61');
-							DBupdateState('aux2_active','61',obsaux_2,'','','','');
-							aux2_active = '61';}
-				}	
-			term("\n"+dateTimeNow()+"\t^#^M^W AUXCONNEC ^ \tKey pressed: \t"+aux2_active+' - '+obsaux_2);
+				obsaux_2 = (`${dt.sceneName}`);								
+					if (obsaux_2 == xkey06) { aux2_active = '06'; j = 6;}
+					if (obsaux_2 == xkey14) { aux2_active = '14'; j = 14;}
+					if (obsaux_2 == xkey22) { aux2_active = '22'; j = 22;} 
+					if (obsaux_2 == xkey30) { aux2_active = '30'; j = 30;} 
+					if (obsaux_2 == xkey38) { aux2_active = '38'; j = 38;} 
+					if (obsaux_2 == xkey46) { aux2_active = '46'; j = 46;}
+					if (obsaux_2 == xkey54) { aux2_active = '54'; j = 54;}
+					if (obsaux_2 == xkey62) { aux2_active = '62'; j = 62;}
+				DBupdateState('aux2_active',aux2_active,obsaux_2,'','','','');
+					if (connectedXKeys == 'true'){
+						for (i = 6; i < 63; i=i+8){ myXkeys.setBacklight(i, '0000ff')}; //blue light POWER ON all line buttons 
+						myXkeys.setBacklight(j, 'red')}; //red light POWER ON selected button
+				term("\n"+dateTimeNow()+"\t^#^M^W OBS AUX 2 ^ \tKey pressed: \t"+aux2_active+' - '+obsaux_2);
 		});	
-		}
+	}
 	
 // OBS: GET SCENES LIST
 	async function obs_List(callback){
@@ -1988,63 +1710,57 @@ statement = JSON.stringify(Truc);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W \t ^ \tOBS EFFECT: "+FX)
 	}
 
-//Sent to webapp ccg data retrieved from DB
+//Send CCG data retrieved from DB to webapp
 	function ccg_retrieve(a, callback){
 		IOSendData(['web'], 'ccgconf', a);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W CASPAR CG ^ \tConfig Server transmited to webapp: "+a)
 	}	
 	
-//Sent to webapp OBS data retrieved from DB
+//Send OBS data retrieved from DB to webapp 
 	function obs_retrieve(obssrv, obsport, callback){
 		obsAddr = obssrv+","+obsport;
 		IOSendData(['web'], 'obsconf', obsAddr);
-		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W OBSCONNEC ^ \tConfig OBS transmited to webapp: "+obsAddr)			
-			obsMain_detect(obsAddr,function(err, response){ // Start OBS Connector
-				if(!err){ term(response);
-				} else {
-					if(err == 'disconnected'){ term("\n"+dateTimeNow()+"\t^#^r^W OBSCONNEC ^ \tDisconnected from OBS main instance"); }
-				}
-			});
+		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W OBSCONNEC ^ \tConfig OBS transmited to webapp: "+obsAddr)	
 	}	
 	
-//Sent to webapp OBS AUX data retrieved from DB
+//Send OBS AUX data retrieved from DB to webapp
 	function aux_retrieve(auxsrv, auxport, callback){
 		var aux_conf = auxsrv+","+auxport;
 		IOSendData(['web'], 'auxconf', aux_conf);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W AUXCONNEC ^ \tConfig OBS AUX transmited to webapp: "+aux_conf)
 	}	
 	
-//Sent to webapp ccg data retrieved from DB
+//Send CCG templates data retrieved from DB to webapp
 	function temp_retrieve(a, callback){
 		IOSendData(['web'], 'tempconf', a);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^B^W CASPAR CG ^ \tTemplates config transmited to webapp: "+a)
 	}	
 	
-//Sent to webapp xkeys data retrieved from DB
+//Send xkeys data retrieved from DB to webapp
 	function xkeys_retrieve(xKeys, callback){
 		IOSendData(['web'], 'xkeys', xKeys);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b MONGODATA ^ \tXKEY CONFIG transmited to webapp: "+xKeys)
 	}	
 		
-//Sent to webapp saved titles data retrieved from DB
+//Send saved titles data retrieved from DB to webapp
 	function title_retrieve(titleList, callback){
 		IOSendData(['web'], 'titles', titleList);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b MONGODATA ^ \tSaved Titles transmited to webapp: "+titleList)
 	}	
 		
-//Sent to webapp saved playlist data retrieved from DB
+//Send saved playlist data retrieved from DB to webapp
 	function plist_retrieve(a,b, callback){
 		IOSendData(['web'], 'playlist', a, b);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b MONGODATA ^ \tSaved Playlist "+a+" transmited to webapp: "+b)
 	}	
 
-//Sent to webapp status retrieved from DB
+//Send status retrieved from DB to webapp
 	function state_retrieve(a, callback){
 		IOSendData(['web'], 'status', a);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b MONGODATA ^ \tStatus transmited to webapp: "+a)
 	}	
 
-//Sent to webapp solo status retrieved from DB
+//Send solo status retrieved from DB to webapp
 	function partial_retrieve(a, callback){
 		IOSendData(['web'], 'solostatus', a);
 		callback(undefined, "\n"+dateTimeNow()+"\t^#^G^b MONGODATA ^ \tPartial Status transmited to webapp: "+a)
@@ -2104,9 +1820,9 @@ statement = JSON.stringify(Truc);
 	function ccg_LoadMedia(ccgChannel, ccgLayer, file, options, callback){
 		if(CasparCG_Connection != undefined){
 			CasparCG_Connection.load(ccgChannel, ccgLayer, file, options).catch(console.error);
-			var calling = 'ADD '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
-			var command = new AMCP.CustomCommand(calling);
-			CasparCG_Connection.do(command).catch(console.error).catch(console.error);
+			// var calling = 'ADD '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
+			// var command = new AMCP.CustomCommand(calling);
+			// CasparCG_Connection.do(command).catch(console.error).catch(console.error);
 			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPAR CG ^ \tMedia Loaded:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer+' '+file+' '+options)
 		}
 	}
@@ -2167,15 +1883,15 @@ statement = JSON.stringify(Truc);
 	function ccg_StopMedia(ccgChannel, ccgLayer, callback){
 		if(CasparCG_Connection != undefined){
 			CasparCG_Connection.stop(ccgChannel, ccgLayer).catch(console.error);
-			var calling = 'REMOVE  '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
-			var command = new AMCP.CustomCommand(calling);
-			CasparCG_Connection.do(command).catch(console.error);
+			// var calling = 'REMOVE  '+ccgChannel+' STREAM rtp://192.168.0.155:1234 -codec:v libx264 -tune:v zerolatency -b:v 200k -filter:v scale=320:180 -preset:v ultrafast -crf:v 5 -b:a 128k -format rtp_mpegts';
+			// var command = new AMCP.CustomCommand(calling);
+			// CasparCG_Connection.do(command).catch(console.error);
 			callback(undefined, "\n"+dateTimeNow()+"\t^#^M^W CASPAR CG ^ \tMedia Stopped:\t\t[Video]\t\tFile: "+ccgChannel+'-'+ccgLayer)
 		}
 	}
 
 // CASPARCG CONNECTOR
-	function ccgConnector(a, b, callback){
+	function ccgConnector(a, b, callback){	
 		if(CasparCG_Connection == null){
 			CasparCG_Connection = new CasparCG({		// CASPARCG SETUP NEW CONNECTION
 				host: a,
@@ -2185,28 +1901,28 @@ statement = JSON.stringify(Truc);
 					console.log(err);         
 				},
 				onConnectionChanged: function(ccgConnectionChanged){                
-					if(ccgConnectionChanged === true){
+					if(ccgConnectionChanged == true){
 					  callback('connected');
 					}
-					if(ccgConnectionChanged === false){
+					if(ccgConnectionChanged == false){
 					  callback('disconnected');
 					  CasparCG_Connection = null;
 					}     
 				}
 			});
 			CasparCG_Connection.connect();			// CASPARCG SETUP CONNECT
-			callback(undefined, "\n"+dateTimeNow()+"\t^#^y^B CASPAR CG ^ \tCasparCG Server trying connection to:\t"+a+':'+b);
-		}    
+			callback(undefined, "\n"+dateTimeNow()+"\t^#^y^B CASPAR CG ^ \tCasparCG Server connected to:\t"+a+':'+b);
+		} 
 	}
 
 // OSC Client
-	function ccgConnectOSC(a,callback){
-		oscSocket = udpConnection.createSocket("udp4", function(msg, info) {
+	function ccgConnectOSC(b,callback){
+		oscSocket = udpConnection.createSocket({ type: "udp4", reuseAddr: true, function(msg, info) {
 		  var error, error1;
 		  try {
 			oscMessages = oscClient.fromBuffer(msg);						// CASPARCG - GET OSC
-			oscMessages.elements.forEach(function(oscMessage){				// CHECK IF VIDEO PRODUCER IS PRESENT IN CH1
-				if(oscMessage.address == '/channel/' + vtr1 + '/stage/layer/' + lvtr1 + '/foreground/producer'){
+			oscMessages.elements.forEach(function(oscMessage){				
+				if(oscMessage.address == '/channel/' + vtr1 + '/stage/layer/' + lvtr1 + '/foreground/producer'){	// CHECK IF VIDEO PRODUCER IS PRESENT IN CH1
 					var videoPresent = false;
 						if(oscMessage.args[0].value != 'empty'){ videoPresent = true; }
 						else { videoPresent = false; }
@@ -2240,8 +1956,8 @@ statement = JSON.stringify(Truc);
 				}  
 			});
 		  } catch (error1) { error = error1; }			// CASPARCG - CATCH ERROR
-		});
-		oscSocket.bind(a);			// SOCKET.IO - BIND CONNECTION
+		}});
+		oscSocket.bind(b);								// CCG OSC SOCKET - BIND CONNEXION
 	}
 
 // TIMER CHANNEL 1
