@@ -1,0 +1,59 @@
+{
+  "name": "usb-detection",
+  "version": "4.13.0",
+  "description": "Listen to USB devices and detect changes on them.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "gypfile": true,
+  "scripts": {
+    "node-gyp": "node-gyp",
+    "install": "prebuild-install || node-gyp rebuild",
+    "prepublishOnly": "npm run validate",
+    "lint": "eslint **/*.js",
+    "validate": "npm run lint && npm test",
+    "test": "jasmine ./test/test.js",
+    "prebuild": "prebuild --all --strip --verbose",
+    "prebuild-upload": "prebuild --upload-all",
+    "rebuild": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MadLittleMods/node-usb-detection.git"
+  },
+  "keywords": [
+    "usb",
+    "device",
+    "hardware",
+    "list",
+    "insert",
+    "add",
+    "remove",
+    "change",
+    "plug",
+    "unplug",
+    "notification"
+  ],
+  "homepage": "https://github.com/MadLittleMods/node-usb-detection",
+  "bugs": {
+    "url": "https://github.com/MadLittleMods/node-usb-detection/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {
+    "bindings": "^1.5.0",
+    "eventemitter2": "^5.0.1",
+    "nan": "^2.15.0",
+    "prebuild-install": "^6.1.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chalk": "^2.4.1",
+    "eslint": "^4.19.1",
+    "jasmine": "^3.1.0",
+    "node-abi": "^3.1.0",
+    "node-gyp": "^8.2.0",
+    "prebuild": "^11.0.0"
+  }
+}
