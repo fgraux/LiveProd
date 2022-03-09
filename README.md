@@ -88,6 +88,7 @@ INSTALL
 CAREFULL
 If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flash templates won’t  be working (but will work with html templates and simple logos displaying).
 Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be displayed.
+You might also have to install libusb (sudo apt install libusb-dev) & libudev (sudo apt install libudev-dev) then in LiveProd folder (cd LiveProd) manually install xkeys (npm install --save xkeys).
 
 
 OBS STUDIO INTEGRATION EXAMPLE
