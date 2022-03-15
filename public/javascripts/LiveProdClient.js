@@ -1,5 +1,5 @@
 // SOCKETIO CONNECT
-var socket = io.connect('//192.168.0.155:7777', {
+var socket = io.connect(window.location.origin+":7777", {
     query: {
         room: 'web'
     }
