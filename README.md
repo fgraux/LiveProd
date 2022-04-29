@@ -97,6 +97,9 @@ OBS STUDIO INTEGRATION EXAMPLE
 
 <img src="https://user-images.githubusercontent.com/33838534/165948136-09900fa0-1a3a-4c4c-9c3d-94500e5f6ad9.gif" width="100%">
 
+![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165957252-18ebd9d5-88ca-4949-8a28-b4f2a8d5ac7b.gif)
+
+
 The actual script was writen to remote 2 obs studio instance :
 
 	• The main one is dedicated for directing the show
@@ -108,7 +111,6 @@ The actual script was writen to remote 2 obs studio instance :
 		o Preview is used as aux2
 		
 		o Both can feed screens inside a tv set
-	![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165956663-097fe0a8-c70c-46aa-9bb5-1aaebc25bc6f.gif)
 	
 
 This example includes 8 Caspar CG channels/layers that can easily be set up : 
