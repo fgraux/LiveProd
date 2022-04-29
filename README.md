@@ -15,7 +15,9 @@ FLEXIBLE
 
 LiveProd Client side can be used as a single global interface for any device, can be fully integrated onto OBS Studio, as well as easily be split into different modules for different users/operators : without any issue, as all the commands are sync with node socket.
 
-	  • Modular, Scalable & Sync.
+	  • Modular & Scalable.
+
+	  • Sync & secure (any operation is saved onto mongoDb database)
   
 	  • Fully Html5 Designed.
   
