@@ -95,10 +95,7 @@ You might also have to install libusb (sudo apt install libusb-dev) & libudev (s
 
 OBS STUDIO INTEGRATION EXAMPLE
 
-<img src="https://user-images.githubusercontent.com/33838534/165948136-09900fa0-1a3a-4c4c-9c3d-94500e5f6ad9.gif" width="100%">
-
 ![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165957252-18ebd9d5-88ca-4949-8a28-b4f2a8d5ac7b.gif)
-
 
 The actual script was writen to remote 2 obs studio instance :
 
