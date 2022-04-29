@@ -161,6 +161,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	![2022-04-29 17-07-28](https://user-images.githubusercontent.com/33838534/165972515-2d0807d5-0b20-4267-a8eb-550e390a009f.gif)
 
 	• Click on next or previous buttons
+	![2022-04-29 17-12-10](https://user-images.githubusercontent.com/33838534/165973285-62196209-5b35-4d9a-bfab-abc31e0ab7d7.gif)
 
 4. Powerfull integrated graphic server:
 
