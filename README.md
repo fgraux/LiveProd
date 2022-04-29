@@ -119,6 +119,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 ![2022-04-29 16-28-52](https://user-images.githubusercontent.com/33838534/165966376-ef8b4493-1596-4c2e-a765-66e6052f3cfd.gif)
 
 4 dve to play caspar cg templates :  simply drag & drop the right name & title from the title list to the DVE box. Also double-clicking on a title will load it to DVE 1 box.
+![2022-04-29 16-44-46](https://user-images.githubusercontent.com/33838534/165968084-e7b81cd5-5a8f-4071-b1bd-e9517c97ecf3.gif)
 
 1. Integrated interface:
 
