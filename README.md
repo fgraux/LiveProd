@@ -113,7 +113,7 @@ The actual script was writen to remote 2 obs studio instance :
 This example includes 8 Caspar CG channels/layers that can easily be set up : 
 
 2 vtr that can play and adapt any video whatever format, resolution, framerate : simply drag & drop from the videos list to the VTR box. Also double-clicking on a video will load it to VTR 1 player.
-![videodrag](https://user-images.githubusercontent.com/33838534/149331810-39fa0032-d60e-4530-b837-31a043ec5abb.png)
+![2022-04-29 15-59-13](https://user-images.githubusercontent.com/33838534/165959543-c6e35061-6c91-45fd-b9b6-9abb224684c6.gif)
 
 bugs box to display any image format fullscreen or not : simply drag & drop from the images list to the BUG box. Also double-clicking on an image will load it to BUG 1 box.
 ![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
