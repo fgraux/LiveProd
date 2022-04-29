@@ -152,7 +152,9 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Click on playlist button
 	![2022-04-29 17-02-19](https://user-images.githubusercontent.com/33838534/165971377-8fd2f65b-c195-48d2-846f-30ccbd9f8a22.gif)
 
-	• Create your playlist while drag & dropping videos ![playlistdrag](https://user-images.githubusercontent.com/33838534/149331817-07f502ea-1b9a-48a6-a0d8-625019f1a943.png)
+	• Create your playlist while drag & dropping videos
+	![2022-04-29 17-05-07](https://user-images.githubusercontent.com/33838534/165971806-0fc69a03-54f7-498d-a1a4-2f305c1a3efc.gif)
+
 	• Sort your items onto playlist ![playlistsort](https://user-images.githubusercontent.com/33838534/149331820-8a9fc596-fabc-4ca2-a71f-155beea87283.png)
 	• Click on next or previous buttons
 
