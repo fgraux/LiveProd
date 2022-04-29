@@ -116,10 +116,9 @@ This example includes 8 Caspar CG channels/layers that can easily be set up :
 ![2022-04-29 15-59-13](https://user-images.githubusercontent.com/33838534/165959543-c6e35061-6c91-45fd-b9b6-9abb224684c6.gif)
 
 bugs box to display any image format fullscreen or not : simply drag & drop from the images list to the BUG box. Also double-clicking on an image will load it to BUG 1 box.
-![bugdrag](https://user-images.githubusercontent.com/33838534/149331823-7bf3f83e-e7ee-448b-87ab-19601dbdb6b8.png)
+![2022-04-29 16-28-52](https://user-images.githubusercontent.com/33838534/165966376-ef8b4493-1596-4c2e-a765-66e6052f3cfd.gif)
 
 4 dve to play caspar cg templates :  simply drag & drop the right name & title from the title list to the DVE box. Also double-clicking on a title will load it to DVE 1 box.
-![titledrag](https://user-images.githubusercontent.com/33838534/149331813-6a32c77a-b191-405f-a8ca-b39595361478.png)	
 
 1. Integrated interface:
 
