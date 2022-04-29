@@ -95,7 +95,7 @@ You might also have to install libusb (sudo apt install libusb-dev) & libudev (s
 
 OBS STUDIO INTEGRATION EXAMPLE
 
-![liveProd01](https://user-images.githubusercontent.com/33838534/165948136-09900fa0-1a3a-4c4c-9c3d-94500e5f6ad9.gif =1920x1080)
+![liveProd01]<img src="https://user-images.githubusercontent.com/33838534/165948136-09900fa0-1a3a-4c4c-9c3d-94500e5f6ad9.gif" width="1920" height="1080">
 
 The actual script was writen to remote 2 obs studio instance :
 
