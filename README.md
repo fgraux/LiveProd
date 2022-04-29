@@ -94,7 +94,7 @@ You might also have to install libusb (sudo apt install libusb-dev) & libudev (s
 
 
 OBS STUDIO INTEGRATION EXAMPLE
-![2022-04-29 13-38-48_1](https://user-images.githubusercontent.com/33838534/165940038-26752e84-c81d-45ee-b037-95bc5d49a645.gif)
+![liveProd01](https://user-images.githubusercontent.com/33838534/165948136-09900fa0-1a3a-4c4c-9c3d-94500e5f6ad9.gif)
 The actual script was writen to remote 2 obs studio instance :
 
 	• The main one is dedicated for directing the show
