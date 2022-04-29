@@ -141,7 +141,9 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Add video to a player with drag & drop
 
-	• Clickable progressbar ![progressbar](https://user-images.githubusercontent.com/33838534/149331798-51d4b756-5ce9-4ecb-8743-326c2b1c0475.png)
+	• Clickable progressbar 
+	![2022-04-29 16-51-43_1](https://user-images.githubusercontent.com/33838534/165969883-13b46d23-44be-4825-9f1e-de36e5cf3d15.gif)
+
 	• Realtime timecode elapsed and remaining displayed
 
 
