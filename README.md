@@ -108,7 +108,8 @@ The actual script was writen to remote 2 obs studio instance :
 		o Preview is used as aux2
 		
 		o Both can feed screens inside a tv set
-		
+	![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165956663-097fe0a8-c70c-46aa-9bb5-1aaebc25bc6f.gif)
+	
 
 This example includes 8 Caspar CG channels/layers that can easily be set up : 
 
