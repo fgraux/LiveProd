@@ -5,6 +5,7 @@ LIVEPROD actually includes gateways to CasparCG, OBS Studio, XKeys keyboards, ND
 
 ![LiveProd1 min](https://user-images.githubusercontent.com/33838534/157013656-bab8dda7-3d13-4a45-88df-67af5c408d34.png)
 
+LiveProd is actually an OBS plugin, that adds professional tools (pro VCR, CG & control panel) to the open sourced video switcher software, it also can be used to create specifical interfaces to manage html templates (see below Scoreboard template & interface that handled 32 fields)
 UNIVERSAL
 
 	  • LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX.
@@ -89,6 +90,12 @@ CAREFULL
 If you want to install LIVEPROD on an Ubuntu server, be aware that CasparCG Flash templates won’t  be working (but will work with html templates and simple logos displaying).
 Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be displayed.
 You might also have to install libusb (sudo apt install libusb-dev) & libudev (sudo apt install libudev-dev) then in LiveProd folder (cd LiveProd) manually install xkeys (npm install --save xkeys).
+
+SCOREBOARD TEMPLATE & INTERFACE
+
+![2022-05-02 14-28-10](https://user-images.githubusercontent.com/33838534/166239621-ad3947ee-09dc-4a8f-a688-0b32e64508f2.gif)
+
+This example shows a simple designed template that displays the score of a turnament involving 16 gamers. As it is static, the template itself only took an hour to be builded. The dedicated interface includes dynamic fields for the names of 16 gamers and their scores. All are directly editable, and we had for each gamer 3 buttons (plus, minus & zero). We implemented the Excel import function and added 2 color input selectors that can dynamically change the color of the template.
 
 
 OBS STUDIO INTEGRATION EXAMPLE
