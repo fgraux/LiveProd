@@ -168,14 +168,14 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Allow to play casparcg template inside obs using 1 ndi channel (fill+key incl.) Or 2 sdi channels (decklink) ![2022-05-02 12-31-33](https://user-images.githubusercontent.com/33838534/166221647-727313c8-d938-49d6-809d-96b875b2a076.gif)
 
 	
-	• Both flash & html5 animated templates![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
+	• Both flash & html5 animated templates
 	
 	• Templates can be edited with adobe animate (ex flash) or with any html5 editor
 
 	• Lowerthirds, scrolls, titles…
 
-	• Excel files (xlsx, xls, csv) can be export or import to the titles list, you also can add, edit or delete any entry, sort the title list, then press drag & drop to any DVE : ![image](https://user-images.githubusercontent.com/33838534/149986211-cf35e53c-c617-46d3-81ec-d32060655668.png)
-	
+	• Excel files (xlsx, xls, csv) can be export or import to the titles list, you also can add, edit or delete any entry, sort the title list, then press drag & drop to any DVE :![2022-05-02 12-52-51](https://user-images.githubusercontent.com/33838534/166223525-4d0aac60-7b70-4b07-8a76-f5dc7655431c.gif)
+
 	• Any animation can be mixed with any data
 
 5. Simple but powerfull setup
