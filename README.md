@@ -165,7 +165,8 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 4. Powerfull integrated graphic server:
 
-	• Allow to play casparcg template inside obs using 1 ndi channel (fill+key incl.) Or 2 sdi channels (decklink) ![bug+dve](https://user-images.githubusercontent.com/33838534/149331745-140bce96-ce02-4b86-b945-7370a4a49b6e.PNG)
+	• Allow to play casparcg template inside obs using 1 ndi channel (fill+key incl.) Or 2 sdi channels (decklink) ![2022-05-02 12-31-33](https://user-images.githubusercontent.com/33838534/166221647-727313c8-d938-49d6-809d-96b875b2a076.gif)
+
 	
 	• Both flash & html5 animated templates![integ_bug+dve](https://user-images.githubusercontent.com/33838534/149331775-bc88d39d-2b4a-4f5b-8191-42c48a0f6f40.png)
 	
