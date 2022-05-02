@@ -92,14 +92,14 @@ Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be dis
 You might also have to install libusb (sudo apt install libusb-dev) & libudev (sudo apt install libudev-dev) then in LiveProd folder (cd LiveProd) manually install xkeys (npm install --save xkeys).
 
 SCOREBOARD TEMPLATE & INTERFACE
+![2022-05-02 15-51-16](https://user-images.githubusercontent.com/33838534/166245810-d661462d-3955-4954-a1b0-ee6860690891.gif)
 
-![2022-05-02 14-28-10](https://user-images.githubusercontent.com/33838534/166239621-ad3947ee-09dc-4a8f-a688-0b32e64508f2.gif)
+
 
 This example shows a simple designed template that displays the score of a turnament involving 16 gamers. As it is static, the template itself only took an hour to be builded. The dedicated interface includes dynamic fields for the names of 16 gamers and their scores. All are directly editable, and we had for each gamer 3 buttons (plus, minus & zero). We implemented the Excel import function and added 2 color input selectors that can dynamically change the color of the template.
 
 
 OBS STUDIO INTEGRATION EXAMPLE
-
 ![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165957252-18ebd9d5-88ca-4949-8a28-b4f2a8d5ac7b.gif)
 
 The actual script was writen to remote 2 obs studio instance :
