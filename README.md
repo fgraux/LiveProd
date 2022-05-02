@@ -22,16 +22,16 @@ LiveProd Client side can be used as a single global interface for any device, ca
 	  • Fully Html5 Designed.
   
 	  • Javascript + Node Js Commands Engineered.
-	 
+
 DESIGNABLE
 
 As LiveProd uses web techno (html5, javascript & css), it is totally free to design : Please find (in "Public/stylesheets/" folder) an uploaded alternative css that shows another presentation of the keyboard close to BMD Atem Design. 
 
 	  • The file "LiveProdStyle.css" is the standard one relative to the picture you can see below.
+	   
+	  • The file "LiveProdKeyboard.css" is modified for the page that only displays the keyboard.
 	  
-	  • The file "LiveProdStyleAtem.css" is the Atem style modified one.
-	  
-	  • The file "LiveProdKeyboardStyle.css" is an Atem style modified for the page that only displays the keyboard.
+	  • The file "LiveProdKeyboard.min.css" is modified for the page that only displays a thin version of the keyboard.
 
 OPENED & SHARED
 
@@ -76,9 +76,7 @@ INSTALL
 	• Modify the CasparCG config file with your own specs then Start CasparCG server & scanner.
 	
 	• Start OBS and add the scenes & sources to complete CasparCG configuration (Bugs & DVE would be sources added to all camera scenes...)
-	
-	• Go to /public/javascript folder and edit CCGNodeClient.js file, changing line 2 with the IP of your host computer.
-	
+		
 	• Open a terminal window (cmd or powershell on windows 10), cd to your folder, and type 'node LiveProdSrv.js'.
 	
 	• You should be now able to connect on the web UI while typing //localhost/ to your web browser (//localhost/keyboard/ for the single keyboard, //localhost/clock for the clock etc...). 
