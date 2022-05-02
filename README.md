@@ -6,6 +6,7 @@ LIVEPROD actually includes gateways to CasparCG, OBS Studio, XKeys keyboards, ND
 ![LiveProd1 min](https://user-images.githubusercontent.com/33838534/157013656-bab8dda7-3d13-4a45-88df-67af5c408d34.png)
 
 LiveProd is actually an OBS plugin, that adds professional tools (pro VCR, CG & control panel) to the open sourced video switcher software, it also can be used to create specifical interfaces to manage html templates (see below Scoreboard template & interface that handled 32 fields)
+
 UNIVERSAL
 
 	  • LiveProd server side is fully compatible with Ubuntu, Windows & Mac OSX.
