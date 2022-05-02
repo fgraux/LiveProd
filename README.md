@@ -180,7 +180,8 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 5. Simple but powerfull setup
 
-	• Define ip address & port of OBS main & aux instance, ip, ports, channels, layers of CasparCG![setup](https://user-images.githubusercontent.com/33838534/149331802-4403cef9-111c-41d5-8c6b-8ba3051ce373.png)
+	• Define ip address & port of OBS main & aux instance, ip, ports, channels, layers of CasparCG ![2022-05-02 12-58-49](https://user-images.githubusercontent.com/33838534/166224250-f0d38a38-fbeb-46c7-b3c1-54672ceff46c.gif)
+
 	• Most functions, sources, can be setted with drag and drop
 	
 	• Affect obs scenes to buttons with drag and drop ![obsdrag](https://user-images.githubusercontent.com/33838534/149331789-e7e073ad-3186-4733-ac9c-2aa5c5b7ffad.png)
