@@ -184,8 +184,10 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 
 	• Most functions, sources, can be setted with drag and drop
 	
-	• Affect obs scenes to buttons with drag and drop ![obsdrag](https://user-images.githubusercontent.com/33838534/149331789-e7e073ad-3186-4733-ac9c-2aa5c5b7ffad.png)
-	• Affect cg templates while drag & droping template item to dve setup box![templatedrag](https://user-images.githubusercontent.com/33838534/149331805-beccbf39-7cac-4e72-b55c-bc3df0d653de.png)
+	• Affect obs scenes to buttons with drag and drop ![2022-05-02 13-06-20](https://user-images.githubusercontent.com/33838534/166224858-adf2bd99-cdad-417b-9ec9-f85eaf56f826.gif)
+
+	• Affect cg templates while drag & droping template item to dve setup box ![2022-05-02 13-06-38](https://user-images.githubusercontent.com/33838534/166224882-14a8c087-ecb6-4f65-be09-1714ab98f0a2.gif)
+
 
 
 6. Physical & virtual panel fully synchonised
