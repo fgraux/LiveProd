@@ -195,3 +195,5 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Xkeys 80 touch industrial builded keyboard
 	• Both linked to obs & casparcg through sdk
 	• Fully customisable for differents needs
+	![keyboard](https://user-images.githubusercontent.com/33838534/166232512-8cc0cacc-a79d-48a8-be3d-2a9c64a7bcae.gif)
+
