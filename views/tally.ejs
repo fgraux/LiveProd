@@ -1,0 +1,357 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<title>OBS Tally</title>
+<script>
+	window.addEventListener("load", init, false);
+
+	var serverip = "127.0.0.1:4444"; //Change the server IP/port here
+
+	var intervalID = 0;
+	var sceneRefreshInterval = 0;
+	var socketisOpen = false;
+	var studioMode = false;
+
+	var currentState = {
+		"watchedSource": "",  // the source we are watching if any
+		"watchedScene_s": [],   // the selected scene(s) we are monitoring
+		"previewScene": "",   // the name of the current preview scene
+		"programScenes": [],  // the name of the current live scenes. (can be 2 during transitions.)
+		"streaming": false,   // are we currently streaming?
+		"sceneList": [],		  // a place to store the obs scene list
+		"watchingStreamStatus": false	//if the stream status is watched
+	}
+
+	function init() {
+		document.getElementById('serverIP').value = serverip;
+	}
+
+	function connectToServer() {
+		//enterFullscreen(document.documentElement);
+
+		serverip = document.getElementById('serverIP').value
+
+		connectWebsocket();
+	}
+
+	function connectWebsocket() {
+		websocket = new WebSocket("ws://" + serverip);
+
+		websocket.onopen = function(evt) {
+			socketisOpen = 1;
+			clearInterval(intervalID);
+			intervalID = 0;
+			requestInitialState();
+		};
+
+		websocket.onclose = function(evt) {
+			socketisOpen = 0;
+			if (!intervalID) {
+				intervalID = setInterval(connectWebsocket, 5000);
+			}
+		};
+
+		websocket.onmessage = function(evt) {
+			var data = JSON.parse(evt.data);
+			// console.log('onmessage', data);
+			
+			if (data.hasOwnProperty("message-id")) {
+				handleInitialStateEvent(data)
+			} else if (data.hasOwnProperty("update-type")) {
+				handleStateChangeEvent(data)
+			} else {
+				console.log('onmessage unable to handle message.', data);
+			}
+		};
+
+		websocket.onerror = function(evt) {
+			socketisOpen = 0;
+			if (!intervalID) {
+				intervalID = setInterval(connectWebsocket, 5000);
+			}
+		};
+	}
+
+	function enterFullscreen(element) {
+		if (element.requestFullscreen) {
+			element.requestFullscreen();
+		} else if (element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		} else if (element.msRequestFullscreen) {
+			element.msRequestFullscreen();
+		} else if (element.webkitRequestFullscreen) {
+			element.webkitRequestFullscreen();
+		}
+	}
+
+	// send messages to OBS requesting the initial state we need in order to function.
+	function requestInitialState() {
+		// message-id: we make this up. used to identify response messages which are sent back from OBS.
+		// request-type: command to send to OBS
+		const commands = [
+			{
+				"message-id": "get-scene-list",
+				// https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#getscenelist
+				"request-type": "GetSceneList"
+			},
+			{
+				"message-id": "get-studio-mode-status",
+				// https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#getstudiomodestatus
+				"request-type": "GetStudioModeStatus"
+			},
+			{
+				"message-id": "get-preview-scene",
+				// https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#getpreviewscene
+				"request-type": "GetPreviewScene"
+			},
+			{
+				"message-id": "get-streaming-status",
+				"request-type": "GetStreamingStatus"
+			}
+		]
+
+		for (let i = 0; i < commands.length; i++) {
+			let payload = commands[i];
+
+			// console.log('sending command', payload);
+			if (socketisOpen) {
+				websocket.send(JSON.stringify(payload));
+			} else {
+				console.error('unable to send command. socket not open.', payload);
+			}
+		}
+	}
+	
+	//we are watching for a source contained in a scene
+	function watchSource(sourceName) {
+		currentState.watchedSource = sourceName;
+		currentState.watchedScene_s = [];
+		currentState.sceneList.forEach((scene) => {
+			let scenefilter = scene.sources.filter((sources) => {
+				return sources.name == sourceName;
+			});
+			if (scenefilter.length > 0) {
+				currentState.watchedScene_s.push(scene.name);
+			}
+		});
+		//Update scene list containing this item every 30 sec in case someone adds the watched source to another scene
+		if (!sceneRefreshInterval) {
+			sceneRefreshInterval = setInterval(() => {
+				if (socketisOpen) {
+					websocket.send(JSON.stringify({"message-id": "get-scene-list-update", "request-type": "GetSceneList"}));
+				}
+			}, 30000);
+		}
+		watchScene(null, sourceName);
+	}
+	
+	//we are watching one or more scenes
+	function watchScene(sceneName, sourceName = null) {
+		// console.log("Selected: " + sceneName);
+		if (sceneName) {
+			currentState.watchedScene_s.push(sceneName);
+			document.getElementById("selectedTitleText").innerHTML = sceneName;
+		} else if (sourceName) {
+			document.getElementById("selectedTitleText").innerHTML = sourceName;
+		}
+
+		document.getElementById("selectedTitleBox").style.display = "block";
+		document.getElementById("selectionbox").style.display = "none";
+		document.getElementById("settingsbox").style.display = "none";
+			
+		updateDisplay();
+	}
+	
+	//we are watching for the stream status
+	function watchStreamStatus() {
+		currentState.watchingStreamStatus = true;
+		document.getElementById("selectionbox").style.display = "none";
+		document.getElementById("settingsbox").style.display = "none";
+		document.getElementById("wearelivebox").style.display = "block";
+		document.getElementById("wearelivetext").innerHTML = "OFFLINE";
+		
+		updateDisplay();
+	}
+
+	// process responses to requests sent by requestInitialState
+	function handleInitialStateEvent(data) {
+		const messageId = data["message-id"];
+
+		switch(messageId) {
+			case "get-scene-list":
+				currentState.sceneList = data.scenes;
+				generateSelectionBoxes(data["scenes"]);
+				currentState.programScenes = [data['current-scene']];
+				break;
+			case "get-studio-mode-status":
+				studioMode = data["studio-mode"];
+				break;
+			case "get-preview-scene":
+				currentState.previewScene = data['name'];
+				break;
+			case "get-streaming-status":
+				currentState.streaming = data['streaming'];
+				break;
+			case "get-scene-list-update":
+				currentState.sceneList = data.scenes;
+				watchSource(currentState.watchedSource);
+				break;
+			default:
+				console.error('handleInitialStateEvent got unknown event.', data);
+		}
+	}
+
+	// set currentState values based on incoming websocket messages
+	function handleStateChangeEvent(data) {
+		// console.log("before update", currentState);
+		// console.log(data);
+
+		const updateType = data["update-type"];
+
+		let displayNeedsUpdate = true;
+
+		switch(updateType) {
+			case "PreviewSceneChanged":
+				currentState.previewScene = data["scene-name"];
+				break;
+			case "SwitchScenes":
+				currentState.programScenes = [data["scene-name"]];
+				break;
+			case "StreamStarted":
+				currentState.streaming = true;
+				break;
+			case "StreamStopping":
+				currentState.streaming = false;
+				break;
+			case "TransitionBegin":
+				currentState.programScenes = [data["to-scene"], data["from-scene"]];
+				break;
+			default:
+				displayNeedsUpdate = false;
+		}
+
+		// only do a display update if we received an event we care about.
+		// OBS may send other events as well, which we will disregard.
+		if (displayNeedsUpdate) {
+			updateDisplay();
+			// console.log("after update", currentState);
+		}
+	}
+
+	// update various HTML elements based on current internal state variables.
+	function updateDisplay() {
+		if (currentState.watchedScene_s.some(r=> currentState.programScenes.includes(r))) {
+			color = "red";
+		} else if (currentState.watchingStreamStatus && currentState.streaming) {
+			color = "red";
+		} else if ((currentState.watchedScene_s.some(r=> currentState.previewScene.includes(r))) && studioMode) {
+			color = "green";
+		} else if (currentState.watchingStreamStatus && !currentState.streaming) {
+			color = "white";
+		} else {
+			color = "black";
+		}
+
+		document.body.style.backgroundColor = color;
+		textBackground = (color == "black") ? "white" : "transparent";
+		document.getElementById("selectedTitleText").style.backgroundColor = textBackground;
+
+		streamDescription = currentState.streaming ? "LIVE" : "OFFLINE";
+		document.getElementById("wearelivetext").innerHTML = streamDescription;
+	}
+
+	// build buttons which allow user to select which scene to watch
+	function generateSelectionBoxes(list) {
+		content = `<button type='button' onclick='watchStreamStatus();'>Stream Status</button><br>Scenes:<br>`;
+		list.forEach((scene) => {
+			content += `<button type='button' onclick='watchScene("${scene.name}");'>${scene.name}</button><br>`;
+		});
+		content += "Sources:<br>";
+		let sourcelist = [];
+		list.forEach((scene) => {
+			scene.sources.forEach((source) => {
+				if (!sourcelist.includes(source.name)) {
+					sourcelist.push(source.name);
+					content += `<button type='button' onclick='watchSource("${source.name}");'>${source.name}</button><br>`;
+				}
+			});
+		});
+		
+		document.getElementById("selectionbox").innerHTML = content;
+	}
+</script>
+
+<style>
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	font-family: monospace;
+}
+
+#selectionbox {
+	height: 80%;
+	width: 80%;
+	overflow: scroll;
+	padding-left: 15px;
+	font-size: 1.5em;
+}
+
+#selectionbox button {
+	font-size: 1em;
+}
+
+#settingsbox {
+	margin: 20px;
+}
+
+#selectedTitleBox {
+	display: none;
+	text-align: center;
+}
+
+#selectedTitleText {
+	font-weight: bold;
+	font-size: 3em;
+}
+
+button {
+	margin: 8px;
+	font-size: 1.5em;
+}
+
+input {
+	margin: 8px;
+	font-size: 1.5em;
+}
+
+#wearelivebox {
+	display: none;
+	text-align: center;
+}
+
+#wearelivetext {
+	font-weight: bold;
+	font-size: 24vw;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+	<div id="settingsbox">
+		<input type="text" id="serverIP">
+		<button type="button" onclick="connectToServer();">Connect to Server</button>
+	</div>
+	<div id="selectionbox"></div>
+	<div id="selectedTitleBox">
+		<span id="selectedTitleText"></span>
+	</div>
+	<div id="wearelivebox">
+		<span id="wearelivetext"></span>
+	</div>
+</body>

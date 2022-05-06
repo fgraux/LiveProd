@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/images/LiveProd.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LiveProdKeyboard</title>
+<script type="text/javascript" src="/javascripts/jquery-3.3.1.min.js"></script>
+    <!-- Add Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/javascripts/bootstrap.min.css">
+    <!-- Add FontAwesome -->
+    <link rel="stylesheet" href="/javascripts/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel='stylesheet' href='/stylesheets/LiveProdKeyboard.min.css' />
+</head>
+<body>
+<body onload="ignition();">
+<!-- <body onload="ignitXkeys();"> -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-8">
+
+					<div><div class="card-xkeys bg-light text-center ">
+						<div class="row"><h2 class="sTemp col-4">Xkeys Keyboard</h2></div>
+						<table id="XkeysLine1" class="well hide"><tr></tr></table>
+						<table id="XkeysLine2" class="well hide"><tr></tr></table>
+						<table id="XkeysLine3" class="well hide"><tr></tr></table>
+						<table id="XkeysLine4" class="well"><tr></tr></table>
+						<table id="XkeysSetAux1" class="well"><tr></tr></table>
+						<table id="XkeysSetAux2" class="well"><tr></tr></table>
+						<table id="XkeysSetPGM" class="well"><tr></tr></table>
+						<table id="XkeysSetPVW" class="well"><tr></tr></table>
+					</div></div>
+
+            </div>  
+        </div>      
+    </div>   
+<table class="hide" width="100%">
+				<tr>
+				<td><div class="card" id="bug1_box">
+                    <div class="card-bug bg-light text-center">
+							<div class="logoCont"><img class="thumb" src=""></div>
+							<div class="row"><h2 class="sTemp col-4">BUG 1</h2><h2><div class="clip"></div></h2></div>
+							<div class="row">
+                            <div class="col text-center">
+                                <button id="bugAction" class="sTemp play" action="bug" channel="" layer="" logo=""></button>
+                            </div>
+						</div>
+					</div>
+				</div></td>
+				<td><div class="card" id="bug2_box">
+					<div class="card-bug bg-light text-center">
+ 							<div class="logoCont"><img class="thumb" src=""></div>
+							<div class="row"><h2 class="sTemp col-4">BUG 2</h2><h2><div class="clip"></div></h2></div>
+							<div class="row">
+                            <div class="col text-center">
+                                <button id="bugAction" class="sTemp play" action="bug" channel="" layer="" logo=""></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				</td></tr>
+				<tr>
+				<td><div class="card" id="dve1_box">
+                    <div class="card-cg bg-light text-center">
+					<div class="titleCont">
+							<div>Name:</div>
+							<div id="Temp1Name"></div>
+							<div>Title:</div>
+							<div id="Temp1Title"></div>
+						</div>
+ 						<div class="row"><h2 class="sTemp cool">DVE 1</h2></div>
+						<div class="row">
+                            <div class="col text-center">
+                                <button id="tempAction" class="sTemp play" action="cg" channel="" layer="" tmpl="" json=""></button>
+                                <button id="tempAction" action="up" channel="" layer="" json=""><i class="fas fa-redo-alt"></i>Update</button>
+								<h2><div id="CH3" class="sTemp"></div></h2>
+                            </div>
+						</div>
+					</div>
+				</div></td>
+				<td><div class="card" id="dve2_box">
+					<div class="card-cg bg-light text-center">
+					<div class="titleCont">
+							<div>Name:</div>
+							<div id="Temp2Name"></div>
+							<div>Title:</div>
+							<div id="Temp2Title"></div>
+						</div>
+ 						<div class="row"><h2 class="sTemp cool">DVE 2</h2></div>
+						<div class="row">
+                            <div class="col text-center">
+                                <button id="tempAction" class="sTemp play" action="cg" channel="" layer="" tmpl="" json=""></button>
+                                <button id="tempAction" action="up" channel="" layer="" json=""><i class="fas fa-redo-alt"></i>Update</button>
+								<h2><div id="CH4" class="sTemp"></div></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				</td></tr>
+				<tr>
+				<td><div class="card" id="dve3_box">
+                    <div class="card-cg bg-light text-center">
+					<div class="titleCont">
+							<div>Name:</div>
+							<div id="Temp3Name"></div>
+							<div>Title:</div>
+							<div id="Temp3Title"></div>
+						</div>
+ 						<div class="row"><h2 class="sTemp cool">DVE 3</h2></div>
+						<div class="row">
+                            <div class="col text-center">
+                                <button id="tempAction" class="sTemp play" action="cg" channel="" layer="" tmpl="" json=""></button>
+                                <button id="tempAction" action="up" channel="" layer="" json=""><i class="fas fa-redo-alt"></i>Update</button>
+								<h2><div id="CH5" class="sTemp"></div></h2>
+                            </div>
+                        </div>
+                    </div>
+				</div></td>
+				<td><div class="card" id="dve4_box">
+					<div class="card-cg bg-light text-center">
+					<div class="titleCont">
+							<div>Name:</div>
+							<div id="Temp4Name"></div>
+							<div>Title:</div>
+							<div id="Temp4Title"></div>
+						</div>
+ 						<div class="row"><h2 class="sTemp cool">DVE 4</h2></div>
+						<div class="row">
+                            <div class="col text-center">
+                                <button id="tempAction" class="sTemp play" action="cg" channel="" layer="" tmpl="" json=""></button>
+                                <button id="tempAction" action="up" channel="" layer="" json=""><i class="fas fa-redo-alt"></i>Update</button>
+								<h2><div id="CH6" class="sTemp"></div></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				</td></tr>
+				</table>	
+    <!-- Core Libraries -->
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="/javascripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io.min.js"></script>
+    <!-- Custom Script -->
+    <script src="/javascripts/LiveProdClient.js"></script>
+</body>
+<footer></footer>
+</html>
