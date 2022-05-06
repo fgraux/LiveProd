@@ -1,0 +1,97 @@
+[{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d61"
+  },
+  "gamer": "Nana Dzagnidzé",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d62"
+  },
+  "gamer": "Magnus Carlsen",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d63"
+  },
+  "gamer": "Hou Yifan",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d64"
+  },
+  "gamer": "Alireza Firouzja",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d65"
+  },
+  "gamer": "Humpy Koneru",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d66"
+  },
+  "gamer": "Maxime Vachier-Lagrave",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d67"
+  },
+  "gamer": "Mariya Mouzytchouk",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d68"
+  },
+  "gamer": "Fabiano Caruana",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d69"
+  },
+  "gamer": "Marie Sebag",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6a"
+  },
+  "gamer": "Saleh Salem",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6b"
+  },
+  "gamer": "Ding Liren",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6c"
+  },
+  "gamer": "Levon Aronian",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6d"
+  },
+  "gamer": "Elina Danielian",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6e"
+  },
+  "gamer": "Peter Leko",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d6f"
+  },
+  "gamer": "Gulnar Mammadova",
+  "score": "0"
+},{
+  "_id": {
+    "$oid": "62447ab131886a7510e12d70"
+  },
+  "gamer": "Richárd Rapport",
+  "score": "0"
+}]

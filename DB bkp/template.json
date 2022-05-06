@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "60a793f57b0a290588767844"
+  },
+  "channel": "1",
+  "tempname": "LOWERTHIRDS/HORIZONTAL-WIPE/INDEX",
+  "json": "0"
+},{
+  "_id": {
+    "$oid": "60a793f57b0a290588767845"
+  },
+  "channel": "2",
+  "tempname": "TEMPLATE_JS/TEMPLATE",
+  "json": "1"
+},{
+  "_id": {
+    "$oid": "60a793f57b0a290588767846"
+  },
+  "channel": "3",
+  "tempname": "LOWERTHIRDS/3D-SWING/INDEX",
+  "json": "0"
+},{
+  "_id": {
+    "$oid": "60a793f57b0a290588767847"
+  },
+  "channel": "4",
+  "tempname": "LOWERTHIRDS/SWIPE/INDEX",
+  "json": "0"
+},{
+  "_id": {
+    "$oid": "6242f53dc18c8a7e284e7cfd"
+  },
+  "channel": "5",
+  "json": "0",
+  "tempname": "LOWERTHIRDS/SCORE/INDEX"
+}]

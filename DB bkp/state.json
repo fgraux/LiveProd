@@ -1,0 +1,279 @@
+[{
+  "_id": {
+    "oid": "60a7c7fb7b0a290588767848"
+  },
+  "device": "vtr1_box",
+  "action": "play",
+  "hclass": "dev1 play",
+  "display": "<i class=\"fas fa-play\"></i> Play",
+  "file": "",
+  "thumb": "/images/CH1.png",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a290588767849"
+  },
+  "device": "vtr2_box",
+  "action": "play",
+  "hclass": "dev2 play",
+  "display": "<i class=\"fas fa-play\"></i> Play",
+  "file": "",
+  "thumb": "/images/CH2.png",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784a"
+  },
+  "device": "dve1_box",
+  "action": "cg",
+  "hclass": "sTemp play",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "Jean Lassalle",
+  "thumb": "Résistons",
+  "loop": null
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784b"
+  },
+  "device": "dve2_box",
+  "action": "cg",
+  "hclass": "sTemp play",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "Ernest Ramier",
+  "thumb": "Philoso",
+  "loop": null
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784c"
+  },
+  "device": "dve3_box",
+  "action": "cg",
+  "hclass": "sTemp play",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "Victor Fitoussi",
+  "thumb": "Chauffeur de salle",
+  "loop": null
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784d"
+  },
+  "device": "dve4_box",
+  "action": "cg",
+  "hclass": "sTemp play",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "Théodore de Montcul",
+  "thumb": "footballer au FC Barcelona",
+  "loop": null
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784e"
+  },
+  "device": "aux1_active",
+  "action": "05",
+  "hclass": "CAM 1",
+  "display": "",
+  "file": "",
+  "thumb": "",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a29058876784f"
+  },
+  "device": "aux2_active",
+  "action": "06",
+  "hclass": "CAM 1",
+  "display": "",
+  "file": "",
+  "thumb": "",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a290588767850"
+  },
+  "device": "pgm_active",
+  "action": "63",
+  "hclass": "VTR 02",
+  "display": "",
+  "file": "",
+  "thumb": "",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "60a7c7fb7b0a290588767851"
+  },
+  "device": "pvw_active",
+  "action": "08",
+  "hclass": "CAM 1",
+  "display": "",
+  "file": "",
+  "thumb": "",
+  "loop": ""
+},{
+  "_id": {
+    "oid": "61bccae9ca36eb0af6ae9bd8"
+  },
+  "device": "vtr1_box_plist",
+  "action": "hide",
+  "display": null,
+  "file": 100000,
+  "hclass": null,
+  "loop": null,
+  "thumb": null
+},{
+  "_id": {
+    "oid": "61bccb46ca36eb0af6ae9c26"
+  },
+  "device": "vtr2_box_plist",
+  "action": "hide",
+  "display": null,
+  "file": 100000,
+  "hclass": null,
+  "loop": null,
+  "thumb": null
+},{
+  "_id": {
+    "oid": "61c318928d5b3ea88d82b141"
+  },
+  "device": "bug1_box",
+  "action": "bug",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "BUG/ARTE",
+  "hclass": "sTemp play",
+  "loop": null,
+  "thumb": "/images/CH1.png"
+},{
+  "_id": {
+    "oid": "61c3200f8d5b3ea88d82b628"
+  },
+  "device": "bug2_box",
+  "action": "bug",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "BUG/RIPAILLE",
+  "hclass": "sTemp play",
+  "loop": null,
+  "thumb": "/images/CH1.png"
+},{
+  "_id": {
+    "$oid": "6242956402c636a29ea6a707"
+  },
+  "device": "score_box",
+  "action": "cg",
+  "display": "<i class=\"fas fa-play-circle\"></i> On Air",
+  "file": "<templateData><componentData id=\"f0\"><data id=\"text\" value=\"Nana Dzagnidzé\"/></componentData><componentData id=\"f1\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f2\"><data id=\"text\" value=\"Magnus Carlsen\"/></componentData><componentData id=\"f3\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f4\"><data id=\"text\" value=\"Hou Yifan\"/></componentData><componentData id=\"f5\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f6\"><data id=\"text\" value=\"Alireza Firouzja\"/></componentData><componentData id=\"f7\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f8\"><data id=\"text\" value=\"Humpy Koneru\"/></componentData><componentData id=\"f9\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f10\"><data id=\"text\" value=\"Maxime Vachier-Lagrave\"/></componentData><componentData id=\"f11\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f12\"><data id=\"text\" value=\"Mariya Mouzytchouk\"/></componentData><componentData id=\"f13\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f14\"><data id=\"text\" value=\"Fabiano Caruana\"/></componentData><componentData id=\"f15\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f16\"><data id=\"text\" value=\"Marie Sebag\"/></componentData><componentData id=\"f17\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f18\"><data id=\"text\" value=\"Saleh Salem\"/></componentData><componentData id=\"f19\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f20\"><data id=\"text\" value=\"Ding Liren\"/></componentData><componentData id=\"f21\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f22\"><data id=\"text\" value=\"Levon Aronian\"/></componentData><componentData id=\"f23\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f24\"><data id=\"text\" value=\"Elina Danielian\"/></componentData><componentData id=\"f25\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f26\"><data id=\"text\" value=\"Peter Leko\"/></componentData><componentData id=\"f27\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f28\"><data id=\"text\" value=\"Gulnar Mammadova\"/></componentData><componentData id=\"f29\"><data id=\"text\" value=\"0\"/></componentData><componentData id=\"f30\"><data id=\"text\" value=\"Richárd Rapport\"/></componentData><componentData id=\"f31\"><data id=\"text\" value=\"0\"/></componentData></templateData>",
+  "hclass": "sTemp play",
+  "loop": null,
+  "thumb": [
+    {
+      "gamer": "Nana Dzagnidzé",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0bb"
+      }
+    },
+    {
+      "gamer": "Magnus Carlsen",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0bc"
+      }
+    },
+    {
+      "gamer": "Hou Yifan",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0bd"
+      }
+    },
+    {
+      "gamer": "Alireza Firouzja",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0be"
+      }
+    },
+    {
+      "gamer": "Humpy Koneru",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0bf"
+      }
+    },
+    {
+      "gamer": "Maxime Vachier-Lagrave",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c0"
+      }
+    },
+    {
+      "gamer": "Mariya Mouzytchouk",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c1"
+      }
+    },
+    {
+      "gamer": "Fabiano Caruana",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c2"
+      }
+    },
+    {
+      "gamer": "Marie Sebag",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c3"
+      }
+    },
+    {
+      "gamer": "Saleh Salem",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c4"
+      }
+    },
+    {
+      "gamer": "Ding Liren",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c5"
+      }
+    },
+    {
+      "gamer": "Levon Aronian",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c6"
+      }
+    },
+    {
+      "gamer": "Elina Danielian",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c7"
+      }
+    },
+    {
+      "gamer": "Peter Leko",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c8"
+      }
+    },
+    {
+      "gamer": "Gulnar Mammadova",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0c9"
+      }
+    },
+    {
+      "gamer": "Richárd Rapport",
+      "score": "0",
+      "_id": {
+        "$oid": "6246ae665d53b83160b3a0ca"
+      }
+    }
+  ]
+}]

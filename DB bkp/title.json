@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac2b"
+  },
+  "Name": "Abel Gance",
+  "Title": "1889 - 1981"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac2c"
+  },
+  "Name": "Maurice Tourneur",
+  "Title": "1876 - 1961"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac2d"
+  },
+  "Name": "Marcel L'Herbier",
+  "Title": "1888 - 1979"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac2e"
+  },
+  "Name": "René Clair",
+  "Title": "1898 - 1981"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac2f"
+  },
+  "Name": "Jean Renoir",
+  "Title": "1894 - 1979"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac30"
+  },
+  "Name": "Claude Autant-Lara",
+  "Title": "1901 - 2000"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac31"
+  },
+  "Name": "Jean Vigo",
+  "Title": "1905 - 1934"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac32"
+  },
+  "Name": "Sacha Guitry",
+  "Title": "1885 - 1957"
+},{
+  "_id": {
+    "$oid": "6256ce3883ef1a419ccbac33"
+  },
+  "Name": "Marcel Carné",
+  "Title": "1906 - 1996\r"
+}]

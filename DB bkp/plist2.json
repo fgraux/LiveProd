@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d0936b"
+  },
+  "name": "AMB",
+  "timecode": "00:00:10:18",
+  "duration": "10.72"
+},{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d0936c"
+  },
+  "name": "WIPE",
+  "timecode": "00:00:01:06",
+  "duration": "1.24"
+},{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d0936d"
+  },
+  "name": "CG1080I50",
+  "timecode": "00:00:10:13",
+  "duration": "10.56"
+},{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d0936e"
+  },
+  "name": "WIPE",
+  "timecode": "00:00:01:06",
+  "duration": "1.24"
+},{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d0936f"
+  },
+  "name": "CG1080I50_A",
+  "timecode": "00:00:10:10",
+  "duration": "10.4"
+},{
+  "_id": {
+    "$oid": "625eadc10eea1645f8d09370"
+  },
+  "name": "WIPE",
+  "timecode": "00:00:01:06",
+  "duration": "1.24"
+}]

@@ -1,0 +1,169 @@
+[{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6a"
+  },
+  "constant": "cgsrv",
+  "var": "192.168.0.152"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6b"
+  },
+  "constant": "amcport",
+  "var": "5250"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6c"
+  },
+  "constant": "oscport",
+  "var": "6250"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6d"
+  },
+  "constant": "scanport",
+  "var": "8000"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6e"
+  },
+  "constant": "vtr1",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f6f"
+  },
+  "constant": "vtr2",
+  "var": "2"
+},{
+  "_id": {
+    "$oid": "61b24a6c4624e5e1524f9173"
+  },
+  "constant": "bug1",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "61b24a6c4624e5e1524f9174"
+  },
+  "constant": "bug2",
+  "var": "2"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f70"
+  },
+  "constant": "dve1",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f71"
+  },
+  "constant": "dve2",
+  "var": "2"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f72"
+  },
+  "constant": "dve3",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f73"
+  },
+  "constant": "dve4",
+  "var": "2"
+},{
+  "_id": {
+    "$oid": "6242e8914c8c5160ac80d88b"
+  },
+  "constant": "score",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "61b24a494624e5e1524f9145"
+  },
+  "constant": "lvtr1",
+  "var": "1"
+},{
+  "_id": {
+    "$oid": "61b24a5c4624e5e1524f915f"
+  },
+  "constant": "lvtr2",
+  "var": "2"
+},{
+  "_id": {
+    "$oid": "61b24a6c4624e5e1524f9175"
+  },
+  "constant": "lbug1",
+  "var": "10"
+},{
+  "_id": {
+    "$oid": "61b24a6c4624e5e1524f9176"
+  },
+  "constant": "lbug2",
+  "var": "11"
+},{
+  "_id": {
+    "$oid": "61b24a654624e5e1524f9169"
+  },
+  "constant": "ldve1",
+  "var": "12"
+},{
+  "_id": {
+    "$oid": "61b24a684624e5e1524f916c"
+  },
+  "constant": "ldve2",
+  "var": "13"
+},{
+  "_id": {
+    "$oid": "61b24a6a4624e5e1524f916f"
+  },
+  "constant": "ldve3",
+  "var": "14"
+},{
+  "_id": {
+    "$oid": "61b24a6c4624e5e1524f9172"
+  },
+  "constant": "ldve4",
+  "var": "15"
+},{
+  "_id": {
+    "$oid": "6242e8e84c8c5160ac80d88c"
+  },
+  "constant": "lscore",
+  "var": "16"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f75"
+  },
+  "constant": "obssrv",
+  "var": "192.168.0.155"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f76"
+  },
+  "constant": "obsport",
+  "var": "4445"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f77"
+  },
+  "constant": "obspass",
+  "var": "FMC3ABMG"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f78"
+  },
+  "constant": "auxsrv",
+  "var": "192.168.0.135"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f79"
+  },
+  "constant": "auxport",
+  "var": "4446"
+},{
+  "_id": {
+    "$oid": "60a553f8b36c2e0578be7f80"
+  },
+  "constant": "auxpass",
+  "var": ""
+}]
