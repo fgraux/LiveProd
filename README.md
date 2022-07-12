@@ -102,8 +102,7 @@ This example shows a template that displays as a playlist all the entries of a R
 
 
 OBS STUDIO INTEGRATION EXAMPLE
-![2022-04-29-14-50-52](https://user-images.githubusercontent.com/33838534/165957252-18ebd9d5-88ca-4949-8a28-b4f2a8d5ac7b.gif)
-
+![obs integr](https://user-images.githubusercontent.com/33838534/178471974-f6a527da-d253-49bc-8821-cac498491d84.gif)
 The actual script was writen to remote 2 obs studio instance :
 
 	• The main one is dedicated for directing the show
@@ -120,13 +119,14 @@ The actual script was writen to remote 2 obs studio instance :
 This example includes 8 Caspar CG channels/layers that can easily be set up : 
 
 2 vtr that can play and adapt any video whatever format, resolution, framerate : simply drag & drop from the videos list to the VTR box. Also double-clicking on a video will load it to VTR 1 player.
-![2022-04-29 15-59-13](https://user-images.githubusercontent.com/33838534/165959543-c6e35061-6c91-45fd-b9b6-9abb224684c6.gif)
+![scope](https://user-images.githubusercontent.com/33838534/178472029-2d14950f-0aec-43b9-aeab-e42e619ea6d6.gif)
 
 bugs box to display any image format fullscreen or not : simply drag & drop from the images list to the BUG box. Also double-clicking on an image will load it to BUG 1 box.
-![2022-04-29 16-28-52](https://user-images.githubusercontent.com/33838534/165966376-ef8b4493-1596-4c2e-a765-66e6052f3cfd.gif)
+![bugs](https://user-images.githubusercontent.com/33838534/178472065-9b0e4efa-c5ba-4f1f-8723-e57221935d47.gif)
+
 
 4 dve to play caspar cg templates :  simply drag & drop the right name & title from the title list to the DVE box. Also double-clicking on a title will load it to DVE 1 box.
-![2022-04-29 16-44-46](https://user-images.githubusercontent.com/33838534/165968084-e7b81cd5-5a8f-4071-b1bd-e9517c97ecf3.gif)
+![titles](https://user-images.githubusercontent.com/33838534/178472105-ef7f3679-49d5-4e31-908d-7ea75bdaeef1.gif)
 
 1. Integrated interface:
 
@@ -149,7 +149,7 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 	• Add video to a player with drag & drop
 
 	• Clickable progressbar 
-	![2022-04-29 16-51-43_1](https://user-images.githubusercontent.com/33838534/165969883-13b46d23-44be-4825-9f1e-de36e5cf3d15.gif)
+	![progress](https://user-images.githubusercontent.com/33838534/178472153-83515ed4-c0e0-4a41-a5a3-025ff9b75100.gif)
 
 	• Realtime timecode elapsed and remaining displayed
 
@@ -157,15 +157,16 @@ bugs box to display any image format fullscreen or not : simply drag & drop from
 3. Playlist mode:
 
 	• Click on playlist button
-	![2022-04-29 17-02-19](https://user-images.githubusercontent.com/33838534/165971377-8fd2f65b-c195-48d2-846f-30ccbd9f8a22.gif)
+	![playlistOpen](https://user-images.githubusercontent.com/33838534/178472217-3a42ec85-707c-474c-994c-b7bbcb8c6090.gif)
 
 	• Create your playlist while drag & dropping videos
-	
-	• Sort your items onto playlist
-	![2022-04-29 17-05-07](https://user-images.githubusercontent.com/33838534/165971806-0fc69a03-54f7-498d-a1a4-2f305c1a3efc.gif)
+	![playlistSort](https://user-images.githubusercontent.com/33838534/178472265-a54a3cbe-2b2a-4993-a419-437ccae0c1bf.gif)
 
-	• Manage your playlist as you like while deleting any item
-	![2022-04-29 17-07-28](https://user-images.githubusercontent.com/33838534/165972515-2d0807d5-0b20-4267-a8eb-550e390a009f.gif)
+	• Sort your items onto playlist
+
+	• Manage your playlist as you like while deleting any item or removing all
+	![playlistDel](https://user-images.githubusercontent.com/33838534/178472344-17829c38-6a05-4641-a83a-06803b1d893f.gif)
+
 
 	• Click on next or previous buttons
 	![2022-04-29 17-12-10](https://user-images.githubusercontent.com/33838534/165973285-62196209-5b35-4d9a-bfab-abc31e0ab7d7.gif)
