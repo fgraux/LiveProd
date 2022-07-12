@@ -98,7 +98,7 @@ This example shows a simple designed template that displays the score of a turna
 
 TICKER TEMPLATE & INTERFACE
 ![Ticker](https://user-images.githubusercontent.com/33838534/178469384-adb8164c-c27c-4dc5-8792-9d379224d0c5.gif)
-This example shows a template that displays as a playlist all the entries of a RSS stream. In the center input, you type an address, then you retrieve the informations and feed the left table. On the right zone, you can create, edit, sort or delete tables that you then can play using the remote.
+This example shows a template that displays as a playlist all the entries of a RSS stream. In the center input, you type an address, then you retrieve the informations and feed the left table. On the right zone, you can create, edit, sort or delete tables that you then can play using the remote. You can drag & drop single elements to  build your playlist, as well as copying all the list then edit. When an entry is copied in a tab, the associated picture is copied in a local folder with a unique ID  including tab name as filename. When you delete an entry, the local copy is deleted too. When you delete a tab, all the pictures in it are deleted too. If it is not the last tab, all tabs are renamed, such as pictures.
 
 
 OBS STUDIO INTEGRATION EXAMPLE
