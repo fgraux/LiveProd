@@ -93,7 +93,7 @@ Also thumbnails are not generated in CasparCG Ubuntu version, and won’t be dis
 You might also have to install libusb (sudo apt install libusb-dev) & libudev (sudo apt install libudev-dev) then in LiveProd folder (cd LiveProd) manually install xkeys (npm install --save xkeys).
 
 SCOREBOARD TEMPLATE & INTERFACE
-![2022-05-02 15-51-16](https://user-images.githubusercontent.com/33838534/166245810-d661462d-3955-4954-a1b0-ee6860690891.gif)
+![ScoreBoard](https://user-images.githubusercontent.com/33838534/178469144-2b7f81ef-f6cc-4bf7-9339-83d7352f6056.gif)
 
 
 
