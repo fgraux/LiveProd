@@ -94,10 +94,11 @@ You might also have to install libusb (sudo apt install libusb-dev) & libudev (s
 
 SCOREBOARD TEMPLATE & INTERFACE
 ![ScoreBoard](https://user-images.githubusercontent.com/33838534/178469144-2b7f81ef-f6cc-4bf7-9339-83d7352f6056.gif)
-
-
-
 This example shows a simple designed template that displays the score of a turnament involving 16 gamers. As it is static, the template itself only took an hour to be builded. The dedicated interface includes dynamic fields for the names of 16 gamers and their scores. All are directly editable, and we had for each gamer 3 buttons (plus, minus & zero). We implemented the Excel import function and added 2 color input selectors that can dynamically change the color of the template.
+
+TICKER TEMPLATE & INTERFACE
+![Ticker](https://user-images.githubusercontent.com/33838534/178469384-adb8164c-c27c-4dc5-8792-9d379224d0c5.gif)
+This example shows a template that displays as a playlist all the entries of a RSS stream. In the center input, you type an address, then you retrieve the informations and feed the left table. On the right zone, you can create, edit, sort or delete tables that you then can play using the remote.
 
 
 OBS STUDIO INTEGRATION EXAMPLE
